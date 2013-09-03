@@ -393,8 +393,10 @@
     </transmission>
     
     <joint name="${name}_arm_hand_fixed_joint" type="fixed">
+<!--
       <origin xyz="${-right * 0.075} -0.075 -0.094"
               rpy="${0.5*right*M_PI} 0 ${(1.5 + 0.25*right)*M_PI}"/>
+-->
       <parent link="${name}_arm_7_link"/>
       <child link="${name}_arm_hand_link"/>
     </joint>

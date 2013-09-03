@@ -12,7 +12,7 @@
 	 </visual>  
 </xacro:macro>
 
-<xacro:macro name="frame" params="prefix thickness width depth height tableHeight">
+<xacro:macro name="frame-half" params="prefix thickness width depth height tableHeight">
   <link name="${prefix}_frame">
 	 <!-- horizontal front bar-->
 	 <xacro:bar thickness="${thickness}" len="${width}">
@@ -22,22 +22,18 @@
 	 <xacro:bar thickness="${thickness}" len="${width}">
 		<origin xyz="0 ${depth+thickness/2} ${-thickness/2}" rpy="0 ${-M_PI/2} 0"/>
 	 </xacro:bar>
-	 <!-- horizontal front bar top -->
-	 <xacro:bar thickness="${thickness}" len="${width}">
-		<origin xyz="0 ${-thickness/2} ${height+thickness/2}" rpy="0 ${-M_PI/2} 0"/>
-	 </xacro:bar>
 	 <!-- horizontal rear bar top -->
 	 <xacro:bar thickness="${thickness}" len="${width}">
 		<origin xyz="0 ${depth+thickness/2} ${height+thickness/2}" rpy="0 ${-M_PI/2} 0"/>
 	 </xacro:bar>
 
 	 <!-- left front pole -->
-	 <xacro:bar thickness="${thickness}" len="${height+2*thickness+tableHeight}">
-		<origin xyz="${-(width+thickness)/2} ${-thickness/2} ${(height-tableHeight)/2}"/>
+	 <xacro:bar thickness="${thickness}" len="${thickness+tableHeight}">
+		<origin xyz="${-(width+thickness)/2} ${-thickness/2} ${-(thickness+tableHeight)/2}"/>
 	 </xacro:bar>
 	 <!-- right front pole -->
-	 <xacro:bar thickness="${thickness}" len="${height+2*thickness+tableHeight}">
-		<origin xyz="${+(width+thickness)/2} ${-thickness/2} ${(height-tableHeight)/2}"/>
+	 <xacro:bar thickness="${thickness}" len="${thickness+tableHeight}">
+		<origin xyz="${+(width+thickness)/2} ${-thickness/2} ${-(thickness+tableHeight)/2}"/>
 	 </xacro:bar>
 	 
 	 <!-- left rear pole -->
@@ -57,16 +53,6 @@
 	 <!-- right side bottom -->
 	 <xacro:bar thickness="${thickness}" len="${depth}">
 		<origin xyz="${+(width+thickness)/2} ${depth/2} ${-thickness/2}" 
-				  rpy="${-M_PI/2} 0 0"/>
-	 </xacro:bar>
-	 <!-- left side top -->
-	 <xacro:bar thickness="${thickness}" len="${depth}">
-		<origin xyz="${-(width+thickness)/2} ${depth/2} ${height+thickness/2}" 
-				  rpy="${-M_PI/2} 0 0"/>
-	 </xacro:bar>
-	 <!-- right side top -->
-	 <xacro:bar thickness="${thickness}" len="${depth}">
-		<origin xyz="${+(width+thickness)/2} ${depth/2} ${height+thickness/2}" 
 				  rpy="${-M_PI/2} 0 0"/>
 	 </xacro:bar>
 
