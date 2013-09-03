@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<robot>
+  <joint name="dummy_link" type="fixed">
+	 <parent link="kuka_frame"/>
+	 <child link="dummy"/>
+  </joint>
+
+  <link name="dummy">
+	 <visual>
+		<geometry>
+<!--		  <mesh scale="100 100 100" filename="package://agni_description/meshes/arm/arm_base.dae"/>
+-->
+		  <mesh 
+filename="package://agni_description/meshes/arm/convex/arm_base_convex.stl"/>
+		</geometry>
+	 </visual>
+  </link>
+</robot>

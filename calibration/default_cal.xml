@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<root>
+
+  <!-- left arm base -->
+  <property name="cal_left_arm_x"     value="0.06" />
+  <property name="cal_left_arm_y"     value="1.0" />
+  <property name="cal_left_arm_z"     value="1.0" />
+  <property name="cal_left_arm_roll"  value="0" />
+  <property name="cal_left_arm_pitch" value="0.7" />
+  <property name="cal_left_arm_yaw"   value="0" />
+
+  <!-- right arm base -->
+  <property name="cal_right_arm_x"     value="${-cal_left_arm_x}" />
+  <property name="cal_right_arm_y"     value="${cal_left_arm_y}" />
+  <property name="cal_right_arm_z"     value="${cal_left_arm_z}" />
+  <property name="cal_right_arm_roll"  value="${cal_left_arm_roll}" />
+  <property name="cal_right_arm_pitch" value="${-cal_left_arm_pitch}" />
+  <property name="cal_right_arm_yaw"   value="${-cal_left_arm_yaw}" />
+
+
+  <property name="cal_base_to_left_arm_x"     value="0.395" />
+  <property name="cal_base_to_left_arm_y"     value="0.059" />
+  <property name="cal_base_to_left_arm_z"     value="1.149" />
+  <property name="cal_base_to_left_arm_roll"  value="0.71372" />
+  <property name="cal_base_to_left_arm_pitch" value="-0.84806" />
+  <property name="cal_base_to_left_arm_yaw"   value="-2.42787" />
+
+  <property name="cal_base_to_right_arm_x"     value="0.385121" />
+  <property name="cal_base_to_right_arm_y"     value="-0.0570121" />
+  <property name="cal_base_to_right_arm_z"     value="1.15408" />
+  <property name="cal_base_to_right_arm_roll"  value="0.71178" />
+  <property name="cal_base_to_right_arm_pitch" value="0.85723" />
+  <property name="cal_base_to_right_arm_yaw"   value="-0.71169" />
+
+</root>

@@ -1,0 +1,28 @@
+<launch>
+
+<!--
+  <node name="rviz" pkg="rviz" type="rviz"/>
+-->
+
+  <!-- use gui for joint_publisher? -->
+  <arg name="use_gui" default="True"/>
+  <param name="use_gui" value="$(arg use_gui)"/>
+
+  <!-- set the robot_description parameter -->
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find sr_description)/robots/shadowhand_motor.urdf.xacro'" />
+
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find rosie_description)/robots/rosie.urdf.xacro'" />
+
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/kukas.urdf.xacro'" />
+
+  <!-- publish joint values, open gui if use_gui=True -->
+  <node name="joint_publisher"
+		  pkg="joint_state_publisher" type="joint_state_publisher"/>
+
+  <!-- publish transforms of all robot links -->
+  <node name="state_publisher" 
+		  pkg="robot_state_publisher" type="state_publisher">
+    <param name="publish_frequency" type="double" value="10.0"/>
+  </node>
+
+</launch>

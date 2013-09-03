@@ -1,0 +1,11 @@
+<package>
+  <description brief="agni_description">
+     URDF definitions of the robot platforms used in AGNI at Uni Bielefeld
+  </description>
+  <author>Robert Haschke</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <depend package="xacro"/>
+</package>
+
+

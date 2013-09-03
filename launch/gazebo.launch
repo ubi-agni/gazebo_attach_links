@@ -1,0 +1,23 @@
+<launch>
+
+  <!-- start gazebo with an empty plane -->
+  <include file="$(find sr_hand)/launch/gazebo/loaders/empty_world.launch"/>
+
+  <!-- set the robot_description parameter -->
+<!--
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find sr_description)/robots/shadowhand_motor.urdf.xacro'" />
+-->
+
+  <!-- this adds the robot_description to gazebo -->
+  <node name="robot" pkg="gazebo" type="spawn_model" args="-urdf -param robot_description -model shadow_model" respawn="false" output="screen" />
+
+  <!-- Controllers for the hand -->
+  <include if="1" file="$(find sr_hand)/launch/gazebo/loaders/hand_controllers.launch"/>
+
+  <node pkg="robot_state_publisher" type="state_publisher"
+        name="robot_state_publisher_full_pos">
+    <remap from="joint_states" to="gazebo/joint_states" />
+    <param name="publish_frequency" type="double" value="20.0" />
+  </node>
+
+</launch>
