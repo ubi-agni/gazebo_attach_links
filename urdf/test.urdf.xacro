@@ -1,18 +1,11 @@
 <?xml version="1.0"?>
-<robot>
-  <joint name="dummy_link" type="fixed">
-	 <parent link="kuka_frame"/>
-	 <child link="dummy"/>
-  </joint>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <test value="${foo}"/>
+  <xacro:property name="foo" value="0"/>
 
-  <link name="dummy">
-	 <visual>
-		<geometry>
-<!--		  <mesh scale="100 100 100" filename="package://agni_description/meshes/arm/arm_base.dae"/>
--->
-		  <mesh 
-filename="package://agni_description/meshes/arm/convex/arm_base_convex.stl"/>
-		</geometry>
-	 </visual>
-  </link>
+  <xacro:if value="${-3*foo}"><no/></xacro:if>
+  <xacro:if value="0"><no/></xacro:if>
+  <xacro:if value="1"><yes/></xacro:if>
+  <xacro:if value="true"><yes/></xacro:if>
+  <xacro:if value="false"><no/></xacro:if>
 </robot>
