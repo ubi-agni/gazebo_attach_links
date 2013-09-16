@@ -2,8 +2,9 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <test value="${foo}"/>
   <xacro:property name="foo" value="0"/>
+  <xacro:property name="bar" value="${1*foo}"/>
 
-  <xacro:if value="${-3*foo}"><no/></xacro:if>
+  <xacro:if value="${-3*bar}"><no/></xacro:if>
   <xacro:if value="0"><no/></xacro:if>
   <xacro:if value="1"><yes/></xacro:if>
   <xacro:if value="true"><yes/></xacro:if>

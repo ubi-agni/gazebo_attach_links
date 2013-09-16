@@ -6,10 +6,10 @@
   <xacro:include filename="$(find sr_description)/hand/xacro/full_hand_motor.urdf.xacro" />
 
   <!-- KUKA arms -->
-  <xacro:kuka_lwr_arm name="left" right="-1" tool_name=""/>
+  <xacro:kuka_lwr_arm name="left_" right="-1" tool_name=""/>
 
   <joint name="left_arm_hand_mount" type="fixed">
-    <parent link="left_arm_hand_link"/>
+    <parent link="left_arm_hand_mount"/>
     <child link="forearm"/>
     <origin xyz="0 0 0" rpy="0 0 0" />
   </joint>

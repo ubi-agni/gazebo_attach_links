@@ -1,0 +1,26 @@
+<launch>
+  <arg name="namespace" default="right"/>
+
+  <!-- load robot_description -->
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/kuka_$(arg namespace).urdf.xacro'" />
+  
+  <!-- publish joint values, open gui if use_gui=True -->
+  <node name="joint_publisher"
+		  pkg="joint_state_publisher" type="joint_state_publisher">
+	 <param name="use_gui" value="True"/>
+  </node>
+
+  <!-- publish transforms of all robot links -->
+  <node name="state_publisher" 
+		  pkg="robot_state_publisher" type="state_publisher">
+	 <param name="publish_frequency" type="double" value="10.0"/>
+	 <param name="tf_prefix" value="$(arg namespace)"/>
+  </node>
+
+  <node name="mount_publisher"
+		  pkg="util" type="mount_publisher.py">
+	 <param name="parent_link" value="kuka_frame"/>
+	 <param name="child_link" value="$(arg namespace)_arm_base_link"/>
+  </node>
+
+</launch>

@@ -1,0 +1,18 @@
+<launch>
+
+  <!-- load frame description -->
+  <param name="frame" command="$(find xacro)/xacro.py '$(find agni_description)/robots/kukas.urdf.xacro'" />
+
+  <group ns="right">
+	 <include file="single_arm.launch">
+		<arg name="namespace" value="right"/>
+	 </include>
+  </group>
+
+  <group ns="left">
+	 <include file="single_arm.launch">
+		<arg name="namespace" value="left"/>
+	 </include>
+  </group>
+
+</launch>
