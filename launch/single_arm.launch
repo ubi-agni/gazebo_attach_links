@@ -20,7 +20,7 @@
   <node name="mount_publisher"
 		  pkg="util" type="mount_publisher.py">
 	 <param name="parent_link" value="kuka_frame"/>
-	 <param name="child_link" value="$(arg namespace)_arm_base_link"/>
+	 <param name="child_link" value="$(arg namespace)/$(arg namespace)_arm_base_link"/>
   </node>
 
 </launch>
