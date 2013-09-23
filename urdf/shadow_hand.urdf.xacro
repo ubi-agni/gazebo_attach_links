@@ -1,0 +1,45 @@
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <include filename="shadow_forearm.urdf.xacro" />
+  <include filename="shadow_wrist.urdf.xacro" />
+  <include filename="shadow_palm.urdf.xacro" />
+  <include filename="shadow_fingers.urdf.xacro" />
+
+  <!-- right is either 1 (for right arm) or -1 (for left arm) -->
+  <!-- type is motor vs muscle -->
+  <xacro:macro name="shadow_hand" params="name right type">
+
+    <xacro:shadow_forearm/>
+    <xacro:shadow_wrist/>
+    <xacro:shadow_palm/>
+
+    <xacro:shadow_finger link_prefix="ff" joint_prefix="FF" parent="${name}hand_palm">
+      <origin xyz="0.033 0 0.095" rpy="0 0 0" />
+      <axis xyz="0 -1 0" />
+    </xacro:shadow_finger>
+
+    <xacro:shadow_finger link_prefix="mf" joint_prefix="MF" parent="${name}hand_palm">
+      <origin xyz="0.011 0 0.099" rpy="0 0 0" />
+      <axis xyz="0 -1 0" />
+    </xacro:shadow_finger>
+
+    <xacro:shadow_finger link_prefix="rf" joint_prefix="RF" parent="${name}hand_palm">
+      <origin xyz="-0.011 0 0.095" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+    </xacro:shadow_finger>
+
+    <xacro:shadow_finger link_prefix="lf" joint_prefix="LF" parent="${name}hand_palm">
+      <origin xyz="-0.011 0 0.095" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+    </xacro:shadow_finger>
+
+    <xacro:shadow_thumb parent="${name}hand_palm">
+      <origin xyz="-0.011 0 0.095" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+    </xacro:shadow_thumb>
+  </xacro:macro>
+
+</robot>
