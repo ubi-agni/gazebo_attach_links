@@ -4,7 +4,7 @@
   <xacro:include filename="$(find agni_description)/calibration/default_cal.xml"/>
 
   <xacro:include filename="$(find agni_description)/urdf/frame-half.urdf.xacro"/>
-  <xacro:include filename="$(find agni_description)/urdf/kuka_lwr_arm.urdf.xacro"/>
+  <xacro:include filename="$(find agni_description)/kuka/lwr.urdf.xacro"/>
   
   <xacro:include filename="$(find sr_description)/hand/xacro/full_hand_motor.urdf.xacro" />
 
