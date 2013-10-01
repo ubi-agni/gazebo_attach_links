@@ -1,0 +1,228 @@
+<?xml version="1.0"?>
+<robot name="PA10c"
+		 xmlns:xacro="http://www.ros.org/wiki/xacro"
+		 xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+		 xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+  <xacro:include filename="$(find agni_description)/urdf/util.urdf.xacro"/>
+
+  <macro name="pa10_arm" params="name">
+  <link name="${name}arm_base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://agni_description/pa10/meshes/link0_mesh.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.115" rpy="0 0 0"/>
+      <geometry>
+		  <cylinder length="0.23" radius="0.112"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
+  </link>
+  <link name="${name}arm_1_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://agni_description/pa10/meshes/link1_mesh.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://agni_description/pa10/meshes/link1_mesh.dae" scale="1 1 1" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
+  </link>
+  <link name="${name}arm_2_link">
+    <visual>
+      <origin xyz="0 0 -0.315" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://agni_description/pa10/meshes/link2_mesh.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.315" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://agni_description/pa10/meshes/link2_mesh.dae" scale="1 1 1" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
+  </link>
+  <link name="${name}arm_3_link">
+    <visual>
+      <origin xyz="0 0 -0.315" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://agni_description/pa10/meshes/link3_mesh.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.315" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://agni_description/pa10/meshes/link3_mesh.dae" scale="1 1 1" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
+  </link>
+  <link name="${name}arm_4_link">
+    <visual>
+      <origin xyz="0 0 -0.765" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://agni_description/pa10/meshes/link4_mesh.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.765" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://agni_description/pa10/meshes/link4_mesh.dae" scale="1 1 1" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
+  </link>
+  <link name="${name}arm_5_link">
+    <visual>
+      <origin xyz="0 0 -0.765" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://agni_description/pa10/meshes/link5_mesh.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.765" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://agni_description/pa10/meshes/link5_mesh.dae" scale="1 1 1" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
+  </link>
+  <link name="${name}arm_6_link">
+    <visual>
+      <origin xyz="0 0 -1.265" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://agni_description/pa10/meshes/link6_mesh.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -1.265" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://agni_description/pa10/meshes/link6_mesh.dae" scale="1 1 1" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
+  </link>
+  <link name="${name}arm_7_link">
+    <visual>
+      <origin xyz="0 0 1.35" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://agni_description/pa10/meshes/link7_mesh.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 1.345" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://agni_description/pa10/meshes/link7_mesh.dae" scale="1 1 1" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1" />
+      <origin xyz="0 0 2.22045e-16" rpy="0 0 0"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
+  </link>
+
+  <joint name="S1" type="revolute">
+    <parent link="${name}arm_base_link"/>
+    <child  link="${name}arm_1_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0 "/>
+    <axis   xyz="0 0 1"/>
+    <limit lower="${-177/180*M_PI}" upper="${177/180*M_PI}" effort="100000" velocity="0.5" />
+    <dynamics damping="0.2" friction="0" />
+  </joint>
+  <joint name="S2" type="revolute">
+    <parent link="${name}arm_1_link"/>
+    <child  link="${name}arm_2_link"/>
+    <origin xyz="0 0 0.315" rpy="0 0 0 "/>
+    <axis   xyz="0 1 0"/>
+    <limit lower="${-94/180*M_PI}" upper="${+94/180*M_PI}" effort="100000" velocity="0.5" />
+    <dynamics damping="0.2" friction="0" />
+  </joint>
+  <joint name="S3" type="revolute">
+    <parent link="${name}arm_2_link"/>
+    <child  link="${name}arm_3_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0 "/>
+    <axis   xyz="0 0 1"/>
+    <limit lower="${-174/180*M_PI}" upper="${174/180*M_PI}" effort="100000" velocity="0.5" />
+    <dynamics damping="0.2" friction="0" />
+  </joint>
+  <joint name="E1" type="revolute">
+    <parent link="${name}arm_3_link"/>
+    <child  link="${name}arm_4_link"/>
+    <origin xyz="0 0 0.45" rpy="0 0 0 "/>
+    <axis   xyz="0 1 0"/>
+    <limit lower="${-137/180*M_PI}" upper="${137/180*M_PI}" effort="100000" velocity="0.5" />
+    <dynamics damping="0.2" friction="0" />
+  </joint>
+  <joint name="E2" type="revolute">
+    <parent link="${name}arm_4_link"/>
+    <child  link="${name}arm_5_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0 "/>
+    <axis   xyz="0 0 1"/>
+    <limit lower="${-255/180*M_PI}" upper="${255/180*M_PI}" effort="100000" velocity="0.5" />
+    <dynamics damping="0.2" friction="0" />
+  </joint>
+  <joint name="W1" type="revolute">
+    <parent link="${name}arm_5_link"/>
+    <child  link="${name}arm_6_link"/>
+    <origin xyz="0 0 0.5" rpy="0 0 0 "/>
+    <axis   xyz="0 1 0"/>
+    <limit lower="${-100/180*M_PI}" upper="${100/180*M_PI}" effort="100000" velocity="0.5" />
+    <dynamics damping="0.2" friction="0" />
+  </joint>
+  <joint name="W2" type="revolute">
+    <parent link="${name}arm_6_link"/>
+    <child  link="${name}arm_7_link"/>
+    <origin xyz="0 0 0.08" rpy="0 0 0 "/>
+    <axis   xyz="0 0 1"/>
+    <limit lower="${-255/180*M_PI}" upper="${255/180*M_PI}" effort="100000" velocity="0.5" />
+    <dynamics damping="0.2" friction="0" />
+  </joint>
+
+  <joint name="${name}arm_hand_fixed_joint" type="fixed">
+	 <parent link="${name}arm_7_link"/>
+	 <child link="${name}arm_hand_mount"/>
+  </joint>
+  
+  <link name="${name}arm_hand_mount" />
+  </macro>
+</robot>

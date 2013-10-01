@@ -1,0 +1,47 @@
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find agni_description)/shadow/forearm.urdf.xacro" />
+  <xacro:include filename="$(find agni_description)/shadow/wrist.urdf.xacro" />
+  <xacro:include filename="$(find agni_description)/shadow/palm.urdf.xacro" />
+<!--  <xacro:include filename="$(find agni_description)/shadow/fingers.urdf.xacro" /> -->
+
+  <!-- right is either 1 (for right arm) or -1 (for left arm) -->
+  <!-- type is motor vs muscle -->
+  <xacro:macro name="hand" params="prefix right='+1' type='default'">
+
+    <xacro:forearm/>
+    <xacro:wrist/>
+    <xacro:palm right="-1"/>
+<!--
+    <xacro:finger link_prefix="ff" joint_prefix="FF" parent="${name}hand_palm">
+      <origin xyz="0.033 0 0.095" rpy="0 0 0" />
+      <axis xyz="0 -1 0" />
+    </xacro:finger>
+
+    <xacro:finger link_prefix="mf" joint_prefix="MF" parent="${name}hand_palm">
+      <origin xyz="0.011 0 0.099" rpy="0 0 0" />
+      <axis xyz="0 -1 0" />
+    </xacro:finger>
+
+    <xacro:finger link_prefix="rf" joint_prefix="RF" parent="${name}hand_palm">
+      <origin xyz="-0.011 0 0.095" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+    </xacro:finger>
+
+    <xacro:finger link_prefix="lf" joint_prefix="LF" parent="${name}hand_palm">
+      <origin xyz="-0.011 0 0.095" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+    </xacro:finger>
+
+    <xacro:thumb parent="${name}hand_palm">
+      <origin xyz="-0.011 0 0.095" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+    </xacro:thumb>
+-->
+
+  </xacro:macro>
+
+</robot>

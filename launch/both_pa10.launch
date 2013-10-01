@@ -1,0 +1,6 @@
+<launch>
+  <!-- load frame description -->
+  <param name="frame" command="$(find xacro)/xacro.py '$(find agni_description)/robots/frame-pa10.urdf.xacro'" />
+
+  <include file="$(find agni_description)/launch/single_pa10.launch"/>
+</launch>

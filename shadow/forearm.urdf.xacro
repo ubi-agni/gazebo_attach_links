@@ -1,7 +1,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:macro name="shadow_hand_forearm">
-    <link name="${name}hand_forearm">
+  <xacro:macro name="forearm">
+    <link name="${prefix}forearm">
       <inertial>
 		  <origin xyz="0 0 0.09" rpy="0 0 0"/>
 		  <mass value="3.0" />
@@ -10,22 +10,23 @@
 
       <visual>
 		  <origin xyz="0 0 0" rpy="0 0 0" />
-		  <geometry name="shadow_forearm_geom">
-			 <mesh filename="package://sr_description/hand/model/forearm.dae" scale="0.001 0.001 0.001"/>
+		  <geometry name="forearm">
+			 <mesh filename="package://agni_description/shadow/meshes/forearm.dae" 
+					 scale="0.001 0.001 0.001"/>
 		  </geometry>
 		  <material name="Grey" />
       </visual>
 
       <collision>
 		  <origin xyz="0 0 0.09" rpy="0 0 0" />
-		  <geometry name="shadow_forearm_collision">
+		  <geometry name="forearm">
 			 <cylinder radius="0.06" length="0.180"/>
 		  </geometry>
       </collision>
 
     </link>
 
-    <gazebo reference="${name}hand_forearm">
+    <gazebo reference="${prefix}forearm">
       <material>Gazebo/Grey</material>
       <selfCollide>false</selfCollide>
     </gazebo>

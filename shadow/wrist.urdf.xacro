@@ -1,0 +1,44 @@
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="wrist" params="prefix='${prefix}' right='${right}'">
+    <link name="${prefix}wrist" >
+      <inertial>
+		  <origin xyz="0 0 0" rpy="0 0 0" />
+		  <mass value="0.1" />
+		  <inertia  ixx="0.120" ixy="0.0"  ixz="0.0"  iyy="0.148"  iyz="0.0" izz="0.0438" />
+      </inertial>
+
+      <visual>
+		  <origin xyz="0 0 0" rpy="0 0 0" />
+		  <geometry name="${prefix}wrist">
+			 <mesh filename="package://agni_description/shadow/meshes/wrist.dae" 
+					 scale="${right*0.001} 0.001 0.001" />
+		  </geometry>
+		  <material name="LightGrey" />
+      </visual>
+
+      <collision>
+		  <origin xyz="0 0 0" rpy="0 0 0" />
+		  <geometry name="${prefix}wrist">
+			 <box size="0.02 0.02 0.02" />
+		  </geometry>
+      </collision>
+    </link>
+
+    <gazebo reference="${prefix}wrist">
+      <material>Grey2</material>
+      <selfCollide>false</selfCollide>
+    </gazebo>
+
+    <joint name="${prefix}WRJ2" type="revolute">
+      <parent link="${prefix}forearm"/>
+      <child link="${prefix}wrist"/>
+		<origin xyz="0 -0.010 0.213" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit lower="${-30/180*M_PI}" upper="${10/180*M_PI}" effort="5" velocity="1.0"/>
+      <dynamics damping="100.5"/>
+    </joint>
+
+  </xacro:macro>
+
+</robot>
