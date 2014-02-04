@@ -1,0 +1,24 @@
+<launch>
+  <arg name="namespace" default="right"/>
+  <arg name="init_pose" default="-x 0 -y 0 -z 0"/>
+
+	<!-- load robot_description -->
+	<param name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/ubi_motor_hand_$(arg namespace).urdf.xacro'" />
+	<!--<param name="tf_prefix" value="$(arg namespace)_tf" />-->
+	<include file="$(find agni_description)/launch/gazebo_robot_spawner.launch" >
+		<arg name="init_pose" value="$(arg init_pose)" />
+		<arg name="robot_name" value="ubi_motor_hand_$(arg namespace)" />
+	</include>
+	
+	<!-- Controllers for the hand -->
+  <include file="$(find sr_hand)/launch/gazebo/loaders/hand_controllers.launch"/>
+  <!--  When using a prefix <include file="$(find agni_description)/launch/hand_controllers.launch">
+		<arg name="namespace" value="$(arg namespace)" />
+	</include>	-->
+  <node pkg="robot_state_publisher" type="state_publisher"
+        name="robot_state_publisher_full_pos">
+    <!--<remap from="joint_states" to="joint_states" />-->
+    <param name="publish_frequency" type="double" value="20.0" />
+  </node>
+
+</launch>

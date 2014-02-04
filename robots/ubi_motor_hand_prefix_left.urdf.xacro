@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<robot name="left_ubi_motor"
+		 xmlns:xacro="http://www.ros.org/wiki/xacro">
+	<xacro:include filename="$(find sr_description)/materials.urdf.xacro" />
+  <xacro:include filename="$(find sr_description)/hand/xacro/full_hand.urdf.xacro" />
+  <xacro:include filename="$(find sr_description)/other/xacro/gazebo/gazebo.urdf.xacro" />
+
+  <xacro:shadowhand muscletrans="false" muscle="false" bio="false" ubi="true" eli="false" reflect="-1.0" prefix="l_"  />
+   
+</robot>
