@@ -1,0 +1,9 @@
+<launch>
+  <arg name="namespace" default="right"/>
+
+  <!-- load robot_description -->
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/ubi_motor_hand_$(arg namespace).urdf.xacro'" />
+  
+  
+
+</launch>

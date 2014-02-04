@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
-<root xmlns:xacro="http://www.ros.org/wiki/xacro">
+<root xmlns:xacro="http://www.ros.org/wiki/xacro"
+      xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+      xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+      xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
 <xacro:include filename="$(find agni_description)/urdf/util.urdf.xacro"/>
 <xacro:include filename="$(find agni_description)/urdf/materials.urdf.xacro"/>
@@ -57,6 +60,10 @@
 	 </xacro:bar>
 
   </link>
+  
+  <gazebo reference="${prefix}_frame">
+      <material value="kuka-lwr.material"/>
+  </gazebo>
 </xacro:macro>
 
 </root>
