@@ -1,0 +1,20 @@
+<launch>
+  <!-- load frame description -->
+  <param name="frame" command="$(find xacro)/xacro.py '$(find agni_description)/robots/frame.urdf.xacro'" />
+    <!-- spawn the support model -->
+  <node name="spawn_support" pkg="gazebo" type="spawn_model" args="-urdf -param frame -model support_model" respawn="false" output="screen" />
+
+  <!-- By default we do not overwrite the URDF. Change the following to true to change the default behavior -->
+  <arg name="load_robot_description" default="true"/>
+
+  <!-- Load universal robotic description format (URDF) -->
+  <param if="$(arg load_robot_description)" name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/kuka_right_gazebo.urdf.xacro'" />
+
+  <!-- The semantic description that corresponds to the URDF -->
+  <param name="robot_description_semantic" textfile="$(find moveit_kuka_right)/config/kukas.srdf" />
+  
+  <!-- Load to the parameter server yaml files -->
+    <rosparam command="load" file="$(find moveit_kuka_right)/config/joint_limits.yaml"/>
+</launch>
+
+

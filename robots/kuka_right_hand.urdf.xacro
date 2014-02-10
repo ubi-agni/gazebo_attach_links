@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot name="kukas"
+		 xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find agni_description)/calibration/default_cal.xml"/>
+  <xacro:include filename="$(find agni_description)/kuka/lwr.urdf.xacro"/>  
+  <xacro:include filename="$(find sr_description)/hand/xacro/full_hand_motor.urdf.xacro" />
+  <include filename="$(find sr_description)/other/xacro/gazebo/gazebo.urdf.xacro" />
+  <!-- KUKA arms -->
+  <xacro:kuka_lwr_arm name="right_" right="+1" tool_name=""/>
+    
+  <!-- Shadow Hands -->
+  <joint name="right_arm_hand_mount" type="fixed">
+    <parent link="right_arm_hand_mount"/>
+    <child link="forearm"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+  
+  
+  <xacro:shadowhand_motor/>
+
+</robot>

@@ -16,6 +16,7 @@
 </xacro:macro>
 
 <xacro:macro name="frame-half" params="prefix thickness width depth height tableHeight">
+
   <link name="${prefix}_frame">
 	 <!-- horizontal front bar-->
 	 <xacro:bar thickness="${thickness}" len="${width}">

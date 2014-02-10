@@ -1,0 +1,6 @@
+<launch>
+  
+  <!-- Controller Manager 
+  <include file="$(find pr2_controller_manager)/controller_manager.launch" />-->
+</launch>
+
