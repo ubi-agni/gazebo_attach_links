@@ -12,6 +12,7 @@
 
 #include <ros/ros.h>
 #include <sensor_msgs/JointState.h>
+#include <std_msgs/Float64.h>
 
 using namespace ros;
 
@@ -27,16 +28,18 @@ class AgniGraspForceLimiter
     
     void stateProcessingCB(const sensor_msgs::JointStateConstPtr& msg);
     void initializeServices();
+    void controller_command_cb(const std_msgs::Float64ConstPtr& msg, std::string jointname);
+
+    std::vector<ros::Subscriber> controller_command_sub;
+    std::map<std::string,double> controller_last_command;
     
     std::map<std::string,ros::Publisher>  controller_maxforcepub_map;      //!< store the controller max force publisher per joint
     std::map<std::string,unsigned int> force_cutout_counter;
     std::map<std::string,unsigned int> force_monitor_counter;
     
-    std::map<std::string,double> previous_position;
-    std::map<std::string,double> prevAbsError;
+    std::map<std::string,double> prevError;
     std::map<std::string,bool> forcelimited;
     std::map<std::string,bool> forcecutout;
-
   };//end class
 
 

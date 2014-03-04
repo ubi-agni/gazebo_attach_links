@@ -9,11 +9,11 @@
 
 #include <agni_grasp_force_limiter/agni_grasp_force_limiter.hpp>
 #include <pr2_mechanism_msgs/ListControllers.h>
-#include <std_msgs/Float64.h>
+
 
 #define CTRLTYPE	"sr_mechanism_controllers/SrhMixedPositionVelocityJointController"
 #define CUTOUT_FORCE_LIMIT 	250
-#define	CUTOUT_FORCE_COUNT	100
+#define	CUTOUT_FORCE_COUNT	50
 #define MONITOR_FORCE_LIMIT 	150
 #define	MONITOR_FORCE_COUNT		100
 #define LEAST_ACCEPTED_ERR_REDUCTION	0.0017
@@ -48,10 +48,12 @@ void AgniGraspForceLimiter::stateProcessingCB(const sensor_msgs::JointStateConst
   for(unsigned int i = 0; i < msg->name.size(); ++i)
   {
     std::string jointname = msg->name[i];
+
     // if the joint is actually controlled
     it=controller_maxforcepub_map.find(jointname);
 		if(it!=controller_maxforcepub_map.end())
 		{
+			double curError = (controller_last_command[jointname] - msg->position[i]);
 			
 			// CUTOUT REGION if above cutout force limit, increment a counter
 			if(fabs(msg->effort[i]) > CUTOUT_FORCE_LIMIT)
@@ -63,7 +65,7 @@ void AgniGraspForceLimiter::stateProcessingCB(const sensor_msgs::JointStateConst
 					if(!forcecutout[jointname])
 					{
 						// reduce the force to low levels and continue to next joint
-						ROS_ERROR("%s CUTOUT count reached, reducing the force",jointname.c_str());
+						ROS_ERROR("%s CUTOUT count reached, reducing the force to 0.2",jointname.c_str());
 						std_msgs::Float64 msg;
 						msg.data=0.2;
 						controller_maxforcepub_map[jointname].publish(msg);
@@ -87,13 +89,12 @@ void AgniGraspForceLimiter::stateProcessingCB(const sensor_msgs::JointStateConst
 				}
 			
 				// MONITORING REGION if in monitoring force region
-				double curAbsError = fabs(msg->position[i] - previous_position[jointname]);
-				previous_position[jointname]=msg->position[i];
+				
 				if(fabs(msg->effort[i]) > MONITOR_FORCE_LIMIT)
 				{	
 					// if position error is decreasing significantly in this region between each data reception
 					
-					if( (prevAbsError[jointname] - curAbsError) < LEAST_ACCEPTED_ERR_REDUCTION ) // reducing too slowly, we might be in contact
+					if(    fabs(fabs(prevError[jointname]) - fabs(curError)) < LEAST_ACCEPTED_ERR_REDUCTION ) // reducing too slowly, we might be in contact
 					{
 						// increment the counter because we want to be sure we are in contact long enough					
 						force_monitor_counter[jointname]++;
@@ -103,7 +104,7 @@ void AgniGraspForceLimiter::stateProcessingCB(const sensor_msgs::JointStateConst
 							if(!forcelimited[jointname])
 							{
 								// reduce the force to low levels and continue to next joint
-								ROS_WARN("%s MONITORED TOO LOW CHANGES IN POSITION, reducing the force",jointname.c_str());
+								ROS_WARN("%s MONITORED TOO LOW CHANGES IN POSITION, reducing the force to 0.5",jointname.c_str());
 								std_msgs::Float64 msg;
 								msg.data=0.5;
 								controller_maxforcepub_map[jointname].publish(msg);
@@ -129,25 +130,31 @@ void AgniGraspForceLimiter::stateProcessingCB(const sensor_msgs::JointStateConst
 							ROS_WARN("%s Reducing correctly, no force limit anymore",jointname.c_str());
 							forcelimited[jointname]=false;
 						}						
-					}
-					
+					}	
 				}
 				else
 				{
-					if(forcelimited[jointname] || forcecutout[jointname])
+					//Check if error changed sign. This means a new command in the opposite direction was sent
+					if(prevError[jointname]*curError<0)
 					{
-						force_monitor_counter[jointname]=0;
-						std_msgs::Float64 msg;
-						msg.data=0.7;
-						controller_maxforcepub_map[jointname].publish(msg);
-						ROS_WARN("%s OUT OF MONITORING, no force or cutout limits anymore",jointname.c_str());
-						forcelimited[jointname]=false;
-						forcecutout[jointname]=false;
+						
+						if(forcelimited[jointname] || forcecutout[jointname])
+						{
+							ROS_INFO("%s previous error %f, cur error %f", jointname.c_str(), prevError[jointname] , curError);
+							force_monitor_counter[jointname]=0;
+							std_msgs::Float64 msg;
+							msg.data=0.7;
+							controller_maxforcepub_map[jointname].publish(msg);
+							ROS_WARN("%s OUT OF MONITORING, no force or cutout limits anymore",jointname.c_str());
+							forcelimited[jointname]=false;
+							forcecutout[jointname]=false;
+						}
 					}
-				}
-				prevAbsError[jointname]=curAbsError;
+				}	
 			}
-		} 
+			
+			prevError[jointname]=curError;
+		}
   }
 }
 
@@ -186,8 +193,13 @@ void AgniGraspForceLimiter::initializeServices()
 					}
 					controller_maxforcepub_map[jointName] = (nh.advertise<std_msgs::Float64>
 													(ctrlName+"/max_force_factor",1)) ;
-					previous_position[jointName] = 0.0;
-					prevAbsError[jointName] = 90.0;
+					// subscriber to read the commands and know the current requested position
+					controller_command_sub.push_back(nh.subscribe<std_msgs::Float64>
+													(ctrlName+"/command",1,boost::bind(&AgniGraspForceLimiter::controller_command_cb, this, _1,jointName)));
+													// &AgniGraspForceLimiter::controller_command_cb,this));
+//
+					controller_last_command[jointName] = 0.0;								
+					prevError[jointName] = 90.0;
 					forcelimited[jointName] = false;
 					forcecutout[jointName] = false;
 				
@@ -211,6 +223,11 @@ void AgniGraspForceLimiter::initializeServices()
 	}
 }
   
+void AgniGraspForceLimiter::controller_command_cb(const std_msgs::Float64ConstPtr& msg, std::string jointname)
+{
+	
+	controller_last_command[jointname] = msg->data;
+}
 
 int main(int argc, char** argv)
 {
