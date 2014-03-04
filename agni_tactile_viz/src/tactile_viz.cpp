@@ -229,7 +229,7 @@ void init_markers()
 		{
 			ssname << "adc" << iTaxel;
 			marker.name = ssname.str();
-			sspath << "package://sr_description/hand/model/ubi_tactiles/tax_tip_" <<iTaxel <<"r.stl";
+			sspath << "package://sr_description/hand/model/ubi_tactiles/tax_tip_" <<iTaxel <<".stl";
 			marker.meshpath = sspath.str();
 			vTactileData[iFinger].markers.push_back(marker);
 			ssname.str(std::string());
