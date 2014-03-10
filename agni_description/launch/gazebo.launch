@@ -16,7 +16,7 @@
 		</group>	
 		<group unless="$(arg LH)">
 				<!-- RIGHT hand only -->
-				 <include file="$(find agni_description)/launch/left_hand_gazebo.launch"/>
+				 <include file="$(find agni_description)/launch/right_hand_gazebo.launch"/>
 		</group>	
 	</group>	
 	<group unless="$(arg RH)">

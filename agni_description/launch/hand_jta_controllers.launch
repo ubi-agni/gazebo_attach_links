@@ -1,0 +1,13 @@
+<launch>
+	<arg name="namespace" default="rh"/>
+	
+	<group ns="$(arg namespace)" >
+		<!--<rosparam file="$(find agni_description)/config/$(arg namespace)_hand_jta_controller.yaml" command="load"/> -->
+		<rosparam param="joints">[THJ5, THJ4, THJ3, THJ2, THJ1, FFJ1, FFJ2, FFJ3, FFJ4, MFJ4, MFJ3, MFJ2, MFJ1, RFJ4, RFJ3, RFJ2, RFJ1, LFJ5, LFJ4, LFJ3, LFJ2, LFJ1]</rosparam>
+		<node pkg="sr_mechanism_controllers" name="hand_joint_trajectory_controller"
+			type="hand_joint_spline_trajectory_action_controller" output="screen" >
+		</node>
+  </group>
+</launch>
+
+
