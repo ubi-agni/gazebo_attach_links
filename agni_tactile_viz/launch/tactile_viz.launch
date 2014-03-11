@@ -1,0 +1,29 @@
+<launch>
+
+  <!-- select the robots -->
+  <arg name="RH" default="1"/>
+  <arg name="LH" default="0"/>
+  <group if="$(arg RH)">
+    <group if="$(arg LH)">
+        <!-- BOTH hands -->
+        <include file="$(find agni_tactile_viz)/launch/single_hand_tactile_viz.launch" >
+          <arg name="namespace" value="lh"/>
+        </include>
+        <include file="$(find agni_tactile_viz)/launch/single_hand_tactile_viz.launch" >
+          <arg name="namespace" value="rh"/>
+        </include>
+    </group>  
+    <group unless="$(arg LH)">
+        <!-- RIGHT hand only -->
+        <include file="$(find agni_tactile_viz)/launch/single_hand_tactile_viz.launch" >
+          <arg name="namespace" value="rh"/>
+        </include>
+    </group>  
+  </group>  
+  <group unless="$(arg RH)">
+      <!-- LEFT hand only -->
+        <include file="$(find agni_tactile_viz)/launch/single_hand_tactile_viz.launch" >
+          <arg name="namespace" value="lh"/>
+        </include>
+  </group>    
+</launch>

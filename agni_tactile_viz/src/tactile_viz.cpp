@@ -31,6 +31,8 @@ int colors[8][3]={{0,0,0},{1,0,0},{0,1,0},{0,0,1},{1,1,0},{1,0,1},{0,1,1},{1,1,1
 
 std::vector<int>          vShadowTipID2MyTipID(5);
 
+int  flip = 1;
+
 struct tactile_marker{
 	std::string name;
 	std::string fingerPrefix;
@@ -114,9 +116,11 @@ void publish_marker(unsigned int id, std::string framesuffix,  float pressure, s
 	{
 		marker.type = mesh_shape; 
 		marker.mesh_resource = mesh_resource;
-
 		// Set the scale of the marker
-		marker.scale.x = 0.001;
+		if ( mesh_resource.find("palm")!=std::string::npos || mesh_resource.find("meta")!=std::string::npos)
+			marker.scale.x = flip*0.001;
+		else
+			marker.scale.x = 0.001;
 		marker.scale.y = 0.001;
 		marker.scale.z = 0.001;
 	}
@@ -417,8 +421,24 @@ int main( int argc, char** argv )
 	ros::init(argc, argv, "agni_tactile_viz");
 	ros::NodeHandle nh;
 	ns = ros::this_node::getNamespace();
+	
 	if (ns != "" )
-		ns+="/";
+	{
+		// remove first slash if any
+		if (ns[0] == '/')
+			ns=ns.substr(1,ns.size()-1);
+			
+		ns=ns+"/";
+	}
+	
+	if (ns=="/lh/")
+	{
+		flip = -1;
+		ROS_INFO("Flipping meshes");
+	}
+	
+	
+	ROS_INFO_STREAM("using " << ns << " namespace");
 		
 	ros::Rate r(50);
 	marker_pub = nh.advertise<visualization_msgs::Marker>("agni_tactile_markers", 1);
