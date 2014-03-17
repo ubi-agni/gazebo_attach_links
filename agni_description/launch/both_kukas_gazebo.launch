@@ -1,17 +1,17 @@
 <launch>
 
- <!-- <group ns="right">
+  <group ns="rk">
     <include file="$(find agni_description)/launch/single_kuka_gazebo.launch" >
-      <arg name="init_pose" value="-x 0.5 -y 0 -z 0" />
-      <arg name="namespace" value="right"/>
+      <arg name="init_pose" value="-x 0.5 -y 0 -z 0.05" />
+      <arg name="namespace" value="rk"/>
     </include>
-	</group>-->
+	</group>
 
-  <!-- <group ns="left">-->
+  <group ns="lk">
         <include file="$(find agni_description)/launch/single_kuka_gazebo.launch" >
-      <arg name="init_pose" value="-x -0.5 -y 0 -z 0.10" />
-      <arg name="namespace" value="left"/>
+      <arg name="init_pose" value="-x -0.5 -y 0 -z 0.05" />
+      <arg name="namespace" value="lk"/>
     </include>
-  <!-- </group>-->
+  </group>
 
 </launch>

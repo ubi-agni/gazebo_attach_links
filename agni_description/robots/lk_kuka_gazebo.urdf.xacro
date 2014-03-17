@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<robot name="lk_kuka"
+		 xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find agni_description)/kuka/lwr.urdf.xacro"/>  
+  
+  <!-- KUKA arms -->
+  <xacro:kuka_lwr_arm name="left_" reflect="-1" tool_name=""/>
+  
+  <link name="kuka_frame"/>
+  
+  <joint name="left_frame_placement" type="fixed">
+    <parent link="kuka_frame"/>
+    <child link="left_arm_base_link"/>
+  </joint>
+   
+  <gazebo> 
+    <plugin name="left_lwr_arm_controller" filename="liblwr_controller.so">
+      <alwaysOn>true</alwaysOn>
+      <robotPrefix>left</robotPrefix>
+      <robotNamespace>lk</robotNamespace>
+      <remotePort>49938</remotePort>
+      <baseLink>left_arm_base_link</baseLink>
+      <toolLink>left_arm_hand_mount</toolLink>
+      <left_arm_0_joint>0.0</left_arm_0_joint>
+      <left_arm_1_joint>0</left_arm_1_joint>
+      <left_arm_2_joint>0.0</left_arm_2_joint>
+      <left_arm_3_joint>0</left_arm_3_joint>
+      <left_arm_4_joint>0</left_arm_4_joint>
+      <left_arm_5_joint>0</left_arm_5_joint>
+      <left_arm_6_joint>0</left_arm_6_joint>
+    </plugin>
+  </gazebo>  
+
+
+</robot>

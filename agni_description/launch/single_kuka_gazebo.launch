@@ -1,27 +1,27 @@
 <launch>
-  <arg name="namespace" default="right"/>
+  <arg name="namespace" default="rk"/>
 	<arg name="init_pose" default="-x 0 -y 0 -z 0.1"/>
 	
   <!-- load robot_description -->
-  <param name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/kuka_$(arg namespace)_gazebo.urdf.xacro'" />
-    
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/$(arg namespace)_kuka_gazebo.urdf.xacro'" />
+  <param name="tf_prefix" value="$(arg namespace)"/>
   <include file="$(find agni_description)/launch/gazebo_robot_spawner.launch" >
 		<arg name="init_pose" value="$(arg init_pose)" />
-		<arg name="robot_name" value="kuka_$(arg namespace)" />
+		<arg name="robot_name" value="$(arg namespace)_kuka" />
 	</include>
   
   <!-- Controllers for the kuka -->
     <!-- controller parameter for Kuka-->
-  <rosparam command="load" file="$(find agni_description)/kuka/controllers_$(arg namespace).yaml" />
+   <rosparam command="load" file="$(find agni_description)/kuka/$(arg namespace)_controllers.yaml" />
   
    <!-- load controllers for kuka-->
-<!-- load controllers for kuka-->
-   <node name="$(arg namespace)_lwr_controller" pkg="ocl" type="deployer-gnulinux" launch-prefix="lxterm -e" args="-s $(find agni_description)/kuka/lwr_jntposition_$(arg namespace).xml --">
+   <!-- load controllers -->
+   <node name="$(arg namespace)_lwr_arm_controller" pkg="ocl" type="rttlua" launch-prefix="lxterm -e" args=" -i $(find agni_description)/kuka/$(arg namespace)_deploy.lua --">
    </node> 
-  
+
   <node pkg="robot_state_publisher" type="state_publisher"
         name="robot_state_publisher_full_pos">
     <param name="publish_frequency" type="double" value="10.0" />
-		<!--<param name="tf_prefix" value="$(arg namespace)"/> -->
+		
   </node>
 </launch>
