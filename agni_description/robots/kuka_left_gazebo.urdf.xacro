@@ -14,7 +14,7 @@
   </joint>
    
   <gazebo> 
-    <plugin name="left_lwr_controller" filename="liblwr_controller.so">
+    <plugin name="left_lwr_arm_controller" filename="liblwr_controller.so">
       <alwaysOn>true</alwaysOn>
       <robotPrefix>left</robotPrefix>
       <remotePort>49938</remotePort>
