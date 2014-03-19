@@ -1,13 +1,13 @@
 <launch>
-  <arg name="namespace" default="right"/>
+  <arg name="namespace" default="rh"/>
   <arg name="init_pose" default="-x 0 -y 0 -z 0"/>
 
 	<!-- load robot_description -->
-	<param name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/ubi_motor_hand_prefix_$(arg namespace).urdf.xacro'" />
-	<!--<param name="tf_prefix" value="$(arg namespace)_tf" />-->
+	<param name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/$(arg namespace)_ubi_motor_hand_prefix.urdf.xacro'" />
+	<param name="tf_prefix" value="$(arg namespace)" />
 	<include file="$(find agni_description)/launch/gazebo_robot_spawner.launch" >
 		<arg name="init_pose" value="$(arg init_pose)" />
-		<arg name="robot_name" value="ubi_motor_hand_$(arg namespace)" />
+		<arg name="robot_name" value="$(arg namespace)_ubi_motor_hand" />
 	</include>
 	
 	<!-- Controllers for the hand -->

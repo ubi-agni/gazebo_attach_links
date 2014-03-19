@@ -1,0 +1,8 @@
+<launch>
+  <arg name="namespace" default=""/>
+
+	 <group ns="$(arg namespace)">
+		  <node pkg="agni_tactile_viz" type="agni_tactile_viz" name="tactile_viz" output="screen">
+			</node>
+	</group>
+</launch>
