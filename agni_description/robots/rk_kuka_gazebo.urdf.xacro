@@ -1,35 +1,12 @@
 <?xml version="1.0"?>
 <robot name="rk_kuka"
 		 xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:include filename="$(find agni_description)/kuka/lwr.urdf.xacro"/>  
+  <xacro:include filename="$(find agni_description)/kuka/lwr.urdf.xacro"/> 
+  <xacro:include filename="$(find agni_description)/kuka/lwr_controllers.gazebo.xacro"/>  
   
-  <!-- KUKA arms -->
+  <!-- KUKA arm -->
   <xacro:kuka_lwr_arm name="right_" reflect="1" tool_name=""/>
-  
-  <link name="kuka_frame"/>
-  
-  <joint name="right_frame_placement" type="fixed">
-    <parent link="kuka_frame"/>
-    <child link="right_arm_base_link"/>
-  </joint>
    
-  <gazebo> 
-    <plugin name="right_lwr_arm_controller" filename="liblwr_controller.so">
-      <alwaysOn>true</alwaysOn>
-      <robotPrefix>right</robotPrefix>
-      <robotNamespace>rk</robotNamespace>
-      <remotePort>49940</remotePort>
-      <baseLink>right_arm_base_link</baseLink>
-      <toolLink>right_arm_hand_mount</toolLink>
-      <right_arm_0_joint>0.0</right_arm_0_joint>
-      <right_arm_1_joint>0</right_arm_1_joint>
-      <right_arm_2_joint>0.0</right_arm_2_joint>
-      <right_arm_3_joint>0</right_arm_3_joint>
-      <right_arm_4_joint>0</right_arm_4_joint>
-      <right_arm_5_joint>0</right_arm_5_joint>
-      <right_arm_6_joint>0</right_arm_6_joint>
-    </plugin>
-  </gazebo>  
-
+  <xacro:right_lwr_arm_gazebo_controller namespace="rk" port="49940"/>
 
 </robot>

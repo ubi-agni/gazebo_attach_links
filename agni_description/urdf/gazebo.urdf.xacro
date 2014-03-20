@@ -6,5 +6,5 @@
       <alwaysOn>true</alwaysOn>
       <updateRate>1000.0</updateRate>
     </plugin>
-      </gazebo>
+  </gazebo>
 </robot>

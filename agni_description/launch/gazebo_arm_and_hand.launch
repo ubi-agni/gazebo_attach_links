@@ -10,21 +10,21 @@
   <node name="spawn_support" pkg="gazebo" type="spawn_model" args="-urdf -param frame -model support_model" respawn="false" output="screen" />
   
   <!-- include our robots -->
-  <arg name="RK" default="1"/>
-  <arg name="LK" default="0"/>
-  <group if="$(arg RK)">
-		<group if="$(arg LK)">
-			  <!-- BOTH hands -->
-			   <include file="$(find agni_description)/launch/both_kuka_gazebo.launch"/>
+  <arg name="R" default="1"/>
+  <arg name="L" default="0"/>
+  <group if="$(arg R)">
+		<group if="$(arg L)">
+			<!-- BOTH arms & hands -->
+			<include file="$(find agni_description)/launch/both_kukas_gazebo.launch"/>
 		</group>	
-		<group unless="$(arg LK)">
-				<!-- RIGHT hand only -->
-				 <include file="$(find agni_description)/launch/right_kuka_gazebo.launch"/>
+		<group unless="$(arg L)">
+			<!-- RIGHT arm & hand only -->
+			<include file="$(find agni_description)/launch/right_kuka_gazebo.launch"/>
 		</group>	
 	</group>	
-	<group unless="$(arg RK)">
-			<!-- LEFT hand only -->
-			   <include file="$(find agni_description)/launch/left_kuka_gazebo.launch"/>
+	<group unless="$(arg R)">
+		<!-- LEFT arm & hand only -->
+		<include file="$(find agni_description)/launch/left_kuka_gazebo.launch"/>
 	</group>		
   
  

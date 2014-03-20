@@ -1,0 +1,13 @@
+<launch>
+	<arg name="namespace" default="rk"/>
+	 
+	<!-- Controllers for the kuka -->
+  <!-- controller parameter for Kuka-->
+  <rosparam command="load" file="$(find agni_description)/kuka/$(arg namespace)_controllers.yaml" />
+ 
+  <!-- load controllers for kuka-->
+  <!-- load controllers -->
+  <node name="$(arg namespace)_lwr_arm_controller" pkg="ocl" type="rttlua-gnulinux" launch-prefix="lxterm -T $(arg namespace) -e " args=" -i $(find agni_description)/kuka/$(arg namespace)_deploy.lua --">
+  </node> 
+    
+</launch>

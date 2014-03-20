@@ -63,7 +63,7 @@ LWRDiag = d:getPeer("LWRDiag")
 LWRDiag:configure()
 
 d:loadComponent("FRI", "FRIComponent")
-d:setActivity("FRI", 0.0, 5, rtt.globals.ORO_SCHED_RT)
+d:setActivity("FRI", 0.001, 5, rtt.globals.ORO_SCHED_RT)
 FRI = d:getPeer("FRI")
 FRI:getProperty("fri_port"):set(49940)
 FRI:configure()
