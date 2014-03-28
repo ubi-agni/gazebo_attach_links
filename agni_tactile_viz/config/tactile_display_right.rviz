@@ -1,0 +1,315 @@
+Panels:
+  - Class: rviz/Displays
+    Help Height: 78
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Global Options1
+        - /Status1
+        - /RobotModelRH1
+        - /RobotModelLH1
+        - /MarkerRH1
+        - /MarkerRH1/Namespaces1
+        - /MarkerLH1
+      Splitter Ratio: 0.446809
+    Tree Height: 825
+  - Class: rviz/Selection
+    Name: Selection
+  - Class: rviz/Tool Properties
+    Expanded:
+      - /2D Pose Estimate1
+      - /2D Nav Goal1
+      - /Publish Point1
+    Name: Tool Properties
+    Splitter Ratio: 0.588679
+  - Class: rviz/Views
+    Expanded:
+      - /Current View1
+    Name: Views
+    Splitter Ratio: 0.5
+  - Class: rviz/Time
+    Experimental: false
+    Name: Time
+    SyncMode: 0
+    SyncSource: ""
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.03
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: <Fixed Frame>
+      Value: true
+    - Alpha: 1
+      Class: rviz/RobotModel
+      Collision Enabled: false
+      Enabled: true
+      Links:
+        All Links Enabled: true
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        Link Tree Style: Links in Alphabetic Order
+        ffdistal:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ffknuckle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ffmiddle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ffproximal:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        fftip:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        forearm:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        lfdistal:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        lfknuckle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        lfmetacarpal:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        lfmiddle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        lfproximal:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        lftip:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        mfdistal:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        mfknuckle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        mfmiddle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        mfproximal:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        mftip:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        palm:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rfdistal:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rfknuckle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rfmiddle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rfproximal:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rftip:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        thbase:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thdistal:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thhub:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thmiddle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thproximal:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thtip:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        wrist:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+      Name: RobotModelRH
+      Robot Description: /rh/robot_description
+      TF Prefix: /rh
+      Update Interval: 0
+      Value: true
+      Visual Enabled: true
+    - Class: rviz/TF
+      Enabled: false
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+      Marker Scale: 0.3
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        {}
+      Update Interval: 0
+      Value: false
+    - Alpha: 1
+      Class: rviz/RobotModel
+      Collision Enabled: false
+      Enabled: false
+      Links:
+        All Links Enabled: true
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        Link Tree Style: Links in Alphabetic Order
+      Name: RobotModelLH
+      Robot Description: /lh/robot_description
+      TF Prefix: /lh/fixed
+      Update Interval: 0
+      Value: false
+      Visual Enabled: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /rh/agni_tactile_markers
+      Name: MarkerRH
+      Namespaces:
+        tactile: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: false
+      Marker Topic: /lh/agni_tactile_markers
+      Name: MarkerLH
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: false
+  Enabled: true
+  Global Options:
+    Background Color: 255; 255; 255
+    Fixed Frame: /rh/forearm
+  Name: root
+  Tools:
+    - Class: rviz/Interact
+      Hide Inactive Objects: true
+    - Class: rviz/MoveCamera
+    - Class: rviz/Select
+    - Class: rviz/FocusCamera
+    - Class: rviz/Measure
+    - Class: rviz/SetInitialPose
+      Topic: /initialpose
+    - Class: rviz/SetGoal
+      Topic: /move_base_simple/goal
+    - Class: rviz/PublishPoint
+      Single click: true
+      Topic: /clicked_point
+  Value: true
+  Views:
+    Current:
+      Class: rviz/Orbit
+      Distance: 1.59385
+      Focal Point:
+        X: 0.108353
+        Y: 0.00625875
+        Z: 0.287626
+      Name: Current View
+      Near Clip Distance: 0.01
+      Pitch: 0.130203
+      Target Frame: <Fixed Frame>
+      Value: Orbit (rviz)
+      Yaw: 5.25306
+    Saved: ~
+Window Geometry:
+  Displays:
+    collapsed: false
+  Height: 1131
+  Hide Left Dock: false
+  Hide Right Dock: false
+  QMainWindow State: 000000ff00000000fd000000040000000000000246000003c8fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006400fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c0061007900730100000041000003c8000000dd00fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010f000002bbfc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d000002bb000000b000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000007800000003efc0100000002fb0000000800540069006d00650100000000000007800000028000fffffffb0000000800540069006d0065010000000000000450000000000000000000000534000003c800000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Selection:
+    collapsed: false
+  Time:
+    collapsed: false
+  Tool Properties:
+    collapsed: false
+  Views:
+    collapsed: false
+  Width: 1920
+  X: 0
+  Y: 25

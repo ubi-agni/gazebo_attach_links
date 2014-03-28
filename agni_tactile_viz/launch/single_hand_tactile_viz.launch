@@ -1,8 +1,32 @@
 <launch>
   <arg name="namespace" default=""/>
-
-	 <group ns="$(arg namespace)">
-		  <node pkg="agni_tactile_viz" type="agni_tactile_viz" name="tactile_viz" output="screen">
+	<arg name="fixed" default="0"/>
+	<group ns="$(arg namespace)">
+		<group unless="$(arg fixed)">
+			<node pkg="agni_tactile_viz" type="agni_tactile_viz" name="tactile_viz" output="screen">
+				<param name="tf_prefix" value="$(arg namespace)/"/>
 			</node>
+		</group>
+		<group if="$(arg fixed)">
+			<!-- load a the robot description because no one exists in fixed mode (no gazebo) -->
+			<param name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/$(arg namespace)_ubi_motor_hand.urdf.xacro'" />
+			<node pkg="agni_tactile_viz" type="agni_tactile_viz" name="tactile_viz" output="screen">
+				<param name="tf_prefix" value="$(arg namespace)/fixed/"/>
+			</node>
+			<group ns="fixed">
+				<!-- publish joint values, open gui if use_gui=True -->
+				<node name="joint_publisher"
+						pkg="joint_state_publisher" type="joint_state_publisher">
+				 <param name="use_gui" value="False"/>
+				 <remap from="robot_description" to="/$(arg namespace)/robot_description"/>
+				</node>
+				<!-- publish transforms of all robot links -->
+				<node name="state_publisher" 
+						pkg="robot_state_publisher" type="state_publisher">
+				 <param name="publish_frequency" type="double" value="10.0"/>
+				 <param name="tf_prefix" value="/$(arg namespace)/fixed"/>
+				</node>
+			</group>
+		</group>
 	</group>
 </launch>

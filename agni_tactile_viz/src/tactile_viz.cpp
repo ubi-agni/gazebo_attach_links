@@ -20,6 +20,8 @@
 #define LF      3
 #define TH      4
 
+#define	NB_SENSOR	5
+
 //ros subscriber (will be instantiated later on)
 ros::Subscriber sub[5];
 ros::Publisher marker_pub;
@@ -32,6 +34,8 @@ int colors[8][3]={{0,0,0},{1,0,0},{0,1,0},{0,0,1},{1,1,0},{1,0,1},{0,1,1},{1,1,1
 std::vector<int>          vShadowTipID2MyTipID(5);
 
 int  flip = 1;
+
+std::string tf_prefix = "";
 
 struct tactile_marker{
 	std::string name;
@@ -151,7 +155,7 @@ void publish_all_markers()
 {
 	double val = 0.0;
 	boost::hash<std::string> string_hash;
-	for (unsigned int iFinger=0;iFinger<5;++iFinger)
+	for (unsigned int iFinger=1;iFinger<NB_SENSOR;++iFinger)
 	{
 		// tips
 		for (size_t i=0;i<vTactileData[iFinger].markers.size();++i)
@@ -159,8 +163,8 @@ void publish_all_markers()
 			val = vTactileData[iFinger].markers[i].val;
 			//if(val > 0.01)
 			//{
-				std::size_t h = abs(string_hash(vTactileData[iFinger].markers[i].fingerPrefix+vTactileData[iFinger].markers[i].name));
-				publish_marker(h,ns+vTactileData[iFinger].markers[i].fingerPrefix+"distal", val,vTactileData[iFinger].markers[i].meshpath); 
+				std::size_t h = abs(string_hash(tf_prefix+vTactileData[iFinger].markers[i].fingerPrefix+vTactileData[iFinger].markers[i].name));
+				publish_marker(h,tf_prefix+vTactileData[iFinger].markers[i].fingerPrefix+"distal", val,vTactileData[iFinger].markers[i].meshpath); 
 			//}
 		}
 		// middle 
@@ -169,8 +173,8 @@ void publish_all_markers()
 			val = vMidProxTactileData[iFinger].midmarkers[i].val;
 			//if(val > 0.01)
 			//{
-				std::size_t h = abs(string_hash(vMidProxTactileData[iFinger].midmarkers[i].fingerPrefix+vMidProxTactileData[iFinger].midmarkers[i].name));
-				publish_marker(h,ns+vMidProxTactileData[iFinger].midmarkers[i].fingerPrefix + "middle", val,vMidProxTactileData[iFinger].midmarkers[i].meshpath); 
+				std::size_t h = abs(string_hash(tf_prefix+vMidProxTactileData[iFinger].midmarkers[i].fingerPrefix+vMidProxTactileData[iFinger].midmarkers[i].name));
+				publish_marker(h,tf_prefix+vMidProxTactileData[iFinger].midmarkers[i].fingerPrefix + "middle", val,vMidProxTactileData[iFinger].midmarkers[i].meshpath); 
 			//}
 		}
 		// proximal
@@ -179,8 +183,8 @@ void publish_all_markers()
 			val = vMidProxTactileData[iFinger].proxmarkers[i].val;
 			//if(val > 0.01)
 			//{
-				std::size_t h = abs(string_hash(vMidProxTactileData[iFinger].proxmarkers[i].fingerPrefix+vMidProxTactileData[iFinger].proxmarkers[i].name));
-				publish_marker(h,ns+vMidProxTactileData[iFinger].proxmarkers[i].fingerPrefix + "proximal", val,vMidProxTactileData[iFinger].proxmarkers[i].meshpath); 
+				std::size_t h = abs(string_hash(tf_prefix+vMidProxTactileData[iFinger].proxmarkers[i].fingerPrefix+vMidProxTactileData[iFinger].proxmarkers[i].name));
+				publish_marker(h,tf_prefix+vMidProxTactileData[iFinger].proxmarkers[i].fingerPrefix + "proximal", val,vMidProxTactileData[iFinger].proxmarkers[i].meshpath); 
 			//}
 		}
 		
@@ -196,8 +200,8 @@ void publish_all_markers()
 		val = vAuxSpiTactileData[0].markers[i].val;
 		//if(val > 0.01)
 		//{
-			std::size_t h = string_hash(vAuxSpiTactileData[0].markers[i].name);
-			publish_marker(h,ns+"palm", val,vAuxSpiTactileData[0].markers[i].meshpath); 
+			std::size_t h = string_hash(tf_prefix+vAuxSpiTactileData[0].markers[i].name);
+			publish_marker(h,tf_prefix+"palm", val,vAuxSpiTactileData[0].markers[i].meshpath); 
 		//}
 	}
 	//palm extras
@@ -206,11 +210,11 @@ void publish_all_markers()
 		val = vPalmExtrasData[0].markers[i].val;
 		//if(val > 0.01)
 		//{
-			std::size_t h = string_hash(vPalmExtrasData[0].markers[i].name);
+			std::size_t h = string_hash(tf_prefix+vPalmExtrasData[0].markers[i].name);
 			if (i==3)
-				publish_marker(h,ns+"palm", val,vPalmExtrasData[0].markers[i].meshpath); 
+				publish_marker(h,tf_prefix+"palm", val,vPalmExtrasData[0].markers[i].meshpath); 
 			else
-				publish_marker(h,ns+"lfmetacarpal", val,vPalmExtrasData[0].markers[i].meshpath); 
+				publish_marker(h,tf_prefix+"lfmetacarpal", val,vPalmExtrasData[0].markers[i].meshpath); 
 		//}
 	}
 	
@@ -224,7 +228,7 @@ void publish_all_markers()
 void init_markers()
 {
 	tactile_marker marker;
-	for (unsigned int iFinger=0;iFinger<5;++iFinger)
+	for (unsigned int iFinger=1;iFinger<NB_SENSOR;++iFinger)
 	{
 		marker.fingerPrefix=sFinger[iFinger];
 		marker.meshpath = "";
@@ -333,14 +337,17 @@ recvTipTactile(const sr_robot_msgs::UBI0AllConstPtr& msg)
 	// for each sensor
 	for(size_t i = 0; i < msg->tactiles.size(); ++i) {
 		int MyTipID = vShadowTipID2MyTipID[i];
-		assert(vTactileData[MyTipID].markers.size() == msg->tactiles[i].distal.size() );
+		if(MyTipID!=0) //thumb has not data yet
+		{
+			assert(vTactileData[MyTipID].markers.size() == msg->tactiles[i].distal.size() );
 		
-		for(size_t j = 0; j < msg->tactiles[i].distal.size(); ++j) {
-			float val = static_cast<float>(msg->tactiles[i].distal[j]);
-			if (val >0 && val <= 1023)
-				vTactileData[MyTipID].markers[j].val = (1024.0-val)/1024.0;
-			else
-				vTactileData[MyTipID].markers[j].val = 0.0;
+			for(size_t j = 0; j < msg->tactiles[i].distal.size(); ++j) {
+				float val = static_cast<float>(msg->tactiles[i].distal[j]);
+				if (val >0 && val <= 1023)
+					vTactileData[MyTipID].markers[j].val = (1024.0-val)/1024.0;
+				else
+					vTactileData[MyTipID].markers[j].val = 0.0;
+			}
 		}
 	}
 }
@@ -357,15 +364,18 @@ recvMidProxTactile(const sr_robot_msgs::MidProxDataAllConstPtr& msg)
 	// for each sensor
 	for(size_t i = 0; i < msg->sensors.size(); ++i) {
 		int MyTipID = vShadowTipID2MyTipID[i];
-		assert( vMidProxTactileData[MyTipID].proxmarkers.size() == msg->sensors[i].proximal.size());
-		assert( vMidProxTactileData[MyTipID].midmarkers.size() == msg->sensors[i].middle.size());
-		
-		for(size_t j = 0; j < msg->sensors[i].middle.size(); ++j) {
+		if(MyTipID!=0) //thumb has not data yet
+		{
+			assert( vMidProxTactileData[MyTipID].proxmarkers.size() == msg->sensors[i].proximal.size());
+			assert( vMidProxTactileData[MyTipID].midmarkers.size() == msg->sensors[i].middle.size());
+			
+			for(size_t j = 0; j < msg->sensors[i].middle.size(); ++j) {
 
-			vMidProxTactileData[MyTipID].midmarkers[j].val = (static_cast<float>(msg->sensors[i].middle[j]))/2048.0;
-		}
-		for(size_t j = 0; j < msg->sensors[i].proximal.size(); ++j) {
-			vMidProxTactileData[MyTipID].proxmarkers[j].val =  (static_cast<float>(msg->sensors[i].proximal[j]))/2048.0;
+				vMidProxTactileData[MyTipID].midmarkers[j].val = (static_cast<float>(msg->sensors[i].middle[j]))/2048.0;
+			}
+			for(size_t j = 0; j < msg->sensors[i].proximal.size(); ++j) {
+				vMidProxTactileData[MyTipID].proxmarkers[j].val =  (static_cast<float>(msg->sensors[i].proximal[j]))/2048.0;
+			}
 		}
 	}
 }
@@ -420,6 +430,8 @@ int main( int argc, char** argv )
 {
 	ros::init(argc, argv, "agni_tactile_viz");
 	ros::NodeHandle nh;
+	ros::NodeHandle nh_priv("~");
+
 	ns = ros::this_node::getNamespace();
 	
 	if (ns != "" )
@@ -436,9 +448,13 @@ int main( int argc, char** argv )
 		flip = -1;
 		ROS_INFO("Flipping meshes");
 	}
+	if (nh_priv.hasParam("tf_prefix"))
+		nh_priv.getParam("tf_prefix", tf_prefix);
+	else 
+		ROS_WARN("Did not find tf_prefix");
+		
 	
-	
-	ROS_INFO_STREAM("using " << ns << " namespace");
+	ROS_INFO_STREAM("using " << ns << " namespace" << " using tf_prefix " << tf_prefix);
 		
 	ros::Rate r(50);
 	marker_pub = nh.advertise<visualization_msgs::Marker>("agni_tactile_markers", 1);
