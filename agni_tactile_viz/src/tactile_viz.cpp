@@ -132,17 +132,17 @@ void publish_marker(unsigned int id, std::string framesuffix,  float pressure, s
 	// Set the marker action.  Options are ADD and DELETE
 	marker.action = visualization_msgs::Marker::ADD;
 	// Set the color -- be sure to set alpha to something non-zero!
-	if (pressure < 0.01)
-		marker.color.a = 0.0;
-	else {
+	//if (pressure < 0.01)
+	//	marker.color.a = 0.0;
+	//else {
 		//if (pressure >=0.01 && pressure < 0.1)
 		//	marker.color.a = pressure*10;
 		//else
 			marker.color.a = 1.0;
-		}
+	//	}
 		
-	marker.color.r = (pressure)>0.0?(pressure):0.0;
-	marker.color.g = (1.0-pressure)>0.0?(1.0f-pressure):0.0;
+	marker.color.r = (pressure)>0.3?1.5*(pressure-0.3):0.0;
+	marker.color.g = pressure>0.3?(1.50f-(pressure*1/0.66)):3*pressure;
 	marker.color.b = 0.0f;
 	
 	marker.lifetime = ros::Duration();
