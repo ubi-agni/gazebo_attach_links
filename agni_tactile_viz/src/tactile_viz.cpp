@@ -4,6 +4,8 @@
 #include <sr_robot_msgs/MidProxDataAll.h>
 #include <sr_robot_msgs/AuxSpiData.h>
 #include <std_msgs/Float64MultiArray.h> 
+
+#include <agni_utils/tactile_calibration.hpp>
 #include <boost/functional/hash.hpp>
 
 #include <string>
@@ -89,6 +91,7 @@ void publish_marker(unsigned int id, std::string framesuffix,  float pressure, s
 	// Any marker sent with the same namespace and id will overwrite the old one
 	marker.ns = "tactile";
 	marker.id = id;
+	marker.frame_locked=true;
 
 	geometry_msgs::Point mypoint;
 	// Set the marker type.  
@@ -132,17 +135,15 @@ void publish_marker(unsigned int id, std::string framesuffix,  float pressure, s
 	// Set the marker action.  Options are ADD and DELETE
 	marker.action = visualization_msgs::Marker::ADD;
 	// Set the color -- be sure to set alpha to something non-zero!
-	if (pressure < 0.01)
-		marker.color.a = 0.0;
-	else {
+	//if (pressure < 0.01)
+	//	marker.color.a = 0.0;
+	//else {
 		//if (pressure >=0.01 && pressure < 0.1)
 		//	marker.color.a = pressure*10;
 		//else
-			marker.color.a = 1.0;
-		}
-		
-	marker.color.r = (pressure)>0.0?(pressure):0.0;
-	marker.color.g = (1.0-pressure)>0.0?(1.0f-pressure):0.0;
+	marker.color.a = 1.0;
+		//}
+	agni::colorMapping2Colors(pressure,marker.color.g,marker.color.r,0.2);
 	marker.color.b = 0.0f;
 	
 	marker.lifetime = ros::Duration();
@@ -342,11 +343,7 @@ recvTipTactile(const sr_robot_msgs::UBI0AllConstPtr& msg)
 			assert(vTactileData[MyTipID].markers.size() == msg->tactiles[i].distal.size() );
 		
 			for(size_t j = 0; j < msg->tactiles[i].distal.size(); ++j) {
-				float val = static_cast<float>(msg->tactiles[i].distal[j]);
-				if (val >0 && val <= 1023)
-					vTactileData[MyTipID].markers[j].val = (1024.0-val)/1024.0;
-				else
-					vTactileData[MyTipID].markers[j].val = 0.0;
+				vTactileData[MyTipID].markers[j].val =  agni::tactileCalibration(msg->tactiles[i].distal[j], 1024, agni::UBI0) ;
 			}
 		}
 	}
@@ -370,11 +367,10 @@ recvMidProxTactile(const sr_robot_msgs::MidProxDataAllConstPtr& msg)
 			assert( vMidProxTactileData[MyTipID].midmarkers.size() == msg->sensors[i].middle.size());
 			
 			for(size_t j = 0; j < msg->sensors[i].middle.size(); ++j) {
-
-				vMidProxTactileData[MyTipID].midmarkers[j].val = (static_cast<float>(msg->sensors[i].middle[j]))/2048.0;
+				vMidProxTactileData[MyTipID].midmarkers[j].val = agni::tactileCalibration((int)msg->sensors[i].middle[j], 4096, agni::Middle);
 			}
 			for(size_t j = 0; j < msg->sensors[i].proximal.size(); ++j) {
-				vMidProxTactileData[MyTipID].proxmarkers[j].val =  (static_cast<float>(msg->sensors[i].proximal[j]))/2048.0;
+				vMidProxTactileData[MyTipID].proxmarkers[j].val =   agni::tactileCalibration((int)msg->sensors[i].proximal[j], 4096, agni::Prox); 
 			}
 		}
 	}
@@ -392,7 +388,7 @@ recvAuxSpiTactile(const sr_robot_msgs::AuxSpiDataConstPtr& msg)
 	assert (vAuxSpiTactileData[0].markers.size() == msg->sensors.size() );
 	// for each sensor	
 	for(size_t j = 0; j < msg->sensors.size(); ++j) {
-		vAuxSpiTactileData[0].markers[j].val = (static_cast<float>(msg->sensors[j]))/1024.0;
+		vAuxSpiTactileData[0].markers[j].val =   agni::tactileCalibration(msg->sensors[j], 4096, agni::Palm); 		
 	}
 }
 
@@ -420,7 +416,7 @@ recvPalmExtras(const std_msgs::Float64MultiArrayConstPtr& msg)
 		assert (vPalmExtrasData[0].markers.size() == datasize );
 		// for each sensor	
 		for(size_t j = 0; j < datasize; ++j) {
-			vPalmExtrasData[0].markers[j].val = (static_cast<float>(msg->data[dataoffset+j]))/1024.0;
+			vPalmExtrasData[0].markers[j].val =  agni::tactileCalibration(msg->data[dataoffset+j], 4096, agni::Palm);
 		}
 	}
 }
@@ -456,7 +452,7 @@ int main( int argc, char** argv )
 	
 	ROS_INFO_STREAM("using " << ns << " namespace" << " using tf_prefix " << tf_prefix);
 		
-	ros::Rate r(50);
+	ros::Rate r(100);
 	marker_pub = nh.advertise<visualization_msgs::Marker>("agni_tactile_markers", 1);
 	
 	// create a map for the tactile order

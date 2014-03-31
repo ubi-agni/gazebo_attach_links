@@ -24,8 +24,8 @@ class AgniTactileTestSensors():
       midproxall = MidProxDataAll()
       midproxall.sensors=[]
       midprox = MidProxData()
-      midprox.middle = [1000, 1400, 0, 0]
-      midprox.proximal = [300, 400, 500, 0]
+      midprox.middle = [1500, 2400, 0, 0]
+      midprox.proximal = [100, 400, 800, 0]
             
       for iFinger in range(0,5):
         ubiall.tactiles.append(ubi)
@@ -44,10 +44,10 @@ class AgniTactileTestSensors():
       dim.label = "analog_inputs"
       dim.size = 4
       palmextras.layout.dim.append(dim)
-      palmextras.data =  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 500.0, 200.0, 300.0]
+      palmextras.data =  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 250.0, 550.0,850.0, 1150.0]
       
       auxspi = AuxSpiData()
-      auxspi.sensors = [100, 200, 300, 400, 500, 600, 700, 800, 100, 200, 300, 400, 500, 600, 700, 800]
+      auxspi.sensors = [100, 400, 700, 1000, 1300, 1700, 2000, 2300, 100, 200, 300, 400, 500, 600, 700, 800]
 
 
       rospy.init_node('agni_tactile_test_sensors')
