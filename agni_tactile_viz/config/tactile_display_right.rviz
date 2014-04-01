@@ -209,7 +209,7 @@ Visualization Manager:
           Show Trail: false
           Value: true
       Name: RobotModelRH
-      Robot Description: /rh/robot_description
+      Robot Description: /rh/sh_description
       TF Prefix: /rh
       Update Interval: 0
       Value: true
@@ -283,17 +283,17 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.59385
+      Distance: 0.544354
       Focal Point:
-        X: 0.108353
-        Y: 0.00625875
-        Z: 0.287626
+        X: 0.0906951
+        Y: -0.0160648
+        Z: 0.21087
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.130203
+      Pitch: 0.150203
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.25306
+      Yaw: 5.13806
     Saved: ~
 Window Geometry:
   Displays:

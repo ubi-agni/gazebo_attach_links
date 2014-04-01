@@ -1,0 +1,17 @@
+<package>
+  <description brief="agni_utils">
+
+     agni_utils
+
+  </description>
+  <author>Guillaume Walck</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/agni_utils</url>
+  <depend package="roscpp"/>
+  <export>
+        <cpp cflags="-I${prefix}/include" lflags="-L${prefix}/lib -lagni_tactile_processing"/>
+  </export>
+</package>
+
+
