@@ -8,6 +8,11 @@
 #include <agni_utils/tactile_calibration.hpp>
 namespace agni
 {
+  //! Calibration of tactile raw data to range [0;1]
+  //! /param raw: raw sensor value
+  //! /param max_adc: maximum value of the raw sensor value, usually ADC maximum output
+  //! /param type: Tactile sensor type among (UBI0 for MID sensors, Palm,Prox,Middle for fabric sensors, Default for simple normalization)
+  //! /return Calibrated value
   double tactileCalibration(int raw, int max_adc, TactileSensorType type)
   {
 		double cal=0.0;
@@ -36,7 +41,12 @@ namespace agni
 		}
     return cal;
   }
-  
+
+  //! Color generation from single float value mapped to hue parameter of HSV colorspace
+  //! /param val: input value in range [0;1]
+  //! /param r: output red component in range [0;1]
+  //! /param g: output green component in range [0;1]
+  //! /param b: output blue component in range [0;1]
   void colorMappingHue(float val, float &r, float &g, float &b)
   {
 		//consider val is hue
@@ -53,8 +63,12 @@ namespace agni
 		if(i==4) {r=f;g=0;b=1;}
 		if(i==5) {r=1;g=0;b=1-f;}
 	}
-	
-	void colorMapping2Colors(float val, float &col1, float &col2, float th1)
+  //! Color generation from single float value mapped to 2 colors with triangle and ramp profiles
+  //! /param val: input value in range [0;1]
+  //! /param col1: output first component in range [0;1]
+  //! /param col2: output second component in range [0;1]
+  //! /param th1: threshold for peak of triangle and beginning of ramp
+  void colorMapping2Colors(float val, float &col1, float &col2, float th1)
 	{
 		if(th1==0.0)
 			th1=0.01;

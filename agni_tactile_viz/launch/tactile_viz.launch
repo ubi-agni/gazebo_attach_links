@@ -5,6 +5,8 @@
   <arg name="LH" default="0"/>
   <group if="$(arg RH)">
     <group if="$(arg LH)">
+				<node pkg="tf" type="static_transform_publisher" name="baselinkrh" args="-0.2 0 0 0 0 0 /base /rh/forearm 100"/>
+				<node pkg="tf" type="static_transform_publisher" name="baselinklh" args="0.2 0 0 0 0 0 /base /lh/forearm 100"/>
         <!-- BOTH hands -->
         <include file="$(find agni_tactile_viz)/launch/single_hand_tactile_viz.launch" >
           <arg name="namespace" value="lh"/>

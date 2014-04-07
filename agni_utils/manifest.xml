@@ -1,7 +1,7 @@
 <package>
   <description brief="agni_utils">
 
-     agni_utils
+     Utilities libraries : Tactile calibration, filtering, ...
 
   </description>
   <author>Guillaume Walck</author>
