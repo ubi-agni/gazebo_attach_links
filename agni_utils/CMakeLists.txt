@@ -28,3 +28,6 @@ rosbuild_add_library(agni_tactile_processing src/tactile_calibration.cpp)
 #rosbuild_link_boost(${PROJECT_NAME} thread)
 #rosbuild_add_executable(example examples/example.cpp)
 #target_link_libraries(example ${PROJECT_NAME})
+
+rosbuild_add_gtest(test/tactile_calibration_test test/tactile_calibration_test.cpp)
+target_link_libraries(test/tactile_calibration_test agni_tactile_processing)

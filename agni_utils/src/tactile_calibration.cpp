@@ -17,28 +17,36 @@ namespace agni
   {
 		double cal=0.0;
 		int rawclamped=0;
-		switch (type)
+		if (raw >=0 && raw <= max_adc)
 		{
-			case UBI0:
-				if (raw >0 && raw < max_adc)
-					cal = static_cast<float>(max_adc-raw)/static_cast<float>(max_adc);
-				break;
-			case Palm:
-			case Prox:
-			case Middle:
-				// clamp raw value to [0; max_adc-1]
-				rawclamped=raw;
-				if (rawclamped <0) rawclamped=0;
-				if (rawclamped >=max_adc) rawclamped=max_adc-1;
-				cal =  1/ (1- static_cast<float>(rawclamped)/static_cast<float>(max_adc)) -1;
-				if (cal < 0)
-					cal=0.0;
-				if (cal > 1.0)
-					cal = 1.0;
-				break;
-			default:
-				cal = static_cast<float>(raw)/max_adc;
+			switch (type)
+			{
+				case UBI0:
+					if (raw < max_adc)
+						cal = static_cast<float>(max_adc-raw)/static_cast<float>(max_adc);
+					else if (raw >= max_adc)
+						cal = 0.0;
+					break;
+				case Palm:
+				case Prox:
+				case Middle:
+					// clamp raw value to [0; max_adc-1]
+					rawclamped=raw;
+					if (rawclamped <0) rawclamped=0;
+					if (rawclamped >=max_adc) rawclamped=max_adc-1;
+					cal =  1/ (1- static_cast<float>(rawclamped)/static_cast<float>(max_adc)) -1;
+					if (cal < 0)
+						cal=0.0;
+					if (cal > 1.0)
+						cal = 1.0;
+					break;
+				default:
+				
+					cal = static_cast<float>(raw)/max_adc;
+			}
 		}
+		else if (raw < 0) return 0.0;
+			else if (raw > max_adc) return 1.0;
     return cal;
   }
 
