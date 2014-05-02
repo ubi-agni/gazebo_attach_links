@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(agni_grasp_force_limiter)
-find_package(catkin REQUIRED COMPONENTS roscpp std_msgs pr2_mechanism_msgs)
+find_package(catkin REQUIRED COMPONENTS roscpp std_msgs controller_manager_msgs)
 include_directories(include ${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS})
 
 catkin_package(
     DEPENDS
-    CATKIN_DEPENDS roscpp std_msgs pr2_mechanism_msgs
+    CATKIN_DEPENDS roscpp std_msgs controller_manager_msgs
     INCLUDE_DIRS include
     LIBRARIES
 )

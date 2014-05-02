@@ -8,7 +8,7 @@
  */
 
 #include <agni_grasp_force_limiter/agni_grasp_force_limiter.hpp>
-#include <pr2_mechanism_msgs/ListControllers.h>
+#include <controller_manager_msgs/ListControllers.h>
 
 
 #define CTRLTYPE	"sr_mechanism_controllers/SrhMixedPositionVelocityJointController"
@@ -21,8 +21,8 @@
 AgniGraspForceLimiter::AgniGraspForceLimiter() : nh_tilde("~")
 {
   
-  //We use the pr2_controller_manager/list_controllers service to detect get the controllers name and be able to query their setGains services
-    if(ros::service::waitForService("pr2_controller_manager/list_controllers", ros::Duration(3.0)))
+  //We use the controller_manager/list_controllers service to detect get the controllers name and be able to query their setGains services
+    if(ros::service::waitForService("controller_manager/list_controllers", ros::Duration(3.0)))
     {
       // initialize the setGains services
       initializeServices();
@@ -163,17 +163,17 @@ void AgniGraspForceLimiter::stateProcessingCB(const sensor_msgs::JointStateConst
 void AgniGraspForceLimiter::initializeServices()
 {
 		if (!ros::service::waitForService
-		 (nh.getNamespace() + "/pr2_controller_manager/list_controllers", ros::Duration(3.0))) {
+		 (nh.getNamespace() + "/controller_manager/list_controllers", ros::Duration(3.0))) {
       ROS_ERROR("couldn't find Shadow Hand controllers");
 		return;
 	}
 		
-	ros::ServiceClient ctrlListClient = nh.serviceClient<pr2_mechanism_msgs::ListControllers>
-		("pr2_controller_manager/list_controllers");
+	ros::ServiceClient ctrlListClient = nh.serviceClient<controller_manager_msgs::ListControllers>
+		("controller_manager/list_controllers");
 
 
 	// get the controller list
-	pr2_mechanism_msgs::ListControllers ctrlList;
+	controller_manager_msgs::ListControllers ctrlList;
 	ctrlListClient.call(ctrlList);
 
 	for (size_t i=0; i<ctrlList.response.controllers.size(); ++i) {
