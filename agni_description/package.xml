@@ -1,0 +1,27 @@
+<package>
+  <name>agni_description</name>
+  <version>0.1.0</version>
+  <description>URDF definitions of the robot platforms used in AGNI at Uni Bielefeld</description>
+  <maintainer email="gwalck@techfak.uni-bielefeld.de">Guillaume Walck</maintainer>
+
+  <license>BSD</license>
+
+  <url type="repository">vol/ni/src/git/agniros.git</url>
+	<author>Guillaume Walck, Robert Haschke</author>
+
+  <!-- Dependencies which this package needs to build itself. -->
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- Dependencies needed to compile this package. -->
+  <build_depend>urdf</build_depend>
+  <build_depend>xacro</build_depend>
+
+  <!-- Dependencies needed after this package is compiled. -->
+  <run_depend>urdf</run_depend>
+  <run_depend>xacro</run_depend>
+  <run_depend>sr_description</run_depend>
+
+  <!-- Dependencies needed only for running tests. -->
+  <test_depend>gtest</test_depend>
+</package>
+

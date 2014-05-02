@@ -1,30 +1,36 @@
-cmake_minimum_required(VERSION 2.4.6)
-include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
+cmake_minimum_required(VERSION 2.8.3)
+project(agni_tactile_viz)
+find_package(catkin REQUIRED COMPONENTS roscpp std_msgs sr_robot_msgs visualization_msgs agni_utils)
+include_directories(${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS} ${SDFormat_INCLUDE_DIRS})
 
-# Set the build type.  Options are:
-#  Coverage       : w/ debug symbols, w/o optimization, w/ code-coverage
-#  Debug          : w/ debug symbols, w/o optimization
-#  Release        : w/o debug symbols, w/ optimization
-#  RelWithDebInfo : w/ debug symbols, w/ optimization
-#  MinSizeRel     : w/o debug symbols, w/ optimization, stripped binaries
-#set(ROS_BUILD_TYPE RelWithDebInfo)
+catkin_python_setup()
 
-rosbuild_init()
+catkin_package(
+    DEPENDS
+    CATKIN_DEPENDS roscpp std_msgs sr_robot_msgs visualization_msgs agni_utils
+    INCLUDE_DIRS 
+    LIBRARIES
+)
 
-#set the default path for built executables to the "bin" directory
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-#set the default path for built libraries to the "lib" directory
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+#############################
+#  RVIZ MARKER #
+#############################
+add_executable(agni_tactile_viz src/tactile_viz.cpp)
+add_dependencies(agni_tactile_viz ${catkin_EXPORTED_TARGETS})
+target_link_libraries(agni_tactile_viz agni_tactile_processing ${Boost_LIBRARIES} ${catkin_LIBRARIES})
 
-#uncomment if you have defined messages
-#rosbuild_genmsg()
-#uncomment if you have defined services
-#rosbuild_gensrv()
 
-#common commands for building c++ executables and libraries
-#rosbuild_add_library(${PROJECT_NAME} src/example.cpp)
-#target_link_libraries(${PROJECT_NAME} another_library)
-#rosbuild_add_boost_directories()
-#rosbuild_link_boost(${PROJECT_NAME} thread)
-rosbuild_add_executable(agni_tactile_viz src/tactile_viz.cpp)
-#target_link_libraries(example ${PROJECT_NAME})
+install(TARGETS agni_tactile_viz 
+    RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+#install(DIRECTORY include/${PROJECT_NAME}/
+#  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+#  FILES_MATCHING PATTERN "*.hpp"
+#)
+
+install(DIRECTORY config/
+   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/config)
+
+install(DIRECTORY launch/
+   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch)

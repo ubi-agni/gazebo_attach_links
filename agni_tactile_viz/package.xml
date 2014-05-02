@@ -1,0 +1,31 @@
+<package>
+  <name>agni_tactile_viz</name>
+  <version>0.1.0</version>
+  <description>Visual marker publishers for data of tactile sensors produced by the University of Bielefeld</description>
+  <maintainer email="gwalck@techfak.uni-bielefeld.de">Guillaume Walck</maintainer>
+
+  <license>BSD</license>
+
+  <url type="repository">vol/ni/src/git/agniros.git</url>
+
+	<author>Guillaume Walck</author>
+
+  <!-- Dependencies which this package needs to build itself. -->
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- Dependencies needed to compile this package. -->
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>sr_robot_msgs</build_depend>
+  <build_depend>visualization_msgs</build_depend>
+  <build_depend>agni_utils</build_depend>
+
+  <!-- Dependencies needed after this package is compiled. -->
+  <run_depend>roscpp</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>sr_robot_msgs</run_depend>
+  <run_depend>visualization_msgs</run_depend>
+  <run_depend>agni_utils</run_depend>
+
+</package>
+
