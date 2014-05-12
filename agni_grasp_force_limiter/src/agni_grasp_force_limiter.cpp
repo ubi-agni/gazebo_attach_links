@@ -176,8 +176,8 @@ void AgniGraspForceLimiter::initializeServices()
 	controller_manager_msgs::ListControllers ctrlList;
 	ctrlListClient.call(ctrlList);
 
-	for (size_t i=0; i<ctrlList.response.controllers.size(); ++i) {
-		const std::string& ctrlName = ctrlList.response.controllers[i];
+	for (size_t i=0; i<ctrlList.response.controller.size(); ++i) {
+		const std::string& ctrlName = ctrlList.response.controller[i].name;
 
 		std::string jointName;
 		std::string ctrlType;
@@ -208,7 +208,7 @@ void AgniGraspForceLimiter::initializeServices()
 				}
 			} else { // wrong type 
 				// For safety, check if the controller with wrong type is running
-				if (ctrlList.response.state[i]=="running") {
+				if (ctrlList.response.controller[i].state=="running") {
 					ROS_WARN ("controller %s is RUNNING but with wrong type %s",
 								 ctrlName.c_str(), ctrlType.c_str());
 					//TODO: stop the controllers
