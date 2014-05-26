@@ -1,4 +1,5 @@
 <launch>
+	<!-- load description of kuka+shadow hand into robot_description -->
 	<arg name="namespace" default="rk"/>
 	
   <!-- load robot_description -->
