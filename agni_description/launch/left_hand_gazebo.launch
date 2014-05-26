@@ -2,7 +2,7 @@
 
   <group ns="lh">
     <include file="$(find agni_description)/launch/single_shadow_gazebo.launch" >
-      <arg name="init_pose" value="-x -1 -y 0 -z 0" />
+      <arg name="init_pose" value="-x 0.2 -y 0 -z 0" />
       <arg name="namespace" value="lh"/>
     </include>
   </group>

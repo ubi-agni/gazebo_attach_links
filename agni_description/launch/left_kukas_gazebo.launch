@@ -1,0 +1,40 @@
+<launch>
+  
+  <!-- upload parameters on the correct namespaces 
+	must be done before gazebo spawner to have the plugin controller manager
+	load on the sub namespaces -->
+	<group ns="lk">
+		<include file="$(find agni_description)/launch/kuka_upload.launch" >
+      <arg name="namespace" value="lk"/>
+    </include>  
+	</group> 
+	
+	<group ns="lh">
+		<include file="$(find agni_description)/launch/sr_upload.launch" >
+      <arg name="namespace" value="lh"/>
+    </include>  
+	</group>
+	
+  <!-- Load the general right robot_description and spawn it -->
+  <group ns="left">
+    <include file="$(find agni_description)/launch/single_kukas_gazebo_no_controllers.launch" >
+      <arg name="init_pose" value="-x 0.5 -y 0 -z 0.05" />
+      <arg name="namespace" value="left"/>
+    </include>
+	</group>
+	
+	<!-- Controllers for the arm -->
+	<group ns="lk">
+	  <include file="$(find agni_description)/launch/kuka_gazebo_bringup.launch" >
+      <arg name="namespace" value="lk"/>
+    </include>  
+  </group> 
+   
+  <!-- Controllers for the hand -->
+  <group ns="lh"> 
+		<include file="$(find agni_description)/launch/hand_controllers.launch">
+			<arg name="namespace" value="lh" />
+		</include>
+  </group> 
+  
+</launch>

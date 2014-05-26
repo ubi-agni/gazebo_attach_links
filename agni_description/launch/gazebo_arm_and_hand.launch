@@ -1,4 +1,5 @@
 <launch>
+<!-- arguments R and L to select left or right or both arm and hand -->
 
   <!-- start gazebo with an empty plane -->
   <include file="$(find sr_hand)/launch/gazebo/loaders/empty_world.launch"/>
@@ -19,12 +20,12 @@
 		</group>	
 		<group unless="$(arg L)">
 			<!-- RIGHT arm & hand only -->
-			<include file="$(find agni_description)/launch/right_kuka_gazebo.launch"/>
+			<include file="$(find agni_description)/launch/right_kukas_gazebo.launch"/>
 		</group>	
 	</group>	
 	<group unless="$(arg R)">
 		<!-- LEFT arm & hand only -->
-		<include file="$(find agni_description)/launch/left_kuka_gazebo.launch"/>
+		<include file="$(find agni_description)/launch/left_kukas_gazebo.launch"/>
 	</group>		
   
  
