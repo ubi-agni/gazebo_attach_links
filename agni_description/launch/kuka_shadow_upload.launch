@@ -1,0 +1,7 @@
+<launch>
+	<!-- load description of kuka+shadow hand into robot_description -->
+	<arg name="namespace" default="right"/>
+	
+  <!-- load robot_description -->
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/$(arg namespace)_kuka_shadow_gazebo.urdf.xacro'" />
+</launch>

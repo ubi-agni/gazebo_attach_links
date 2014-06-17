@@ -6,7 +6,7 @@
 
  
 	 <!-- load robot_description -->
-	 <param name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/kukas.urdf.xacro'" />
+	 <param name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/both_kuka_shadow.urdf.xacro'" />
 
 	 <!-- publish joint values, open gui if use_gui=True -->
 	 <node name="joint_publisher"

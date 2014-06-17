@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="right_kukas"
+<robot name="right_kuka_shadow"
 		 xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:include filename="$(find agni_description)/kuka/lwr.urdf.xacro"/> 
   <xacro:include filename="$(find agni_description)/kuka/lwr_controllers.gazebo.xacro"/> 
@@ -28,6 +28,6 @@
   <joint name="right_arm_hand_mount" type="fixed">
     <parent link="right_arm_hand_mount"/>
     <child link="r_forearm"/>
-    <origin xyz="0 0 0" rpy="0 0 0" />
+    <origin xyz="0 0 0.0151" rpy="0 0 0" />
   </joint>
 </robot>

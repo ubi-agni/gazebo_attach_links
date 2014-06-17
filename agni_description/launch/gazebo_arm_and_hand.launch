@@ -16,16 +16,16 @@
   <group if="$(arg R)">
 		<group if="$(arg L)">
 			<!-- BOTH arms & hands -->
-			<include file="$(find agni_description)/launch/both_kukas_gazebo.launch"/>
+			<include file="$(find agni_description)/launch/both_kuka_shadow_gazebo.launch"/>
 		</group>	
 		<group unless="$(arg L)">
 			<!-- RIGHT arm & hand only -->
-			<include file="$(find agni_description)/launch/right_kukas_gazebo.launch"/>
+			<include file="$(find agni_description)/launch/right_kuka_shadow_gazebo.launch"/>
 		</group>	
 	</group>	
 	<group unless="$(arg R)">
 		<!-- LEFT arm & hand only -->
-		<include file="$(find agni_description)/launch/left_kukas_gazebo.launch"/>
+		<include file="$(find agni_description)/launch/left_kuka_shadow_gazebo.launch"/>
 	</group>		
   
  
