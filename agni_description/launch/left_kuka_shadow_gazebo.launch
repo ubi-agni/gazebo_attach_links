@@ -15,12 +15,21 @@
     </include>  
 	</group>
 	
-  <!-- Load the general right robot_description and spawn it -->
+  <!-- Load the general left robot_description, spawn it, merge joint_states -->
   <group ns="left">
     <include file="$(find agni_description)/launch/single_kuka_shadow_gazebo_no_controllers.launch" >
-      <arg name="init_pose" value="-x 0.5 -y 0 -z 0.05" />
+      <!-- <arg name="init_pose" value="-x 0.5 -y 0 -z 0.05" />-->
       <arg name="namespace" value="left"/>
     </include>
+    
+	  <node pkg="topic_tools" type="relay"
+        name="kuka_joint_state_merger"
+        args="/lk/joint_states /left/joint_states" >
+		</node>
+	  <node pkg="topic_tools" type="relay"
+        name="shadow_joint_state_merger"
+        args="/lh/joint_states /left/joint_states" >
+		</node>
 	</group>
 	
 	<!-- Controllers for the arm -->

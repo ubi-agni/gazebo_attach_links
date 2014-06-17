@@ -1,15 +1,16 @@
 <launch>
   <arg name="namespace" default="right"/>
-	<arg name="init_pose" default="-x 0 -y 0 -z 0.1"/>
+	<!--<arg name="init_pose" default="-x 0 -y 0 -z 0.1"/>
 
-  <!-- load robot_description -->
+   load robot_description -->
   <include file="$(find agni_description)/launch/kuka_shadow_upload.launch" >
      <arg name="namespace" value="$(arg namespace)"/>
   </include>
  
   <param name="tf_prefix" value="$(arg namespace)"/>
   <include file="$(find agni_description)/launch/gazebo_robot_spawner.launch" >
-		<arg name="init_pose" value="$(arg init_pose)" />
+		<!--  the pose is defined in the urdf relative to world already frame -->
+		<arg name="init_pose" value="" />
 		<arg name="robot_name" value="$(arg namespace)_kuka_shadow" />
 	</include>
     
