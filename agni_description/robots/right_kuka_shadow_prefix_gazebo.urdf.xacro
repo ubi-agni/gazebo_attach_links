@@ -20,14 +20,14 @@
   <xacro:right_lwr_arm_gazebo_controller namespace="rk" port="49940"/>
   
   <!-- Shadow Hands --> 
-  <xacro:shadowhand muscletrans="false" muscle="false" bio="false" ubi="true" eli="false" reflect="1.0" prefix=""  />
+  <xacro:shadowhand muscletrans="false" muscle="false" bio="false" ubi="true" eli="false" reflect="1.0" prefix="r_"  />
   
   <xacro:shadow_gazebo_controller_manager namespace="rh" />
   
   <!-- Link arm and hand -->  
   <joint name="right_arm_hand_mount" type="fixed">
     <parent link="right_arm_hand_mount"/>
-    <child link="forearm"/>
+    <child link="r_forearm"/>
     <origin xyz="0 0 0.0151" rpy="0 0 0" />
   </joint>
 </robot>

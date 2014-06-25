@@ -5,7 +5,7 @@
   <xacro:include filename="$(find sr_description)/hand/xacro/full_hand.urdf.xacro" />
   <xacro:include filename="$(find agni_description)/urdf/sr_gazebo.urdf.xacro" /> 
   
-  <xacro:shadow_gazebo_controller_manager namespace="rh" />
+  <xacro:shadow_gazebo_controller_manager namespace="lh" />
   <xacro:shadowhand muscletrans="false" muscle="false" bio="false" ubi="true" eli="false" reflect="-1.0" prefix="l_"  />
    
 </robot>

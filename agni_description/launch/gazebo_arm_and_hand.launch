@@ -13,19 +13,26 @@
   <!-- include our robots -->
   <arg name="R" default="1"/>
   <arg name="L" default="0"/>
+  <arg name="USE_PREFIX" default="1"/>
   <group if="$(arg R)">
 		<group if="$(arg L)">
 			<!-- BOTH arms & hands -->
-			<include file="$(find agni_description)/launch/both_kuka_shadow_gazebo.launch"/>
+			<include file="$(find agni_description)/launch/both_arm_and_hand_gazebo.launch">
+				<arg name="use_prefix" value="$(arg USE_PREFIX)"/>
+			</include>
 		</group>	
 		<group unless="$(arg L)">
 			<!-- RIGHT arm & hand only -->
-			<include file="$(find agni_description)/launch/right_kuka_shadow_gazebo.launch"/>
+			<include file="$(find agni_description)/launch/right_arm_and_hand_gazebo.launch">
+				<arg name="use_prefix" value="$(arg USE_PREFIX)"/>
+			</include>
 		</group>	
 	</group>	
 	<group unless="$(arg R)">
 		<!-- LEFT arm & hand only -->
-		<include file="$(find agni_description)/launch/left_kuka_shadow_gazebo.launch"/>
+		<include file="$(find agni_description)/launch/left_arm_and_hand_gazebo.launch">
+			<arg name="use_prefix" value="$(arg USE_PREFIX)"/>
+		</include>
 	</group>		
   
  

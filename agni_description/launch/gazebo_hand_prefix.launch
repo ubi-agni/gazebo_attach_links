@@ -1,7 +1,0 @@
-<launch>
-
-  <!-- start gazebo with an empty plane -->
-  <include file="$(find sr_hand)/launch/gazebo/loaders/empty_world.launch"/>
-  <!-- include our robots -->
-  <include file="$(find agni_description)/launch/both_hands_prefix_gazebo.launch"/>
-</launch>

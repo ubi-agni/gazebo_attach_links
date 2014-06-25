@@ -1,4 +1,0 @@
-<launch>
-	<include file="$(find agni_description)/launch/right_kuka_shadow_gazebo.launch" />
-  <include file="$(find agni_description)/launch/left_kuka_shadow_gazebo.launch" />
-</launch>
