@@ -15,6 +15,10 @@
   <!--  When using a prefix <include file="$(find agni_description)/launch/hand_controllers.launch">
 		<arg name="namespace" value="$(arg namespace)" />
 	</include>	-->
+	
+	<include file="$(find ros_ethercat_model)/launch/joint_state_publisher.launch"/>
+	  
+	  
   <node pkg="robot_state_publisher" type="state_publisher"
         name="robot_state_publisher_full_pos">
     <!--<remap from="joint_states" to="joint_states" />-->

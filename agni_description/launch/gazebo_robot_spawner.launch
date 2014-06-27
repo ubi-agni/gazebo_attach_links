@@ -2,7 +2,7 @@
   <arg name="robot_name"/>
 	<arg name="init_pose"/>
 	
-  <node name="spawn_robot" pkg="gazebo" type="spawn_model"
+  <node name="spawn_robot" pkg="gazebo_ros" type="spawn_model"
      args="-urdf -param robot_description $(arg init_pose) -model $(arg robot_name)"
      respawn="false" output="screen" />
 
