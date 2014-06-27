@@ -16,8 +16,8 @@
 
   <property name="arm_velocity_scale_factor" value="1"/>
 
-  <!-- right is either 1 (for right arm) or -1 (for left arm) -->
-  <macro name="kuka_lwr_arm" params="name right tool_name">
+  <!-- reflect is either 1 (for right arm) or -1 (for left arm) -->
+  <macro name="kuka_lwr_arm" params="name reflect tool_name">
 
     <link name="${name}arm_base_link">
       <inertial>
@@ -375,7 +375,7 @@
                             mass="${arm_elem_end_link_mass}"/>
       </inertial>
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 ${right * -1/4 * M_PI  +  M_PI}"/>
+        <origin xyz="0 0 0" rpy="0 0 ${reflect * -1/4 * M_PI  +  M_PI}"/>
         <geometry>
           <mesh scale="100 100 100" 
 					 filename="package://agni_description/kuka/meshes/arm_flanche${tool_name}.dae"/>
@@ -383,7 +383,7 @@
         <material name="Grey"/>
       </visual>
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 ${right * -1/4 * M_PI  +  M_PI}"/>
+        <origin xyz="0 0 0" rpy="0 0 ${reflect * -1/4 * M_PI  +  M_PI}"/>
         <geometry>
           <mesh filename="package://agni_description/kuka/meshes/convex/arm_flanche${tool_name}_convex.stl"/>
         </geometry>
@@ -396,8 +396,8 @@
 
     <joint name="${name}arm_hand_fixed_joint" type="fixed">
 <!--
-      <origin xyz="${-right * 0.075} -0.075 -0.094"
-              rpy="${0.5*right*M_PI} 0 ${(1.5 + 0.25*right)*M_PI}"/>
+      <origin xyz="${-reflect * 0.075} -0.075 -0.094"
+              rpy="${0.5*reflect*M_PI} 0 ${(1.5 + 0.25*reflect)*M_PI}"/>
 -->
       <parent link="${name}arm_7_link"/>
       <child link="${name}arm_hand_mount"/>

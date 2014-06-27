@@ -1,0 +1,13 @@
+<launch>
+  
+
+  <!-- send kukas urdf to param server -->
+  <include file="$(find kuka_right_gazebo)/launch/upload_kukas.launch" />
+
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="spawn_kukas_model" pkg="gazebo" type="spawn_model" args="-paused=true -urdf -param robot_description -model kukas" respawn="false" output="screen" />
+
+  <!-- default bringup script -->
+  <include file="$(find kuka_right_gazebo)/launch/kukas_bringup.launch" />
+</launch>
+

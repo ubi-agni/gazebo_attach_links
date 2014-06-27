@@ -1,0 +1,10 @@
+<launch>
+  
+  <!-- Startup kuka + shadow without any mechanism controllers -->
+  <include file="$(find kuka_right_gazebo)/launch/kukas_no_controllers.launch" />
+
+  <!-- Load and Start Default Controllers 
+  <include file="$(find kukas_controller_configuration_gazebo)/kukas_default_controllers.launch" />-->
+
+</launch>
+

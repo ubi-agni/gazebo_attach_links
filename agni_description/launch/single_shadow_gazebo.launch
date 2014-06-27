@@ -1,24 +1,28 @@
 <launch>
   <arg name="namespace" default="rh"/>
+  <arg name="use_prefix" default="0"/>
   <arg name="init_pose" default="-x 0 -y 0 -z 0"/>
-
+  
 	<!-- load robot_description -->
-	<param name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/$(arg namespace)_ubi_motor_hand.urdf.xacro'" />
+	<include file="$(find agni_description)/launch/sr_upload.launch">
+			<arg name="namespace" value="$(arg namespace)" />
+			<arg name="use_prefix" value="$(arg use_prefix)"/>
+	</include>
+	
 	<param name="tf_prefix" value="$(arg namespace)" />
+	
 	<include file="$(find agni_description)/launch/gazebo_robot_spawner.launch" >
 		<arg name="init_pose" value="$(arg init_pose)" />
 		<arg name="robot_name" value="$(arg namespace)_ubi_motor_hand" />
 	</include>
 	
 	<!-- Controllers for the hand -->
-  <include file="$(find sr_hand)/launch/gazebo/loaders/hand_controllers.launch"/>
-  <!--  When using a prefix <include file="$(find agni_description)/launch/hand_controllers.launch">
+  <include file="$(find agni_description)/launch/hand_controllers.launch">
 		<arg name="namespace" value="$(arg namespace)" />
-	</include>	-->
-	
+		<arg name="use_prefix" value="$(arg use_prefix)"/>
+	</include>
 	<include file="$(find ros_ethercat_model)/launch/joint_state_publisher.launch"/>
-	  
-	  
+
   <node pkg="robot_state_publisher" type="state_publisher"
         name="robot_state_publisher_full_pos">
     <!--<remap from="joint_states" to="joint_states" />-->

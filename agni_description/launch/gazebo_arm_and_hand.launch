@@ -1,0 +1,39 @@
+<launch>
+<!-- arguments R and L to select left or right or both arm and hand -->
+
+  <!-- start gazebo with an empty plane -->
+  <include file="$(find sr_hand)/launch/gazebo/loaders/empty_world.launch"/>
+  
+  <!-- load frame description -->
+  <param name="frame" command="$(find xacro)/xacro.py '$(find agni_description)/robots/frame.urdf.xacro'" />
+
+  <!-- spawn the support model -->
+  <node name="spawn_support" pkg="gazebo" type="spawn_model" args="-urdf -param frame -model support_model" respawn="false" output="screen" />
+  
+  <!-- include our robots -->
+  <arg name="R" default="1"/>
+  <arg name="L" default="0"/>
+  <arg name="USE_PREFIX" default="1"/>
+  <group if="$(arg R)">
+		<group if="$(arg L)">
+			<!-- BOTH arms & hands -->
+			<include file="$(find agni_description)/launch/both_arm_and_hand_gazebo.launch">
+				<arg name="use_prefix" value="$(arg USE_PREFIX)"/>
+			</include>
+		</group>	
+		<group unless="$(arg L)">
+			<!-- RIGHT arm & hand only -->
+			<include file="$(find agni_description)/launch/right_arm_and_hand_gazebo.launch">
+				<arg name="use_prefix" value="$(arg USE_PREFIX)"/>
+			</include>
+		</group>	
+	</group>	
+	<group unless="$(arg R)">
+		<!-- LEFT arm & hand only -->
+		<include file="$(find agni_description)/launch/left_arm_and_hand_gazebo.launch">
+			<arg name="use_prefix" value="$(arg USE_PREFIX)"/>
+		</include>
+	</group>		
+  
+ 
+</launch>

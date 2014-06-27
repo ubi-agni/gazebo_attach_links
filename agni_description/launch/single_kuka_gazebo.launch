@@ -1,0 +1,28 @@
+<launch>
+  <arg name="namespace" default="rk"/>
+	<arg name="init_pose" default="-x 0 -y 0 -z 0.1"/>
+	
+  <!-- load robot_description -->
+  <include file="$(find agni_description)/launch/kuka_upload.launch" >
+     <arg name="namespace" value="$(arg namespace)"/>
+  </include>
+  
+  <param name="tf_prefix" value="$(arg namespace)"/>
+  <include file="$(find agni_description)/launch/gazebo_robot_spawner.launch" >
+		<arg name="init_pose" value="$(arg init_pose)" />
+		<arg name="robot_name" value="$(arg namespace)_kuka" />
+	</include>
+  
+  
+  <!-- Controllers for the kuka -->
+	<include file="$(find agni_description)/launch/kuka_gazebo_bringup.launch" >
+		<arg name="namespace" value="$(arg namespace)" />
+	</include>	
+
+
+  <node pkg="robot_state_publisher" type="state_publisher"
+        name="robot_state_publisher_full_pos">
+    <param name="publish_frequency" type="double" value="10.0" />
+		
+  </node>
+</launch>

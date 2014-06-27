@@ -1,46 +1,47 @@
 <?xml version="1.0"?>
-<robot name="kukas"
+<robot name="kuka_shadow"
 		 xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:include filename="$(find agni_description)/calibration/default_cal.xml"/>
 
   <xacro:include filename="$(find agni_description)/urdf/frame-half.urdf.xacro"/>
   <xacro:include filename="$(find agni_description)/kuka/lwr.urdf.xacro"/>
-  
-  <xacro:include filename="$(find sr_description)/hand/xacro/full_hand_motor.urdf.xacro" />
+  <xacro:include filename="$(find sr_description)/hand/xacro/full_hand.urdf.xacro" />
 
   <xacro:frame-half prefix="kuka" thickness="0.09" width="1.92" depth="1.82"
 						  height="1.26" tableHeight="1.00"/>
 
   <!-- KUKA arms -->
-  <xacro:kuka_lwr_arm name="right" right="+1" tool_name=""/>
+  <xacro:kuka_lwr_arm name="right_" reflect="+1" tool_name=""/>
   <joint name="kuka_right_arm_base_joint" type="fixed">
 	 <origin xyz="${cal_right_arm_x} ${cal_right_arm_y} ${cal_right_arm_z}"
 				rpy="${cal_right_arm_roll} ${cal_right_arm_pitch} ${cal_right_arm_yaw}"/>
 	 <parent link="kuka_frame"/>
-	 <child link="calib_right_arm_base_link"/>
+	 <child link="right_arm_base_link"/>
+	<!-- <child link="calib_right_arm_base_link"/> -->
   </joint>
 
-  <xacro:kuka_lwr_arm name="left" right="-1" tool_name=""/>
+  <xacro:kuka_lwr_arm name="left_" reflect="-1" tool_name=""/>
   <joint name="kuka_left_arm_base_joint" type="fixed">
 	 <origin xyz="${cal_left_arm_x} ${cal_left_arm_y} ${cal_left_arm_z}"
 				rpy="${cal_left_arm_roll} ${cal_left_arm_pitch} ${cal_left_arm_yaw}"/>
 	 <parent link="kuka_frame"/>
-	 <child link="calib_left_arm_base_link"/>
+	 <child link="left_arm_base_link"/>
+	<!-- <child link="calib_left_arm_base_link"/> -->
   </joint>
 
   <!-- Shadow Hands -->
+  <xacro:shadowhand muscletrans="false" muscle="false" bio="false" ubi="true" eli="false" reflect="-1.0" prefix="l_" />
   <joint name="left_arm_hand_mount" type="fixed">
     <parent link="left_arm_hand_mount"/>
-    <child link="forearm"/>
-    <origin xyz="0 0 0" rpy="0 0 ${2.35619449}" />
+    <child link="l_forearm"/>
+    <origin xyz="0 0 0.0151" rpy="0 0 0" />
   </joint>
-  <xacro:shadowhand_left_motor/>
-
+ 
+  <xacro:shadowhand muscletrans="false" muscle="false" bio="false" ubi="true" eli="false" reflect="1.0" prefix="r_"  />
   <joint name="right_arm_hand_mount" type="fixed">
     <parent link="right_arm_hand_mount"/>
-    <child link="forearm"/>
-    <origin xyz="0 0 0" rpy="0 0 0" />
+    <child link="r_forearm"/>
+    <origin xyz="0 0 0.0151" rpy="0 0 0" />
   </joint>
-  <xacro:shadowhand_motor/>
-
+  
 </robot>

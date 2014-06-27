@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
-<root xmlns:xacro="http://www.ros.org/wiki/xacro">
+<root xmlns:xacro="http://www.ros.org/wiki/xacro"
+      xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+      xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+      xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
 <xacro:include filename="$(find agni_description)/urdf/util.urdf.xacro"/>
 <xacro:include filename="$(find agni_description)/urdf/materials.urdf.xacro"/>
@@ -13,10 +16,11 @@
 </xacro:macro>
 
 <xacro:macro name="frame-half" params="prefix thickness width depth height tableHeight">
+
   <link name="${prefix}_frame">
 	 <!-- horizontal front bar-->
 	 <xacro:bar thickness="${thickness}" len="${width}">
-		<origin xyz="0 ${-thickness/2} ${-thickness/2}" rpy="0 ${-M_PI/2} 0"/>
+		<origin xyz="0 ${thickness/2} ${-thickness/2}" rpy="0 ${-M_PI/2} 0"/>
 	 </xacro:bar>
 	 <!-- horizontal rear bar -->
 	 <xacro:bar thickness="${thickness}" len="${width}">
@@ -29,11 +33,11 @@
 
 	 <!-- left front pole -->
 	 <xacro:bar thickness="${thickness}" len="${thickness+tableHeight}">
-		<origin xyz="${-(width+thickness)/2} ${-thickness/2} ${-(thickness+tableHeight)/2}"/>
+		<origin xyz="${-(width+thickness)/2} ${thickness/2} ${-(thickness+tableHeight)/2}"/>
 	 </xacro:bar>
 	 <!-- right front pole -->
 	 <xacro:bar thickness="${thickness}" len="${thickness+tableHeight}">
-		<origin xyz="${+(width+thickness)/2} ${-thickness/2} ${-(thickness+tableHeight)/2}"/>
+		<origin xyz="${+(width+thickness)/2} ${thickness/2} ${-(thickness+tableHeight)/2}"/>
 	 </xacro:bar>
 	 
 	 <!-- left rear pole -->
@@ -56,7 +60,28 @@
 				  rpy="${-M_PI/2} 0 0"/>
 	 </xacro:bar>
 
+	 <!-- left central pole -->
+	 <xacro:bar thickness="${thickness}" len="${thickness+tableHeight+(height)/2}">
+		<origin xyz="${-thickness} ${(depth)/2+2*thickness} ${-(2*tableHeight-height)/4-thickness/2}"/>
+	 </xacro:bar>
+	 <!-- right central pole -->
+	 <xacro:bar thickness="${thickness}" len="${thickness+tableHeight+(height)/2}">
+		<origin xyz="${thickness} ${(depth)/2+2*thickness} ${-(2*tableHeight-height)/4-thickness/2}"/>
+	 </xacro:bar>
+
+	<!-- table plane -->
+	 <visual>
+	  <origin xyz="0 ${depth/2} -0.01" 
+				  rpy="0 0 0"/>
+		<geometry><box size="${width} ${depth} ${0.02}"/></geometry>
+		<material name="Silver"/>
+	 </visual>  
+
   </link>
+  
+  <gazebo reference="${prefix}_frame">
+      <material value="kuka-lwr.material"/>
+  </gazebo>
 </xacro:macro>
 
 </root>

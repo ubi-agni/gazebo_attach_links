@@ -1,0 +1,9 @@
+<launch>
+	<arg name="use_prefix" default="0"/>
+  <include file="$(find agni_description)/launch/right_hand_gazebo.launch">
+		<arg name="use_prefix" value="$(arg use_prefix)"/>
+  </include>
+  <include file="$(find agni_description)/launch/left_hand_gazebo.launch">
+		<arg name="use_prefix" value="$(arg use_prefix)"/>
+  </include>
+</launch>

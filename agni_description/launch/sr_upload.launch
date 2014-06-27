@@ -1,0 +1,7 @@
+<launch>
+	<arg name="namespace" default="rh"/>
+	<arg name="use_prefix" default="0"/>
+  <!-- load robot_description -->
+	<param if="$(arg use_prefix)" name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/$(arg namespace)_ubi_motor_hand_prefix.urdf.xacro'" />  
+	<param unless="$(arg use_prefix)" name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/$(arg namespace)_ubi_motor_hand.urdf.xacro'" />  	
+</launch>

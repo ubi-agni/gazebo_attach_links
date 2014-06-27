@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<robot name="left_kuka_shadow"
+		 xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find agni_description)/kuka/lwr.urdf.xacro"/> 
+  <xacro:include filename="$(find agni_description)/kuka/lwr_controllers.gazebo.xacro"/>  
+  <xacro:include filename="$(find agni_description)/urdf/sr_gazebo.urdf.xacro" />
+  <xacro:include filename="$(find sr_description)/hand/xacro/full_hand.urdf.xacro" />
+  <xacro:include filename="$(find agni_description)/calibration/default_cal.xml"/>
+  
+  
+   <link name="world" />
+  <!-- KUKA arm -->
+  <xacro:kuka_lwr_arm name="left_" reflect="-1" tool_name=""/>
+  
+   <joint name="left_frame_placement" type="fixed">
+	 <origin xyz="${cal_left_arm_x} ${cal_left_arm_y} ${cal_left_arm_z}"
+				rpy="${cal_left_arm_roll} ${cal_left_arm_pitch} ${cal_left_arm_yaw}"/>
+	 <parent link="world"/>
+	 <child link="left_arm_base_link"/>
+  </joint>
+  
+  <xacro:left_lwr_arm_gazebo_controller namespace="lk" port="49938"/>
+
+  <!-- Shadow hand -->  
+	<xacro:shadowhand muscletrans="false" muscle="false" bio="false" ubi="true" eli="false" reflect="-1.0" prefix="" />
+	
+	<xacro:shadow_gazebo_controller_manager namespace="lh" />
+		
+	<!-- Link arm and hand -->  
+  <joint name="left_arm_hand_mount" type="fixed">
+    <parent link="left_arm_hand_mount"/>
+    <child link="forearm"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+</robot>

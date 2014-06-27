@@ -5,4 +5,7 @@
 
   <xacro:frame-half prefix="kuka" thickness="0.09" width="1.92" depth="1.82"
 						  height="1.26" tableHeight="1.00"/>
+						  
+	
+
 </robot>  

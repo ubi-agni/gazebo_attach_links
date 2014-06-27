@@ -1,0 +1,4 @@
+<launch>
+  <include file="$(find agni_description)/launch/right_arm_gazebo.launch" />
+  <include file="$(find agni_description)/launch/left_arm_gazebo.launch" />
+</launch>

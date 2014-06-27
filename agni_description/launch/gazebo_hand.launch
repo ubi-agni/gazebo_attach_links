@@ -22,19 +22,26 @@
   <!-- include our robots -->
   <arg name="RH" default="1"/>
   <arg name="LH" default="0"/>
+  <arg name="USE_PREFIX" default="0"/>
   <group if="$(arg RH)">
 		<group if="$(arg LH)">
 			  <!-- BOTH hands -->
-			   <include file="$(find agni_description)/launch/both_hands_gazebo.launch"/>
+			  <include file="$(find agni_description)/launch/both_hand_gazebo.launch">
+				 	<arg name="use_prefix" value="$(arg USE_PREFIX)"/>
+				</include>
 		</group>	
 		<group unless="$(arg LH)">
 				<!-- RIGHT hand only -->
-				 <include file="$(find agni_description)/launch/right_hand_gazebo.launch"/>
+				<include file="$(find agni_description)/launch/right_hand_gazebo.launch">
+					<arg name="use_prefix" value="$(arg USE_PREFIX)"/>
+				</include>
 		</group>	
 	</group>	
 	<group unless="$(arg RH)">
 			<!-- LEFT hand only -->
-			   <include file="$(find agni_description)/launch/left_hand_gazebo.launch"/>
+			  <include file="$(find agni_description)/launch/left_hand_gazebo.launch">
+					<arg name="use_prefix" value="$(arg USE_PREFIX)"/>
+				</include>
 	</group>		
   
  
