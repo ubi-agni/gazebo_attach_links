@@ -1,0 +1,18 @@
+<launch>
+
+  <!-- set robot description -->
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/both_kuka_shadow_flobi.urdf.xacro'" />
+
+  <!-- publish joint values, open gui if use_gui=True -->
+  <node name="joint_publisher"
+		  pkg="joint_state_publisher" type="joint_state_publisher">
+	 <param name="use_gui" value="True"/>
+  </node>
+
+  <!-- publish transforms of all robot links -->
+  <node name="state_publisher" 
+		  pkg="robot_state_publisher" type="state_publisher">
+	 <param name="publish_frequency" type="double" value="10.0"/>
+  </node>
+
+</launch>

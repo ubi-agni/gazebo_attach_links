@@ -6,6 +6,11 @@
   
   <!-- load frame description -->
   <param name="frame" command="$(find xacro)/xacro.py '$(find agni_description)/robots/frame.urdf.xacro'" />
+  
+  
+  <!-- set robot description for combined table + 2 robot arm and hand -->
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/both_kuka_shadow.urdf.xacro'" />
+
 
   <!-- spawn the support model -->
   <node name="spawn_support" pkg="gazebo" type="spawn_model" args="-urdf -param frame -model support_model" respawn="false" output="screen" />

@@ -1,11 +1,13 @@
 <?xml version="1.0"?>
-<robot name="kuka_shadow"
+<robot name="kuka_shadow_flobi"
      xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:include filename="$(find agni_description)/robots/right_kuka_shadow.urdf.xacro" />
   <xacro:include filename="$(find agni_description)/robots/left_kuka_shadow.urdf.xacro" />
   <xacro:include filename="$(find agni_description)/calibration/default_cal.xml"/>
   <xacro:include filename="$(find agni_description)/urdf/frame-half.urdf.xacro"/>
+  <xacro:include filename="$(find agni_description)/flobi/flobiv3.urdf.xacro" />
 
+  
   <xacro:frame-half prefix="kuka" thickness="0.09" width="1.92" depth="1.82"
               height="1.26" tableHeight="1.00"/>
 
@@ -18,5 +20,10 @@
   <xacro:leftkukashadow parent="kuka_frame" prefix="true" controller="false">
     <origin xyz="${cal_left_arm_x} ${cal_left_arm_y} ${cal_left_arm_z}"
         rpy="${cal_left_arm_roll} ${cal_left_arm_pitch} ${cal_left_arm_yaw}"/>
-  </xacro:leftkukashadow>   
+  </xacro:leftkukashadow>  
+  
+  <xacro:flobi prefix="" neutral="1" gender="0" parent="kuka_frame" >
+		<origin xyz="0 ${cal_right_arm_y} ${cal_right_arm_z+mount_triangle_length/2*sin60+0.01}" rpy="0 0 ${-M_PI/2}"/>
+  </xacro:flobi>
+   
 </robot>

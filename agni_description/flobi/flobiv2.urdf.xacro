@@ -1,0 +1,223 @@
+<robot name="flobi" xmlns:xacro="http://ros.org/wiki/xacro"
+       xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#slider"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:body="http://playerstage.sourceforge.net/gazebo/xmlschema/#body"
+       xmlns:geom="http://playerstage.sourceforge.net/gazebo/xmlschema/#geom">
+
+
+  <xacro:include filename="$(find agni_description)/urdf/util.urdf.xacro"/>
+  
+		<property name="flobi_elem_neck_mass" value="0.3"/>
+		<property name="flobi_elem_head_mass" value="2.0"/>
+		<property name="flobi_elem_eye_mass" value="0.2"/>
+
+		<link name="flobi_base_link" />
+		
+		<joint name="floby_base_joint" type="fixed">
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <parent link="flobi_base_link"/>
+      <child link="flobi_neck_base_link"/>
+    </joint>
+    
+    <link name="flobi_neck_base_link">
+      <inertial>
+        <origin xyz="0 0 0.055" rpy="0 0 0"/>
+        <mass value="${flobi_elem_neck_mass}" />
+        <cylinder_inertia_def radius="0.05" length="0.11"
+                              mass="${flobi_elem_neck_mass}"/>
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh scale="1.0 1.0 1.0" 
+					 filename="package://agni_description/flobi/flobi-neck.dae"/>
+        </geometry>
+        <material name="Orange"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry name="flobi_neck_collision_geom">
+          <box size="0.05 0.02 0.07" />
+        </geometry>
+      </collision>
+    </link>
+    
+    <joint name="floby_neck_pan_joint" type="revolute">
+      <origin xyz="0 0 0.10" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="${-90 * M_PI / 180}" upper="${+90 * M_PI / 180}"
+             effort="20" velocity="1.57" />
+      <dynamics damping="0.5"/>
+      <parent link="flobi_neck_base_link"/>
+      <child link="flobi_neck_beam_link"/>
+    </joint>
+
+		<link name="flobi_neck_beam_link">
+      <inertial>
+        <origin xyz="0 0 0.0" rpy="0 0 0"/>
+        <mass value="0.1" />
+        <cylinder_inertia_def radius="0.01" length="0.01"
+                              mass="0.1"/>
+      </inertial>
+    </link>
+
+    <joint name="floby_neck_tilt_joint" type="revolute">
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="${-45 * M_PI / 180}" upper="${+45 * M_PI / 180}"
+             effort="20" velocity="1.57" />
+      <dynamics damping="0.5"/>
+      <parent link="flobi_neck_beam_link"/>
+      <child link="flobi_neck_hub_link"/>
+    </joint>
+
+		<link name="flobi_neck_hub_link">
+      <inertial>
+        <origin xyz="0 0 0.0" rpy="0 0 0"/>
+        <mass value="0.1" />
+        <cylinder_inertia_def radius="0.01" length="0.01"
+                              mass="0.1"/>
+      </inertial>
+    </link>
+
+    <joint name="floby_neck_roll_joint" type="revolute">
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <axis xyz="1 0 0"/>
+      <limit lower="${-25 * M_PI / 180}" upper="${+25 * M_PI / 180}"
+             effort="20" velocity="1.57" />
+      <dynamics damping="0.5"/>
+      <parent link="flobi_neck_hub_link"/>
+      <child link="flobi_head_link"/>
+    </joint>
+
+    <link name="flobi_head_link">
+      <inertial>
+        <origin xyz="0 0 0.0" rpy="0 0 0"/>
+        <mass value="${flobi_elem_head_mass}" />
+        <cylinder_inertia_def radius="0.08" length="0.16"
+                              mass="${flobi_elem_head_mass}"/>
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh scale="1.0 1.0 1.0" 
+					 filename="package://agni_description/flobi/flobi-head.dae"/>
+        </geometry>
+        <material name="Orange"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry name="flobi_head_collision_geom">
+          <box size="0.08 0.08 0.16" />
+        </geometry>
+      </collision>
+    </link>
+    
+     <joint name="floby_eyes_left_lr_joint" type="revolute">
+      <origin xyz="0.072 0.0337 0.055" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="${-15 * M_PI / 180}" upper="${+15 * M_PI / 180}"
+             effort="20" velocity="1.57" />
+      <dynamics damping="0.5"/>
+      <parent link="flobi_head_link"/>
+      <child link="flobi_eyes_left_hub_link"/>
+    </joint>
+    
+    <link name="flobi_eyes_left_hub_link">
+      <inertial>
+        <origin xyz="0 0 0.0" rpy="0 0 0"/>
+        <mass value="0.1" />
+        <cylinder_inertia_def radius="0.01" length="0.01"
+                              mass="0.1"/>
+      </inertial>
+    </link>
+    
+     <joint name="floby_eyes_left_ud_joint" type="revolute">
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="${-20 * M_PI / 180}" upper="${+20 * M_PI / 180}"
+             effort="20" velocity="1.57" />
+      <dynamics damping="0.5"/>
+      <parent link="flobi_eyes_left_hub_link"/>
+      <child link="flobi_eyes_left_link"/>
+    </joint>
+    
+     <link name="flobi_eyes_left_link">
+      <inertial>
+        <origin xyz="0 0 0.0" rpy="0 0 0"/>
+        <mass value="${flobi_elem_eye_mass}" />
+        <cylinder_inertia_def radius="0.02" length="0.02"
+                              mass="${flobi_elem_eye_mass}"/>
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh scale="1.0 1.0 1.0" 
+					 filename="package://agni_description/flobi/flobi-eye-ball.dae"/>
+        </geometry>
+        <material name="Orange"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry name="flobi_eye_left_collision_geom">
+          <box size="0.02 0.02 0.02" />
+        </geometry>
+      </collision>
+    </link>   
+    
+    
+    <joint name="floby_eyes_right_lr_joint" type="revolute">
+      <origin xyz="0.072 -0.0337 0.055" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="${-15 * M_PI / 180}" upper="${+15 * M_PI / 180}"
+             effort="20" velocity="1.57" />
+      <dynamics damping="0.5"/>
+      <parent link="flobi_head_link"/>
+      <child link="flobi_eyes_right_hub_link"/>
+    </joint>
+    
+    <link name="flobi_eyes_right_hub_link">
+      <inertial>
+        <origin xyz="0 0 0.0" rpy="0 0 0"/>
+        <mass value="0.1" />
+        <cylinder_inertia_def radius="0.01" length="0.01"
+                              mass="0.1"/>
+      </inertial>
+    </link>
+    
+     <joint name="floby_eye_right_ud_joint" type="revolute">
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="${-20 * M_PI / 180}" upper="${+20 * M_PI / 180}"
+             effort="20" velocity="1.57" />
+      <dynamics damping="0.5"/>
+      <parent link="flobi_eyes_right_hub_link"/>
+      <child link="flobi_eyes_right_link"/>
+    </joint>
+    
+     <link name="flobi_eyes_right_link">
+      <inertial>
+        <origin xyz="0 0 0.0" rpy="0 0 0"/>
+        <mass value="${flobi_elem_eye_mass}" />
+        <cylinder_inertia_def radius="0.02" length="0.02"
+                              mass="${flobi_elem_eye_mass}"/>
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh scale="1.0 1.0 1.0" 
+					 filename="package://agni_description/flobi/flobi-eye-ball.dae"/>
+        </geometry>
+        <material name="Orange"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry name="flobi_eye_left_collision_geom">
+          <box size="0.02 0.02 0.02" />
+        </geometry>
+      </collision>
+    </link>  
+    
+</robot>

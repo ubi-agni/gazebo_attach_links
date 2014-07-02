@@ -3,33 +3,19 @@
   <xacro:include filename="$(find agni_description)/urdf/util.urdf.xacro"/>
 
   <!-- left arm base -->
-  <property name="cal_left_arm_x"     value="-0.08232" />
-  <property name="cal_left_arm_y"     value="0.897" />
-  <property name="cal_left_arm_z"     value="0.29758" />
-  <property name="cal_left_arm_roll"  value="-0.71215" />     
-  <property name="cal_left_arm_pitch" value="0.84840" />
-  <property name="cal_left_arm_yaw"   value="2.28576" />
+  <property name="cal_right_arm_x"     value="-0.08232" />
+  <property name="cal_right_arm_y"     value="0.897" />
+  <property name="cal_right_arm_z"     value="0.29758" />
+  <property name="cal_right_arm_roll"  value="-0.71215" />     
+  <property name="cal_right_arm_pitch" value="0.84840" />
+  <property name="cal_right_arm_yaw"   value="2.28576" />
   <!-- right arm base -->
-  <property name="cal_right_arm_x"     value="${-cal_left_arm_x}" />
-  <property name="cal_right_arm_y"     value="${cal_left_arm_y}" />
-  <property name="cal_right_arm_z"     value="${cal_left_arm_z}" />
-  <property name="cal_right_arm_roll"  value="${-cal_left_arm_roll}" />
-  <property name="cal_right_arm_pitch" value="${cal_left_arm_pitch}" />
-  <property name="cal_right_arm_yaw"   value="${M_PI-cal_left_arm_yaw}" />
+  <property name="cal_left_arm_x"     value="${-cal_right_arm_x}" />
+  <property name="cal_left_arm_y"     value="${cal_right_arm_y}" />
+  <property name="cal_left_arm_z"     value="${cal_right_arm_z}" />
+  <property name="cal_left_arm_roll"  value="${-cal_right_arm_roll}" />
+  <property name="cal_left_arm_pitch" value="${cal_right_arm_pitch}" />
+  <property name="cal_left_arm_yaw"   value="${M_PI-cal_right_arm_yaw}" />
 
-
-  <property name="cal_base_to_left_arm_x"     value="0.395" />
-  <property name="cal_base_to_left_arm_y"     value="0.059" />
-  <property name="cal_base_to_left_arm_z"     value="1.149" />
-  <property name="cal_base_to_left_arm_roll"  value="0.71372" />
-  <property name="cal_base_to_left_arm_pitch" value="-0.84806" />
-  <property name="cal_base_to_left_arm_yaw"   value="-2.42787" />
-
-  <property name="cal_base_to_right_arm_x"     value="0.385121" />
-  <property name="cal_base_to_right_arm_y"     value="-0.0570121" />
-  <property name="cal_base_to_right_arm_z"     value="1.15408" />
-  <property name="cal_base_to_right_arm_roll"  value="0.71178" />
-  <property name="cal_base_to_right_arm_pitch" value="0.85723" />
-  <property name="cal_base_to_right_arm_yaw"   value="-0.71169" />
 
 </root>

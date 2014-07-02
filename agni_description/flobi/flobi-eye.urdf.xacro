@@ -1,0 +1,68 @@
+<robot name="flobi" xmlns:xacro="http://ros.org/wiki/xacro"
+       xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#slider"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:body="http://playerstage.sourceforge.net/gazebo/xmlschema/#body"
+       xmlns:geom="http://playerstage.sourceforge.net/gazebo/xmlschema/#geom">
+
+
+  <xacro:include filename="$(find agni_description)/urdf/util.urdf.xacro"/>
+  <xacro:include filename="$(find agni_description)/flobi/default_cal.xml"/>
+
+	<!-- prefix -->
+  <macro name="flobi-eye" params="prefix name parent *origin">
+		    
+     <joint name="${prefix}floby_eyes_${name}_lr_joint" type="revolute">
+      <insert_block name="origin" />
+      <axis xyz="0 0 -1"/>
+      <limit lower="${-20 * M_PI / 180}" upper="${+20 * M_PI / 180}"
+             effort="20" velocity="1.57" />
+      <dynamics damping="0.5"/>
+      <parent link="${prefix}${parent}"/>
+      <child link="${prefix}flobi_eyes_${name}_hub_link"/>
+    </joint>
+    
+    <link name="${prefix}flobi_eyes_${name}_hub_link">
+      <inertial>
+        <origin xyz="0 0 0.0" rpy="0 0 0"/>
+        <mass value="0.1" />
+        <cylinder_inertia_def radius="0.01" length="0.01"
+                              mass="0.1"/>
+      </inertial>
+    </link>
+    
+     <joint name="${prefix}floby_eyes_${name}_ud_joint" type="revolute">
+      <origin xyz="0 0 ${flobi_elem_eyes_z_offset}" rpy="0 0 0"/>
+      <axis xyz="0 -1 0"/>
+      <limit lower="${-20 * M_PI / 180}" upper="${+20 * M_PI / 180}"
+             effort="20" velocity="1.57" />
+      <dynamics damping="0.5"/>
+      <parent link="${prefix}flobi_eyes_${name}_hub_link"/>
+      <child link="${prefix}flobi_eyes_${name}_link"/>
+    </joint>
+    
+     <link name="${prefix}flobi_eyes_${name}_link">
+      <inertial>
+        <origin xyz="0 0 0.0" rpy="0 0 0"/>
+        <mass value="${flobi_elem_eye_mass}" />
+        <cylinder_inertia_def radius="0.02" length="0.02"
+                              mass="${flobi_elem_eye_mass}"/>
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh scale="1.0 1.0 1.0" 
+					 filename="package://agni_description/flobi/flobi-eye-ball.dae"/>
+        </geometry>
+        <material name="Orange"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry name="${prefix}flobi_eye_${name}_collision_geom">
+          <box size="0.02 0.02 0.02" />
+        </geometry>
+      </collision>
+    </link>   
+  </macro>      
+</robot>

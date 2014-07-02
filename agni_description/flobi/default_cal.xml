@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<root xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find agni_description)/urdf/util.urdf.xacro"/>
+
+  <!-- head -->
+  <property name="flobi_elem_neck_beam_length" value="0.130"/>
+	<property name="flobi_elem_neck_tilt_length" value="0.005"/>
+	<property name="flobi_elem_neck_hub_length" value="0.028"/>
+	<property name="flobi_elem_neck_mass" value="0.3"/>
+	<property name="flobi_elem_head_mass" value="2.0"/>
+		
+	<!-- eyes -->
+	<property name="flobi_elem_eyes_x_offset" value="0.075"/>
+	<property name="flobi_elem_eyes_y_offset" value="0.035"/>
+	<property name="flobi_elem_eyes_z_offset" value="0.035"/>	
+	<property name="flobi_elem_eye_mass" value="0.05"/>
+
+</root>
