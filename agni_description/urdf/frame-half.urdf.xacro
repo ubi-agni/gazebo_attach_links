@@ -80,6 +80,31 @@
    <xacro:bar thickness="${thickness}" len="${thickness+tableHeight+(height)/2}">
     <origin xyz="${thickness} ${(depth)/2+2*thickness} ${-(2*tableHeight-height)/4-thickness/2}"/>
    </xacro:bar>
+   
+   
+   
+   <!-- virtual protection plane for the screens -->
+    <!-- right screen -->
+   <visual>
+    <origin xyz="${-width/2+0.3} ${depth-thickness} ${height}" 
+          rpy="0 0 0"/>
+    <geometry><box size="${0.6} ${0.1} ${0.4}"/></geometry>
+    <material name="Silver"/>
+   </visual> 
+    <!-- left screen -->
+   <visual> 
+     <origin xyz="${width/2-0.3} ${depth-thickness} ${height}" 
+          rpy="0 0 0"/>
+    <geometry><box size="${0.6} ${0.1} ${0.4}"/></geometry>
+    <material name="Silver"/>
+   </visual>  
+   
+   <collision>
+      <origin xyz="0 ${depth-2*thickness} ${height/2}" 
+          rpy="0 0 0"/>
+      <geometry><box size="${width+2*thickness} ${0.01} ${height+0.4+2*thickness}"/></geometry>
+    </collision>
+
 
   <!-- kuka mount triangle -->
    <visual>

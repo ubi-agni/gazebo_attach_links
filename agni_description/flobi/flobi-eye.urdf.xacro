@@ -52,17 +52,11 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh scale="1.0 1.0 1.0" 
+          <mesh scale="0.1 0.1 0.1" 
 					 filename="package://agni_description/flobi/flobi-eye-ball.dae"/>
         </geometry>
         <material name="Orange"/>
       </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <geometry name="${prefix}flobi_eye_${name}_collision_geom">
-          <box size="0.02 0.02 0.02" />
-        </geometry>
-      </collision>
     </link>   
   </macro>      
 </robot>
