@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <robot name="left_kuka_shadow"
+	xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:include filename="$(find agni_description)/robots/left_kuka_shadow.urdf.xacro" />
   <xacro:include filename="$(find agni_description)/calibration/default_cal.xml"/>
   
