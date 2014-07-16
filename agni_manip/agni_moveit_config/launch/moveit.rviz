@@ -9,7 +9,7 @@ Panels:
         - /MotionPlanning1/Planning Request1
         - /MotionPlanning1/Planned Path1
       Splitter Ratio: 0.74256
-    Tree Height: 493
+    Tree Height: 494
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
@@ -490,11 +490,11 @@ Visualization Manager:
         Colliding Link Color: 255; 0; 0
         Goal State Alpha: 1
         Goal State Color: 250; 128; 0
-        Interactive Marker Size: 0.2
+        Interactive Marker Size: 0.05
         Joint Violation Color: 255; 0; 255
         Planning Group: upper_body
         Query Goal State: false
-        Query Start State: false
+        Query Start State: true
         Show Workspace: false
         Start State Alpha: 1
         Start State Color: 0; 255; 0
@@ -936,7 +936,7 @@ Visualization Manager:
             Show Trail: false
         Robot Alpha: 0.5
         Show Robot Collision: false
-        Show Robot Visual: false
+        Show Robot Visual: true
       Value: true
   Enabled: true
   Global Options:
@@ -953,22 +953,22 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 2.52878
+      Distance: 1.56499
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.0394033
-        Y: 0.759257
-        Z: 9.38774e-07
+        X: 0.0354791
+        Y: 0.380752
+        Z: -2.53319e-07
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.469793
+      Pitch: 0.459797
       Target Frame: kuka_frame
       Value: XYOrbit (rviz)
-      Yaw: 5.19489
+      Yaw: 4.54677
     Saved: ~
 Window Geometry:
   Displays:
@@ -980,7 +980,7 @@ Window Geometry:
   Hide Right Dock: false
   Motion Planning:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000002a200000407fc0200000005fb000000100044006900730070006c006100790073010000004100000282000000dd00fffffffb0000000800480065006c00700000000342000000bb0000007600fffffffb0000000a0056006900650077007300000003b0000000b0000000b000fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e006701000002c90000017f0000017400ffffff0000047c0000040700000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000002a200000409fc0200000005fb000000100044006900730070006c006100790073010000004000000283000000dd00fffffffb0000000800480065006c00700000000342000000bb0000007600fffffffb0000000a0056006900650077007300000003b0000000b0000000b000fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e006701000002c9000001800000016e00ffffff0000047c0000040900000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
   Width: 1828

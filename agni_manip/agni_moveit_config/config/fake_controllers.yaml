@@ -282,3 +282,89 @@ controller_list:
       - floby_eyes_left_ud_joint
       - floby_eyes_right_lr_joint
       - floby_eyes_right_ud_joint
+  - name: fake_both_hands_controller
+    joints:
+      - l_WRJ2
+      - l_WRJ1
+      - l_FFJ4
+      - l_FFJ3
+      - l_FFJ2
+      - l_FFJ1
+      - l_LFJ5
+      - l_LFJ4
+      - l_LFJ3
+      - l_LFJ2
+      - l_LFJ1
+      - l_MFJ4
+      - l_MFJ3
+      - l_MFJ2
+      - l_MFJ1
+      - l_RFJ4
+      - l_RFJ3
+      - l_RFJ2
+      - l_RFJ1
+      - l_THJ5
+      - l_THJ4
+      - l_THJ3
+      - l_THJ2
+      - l_THJ1
+      - r_WRJ2
+      - r_WRJ1
+      - r_FFJ4
+      - r_FFJ3
+      - r_FFJ2
+      - r_FFJ1
+      - r_LFJ5
+      - r_LFJ4
+      - r_LFJ3
+      - r_LFJ2
+      - r_LFJ1
+      - r_MFJ4
+      - r_MFJ3
+      - r_MFJ2
+      - r_MFJ1
+      - r_RFJ4
+      - r_RFJ3
+      - r_RFJ2
+      - r_RFJ1
+      - r_THJ5
+      - r_THJ4
+      - r_THJ3
+      - r_THJ2
+      - r_THJ1
+  - name: fake_both_armhand_controller
+    joints:
+      - left_arm_0_joint
+      - left_arm_1_joint
+      - left_arm_2_joint
+      - left_arm_3_joint
+      - left_arm_4_joint
+      - left_arm_5_joint
+      - left_arm_6_joint
+      - l_WRJ2
+      - l_WRJ1
+      - right_arm_0_joint
+      - right_arm_1_joint
+      - right_arm_2_joint
+      - right_arm_3_joint
+      - right_arm_4_joint
+      - right_arm_5_joint
+      - right_arm_6_joint
+      - r_WRJ2
+      - r_WRJ1
+  - name: fake_both_arms_controller
+    joints:
+      - left_arm_0_joint
+      - left_arm_1_joint
+      - left_arm_2_joint
+      - left_arm_3_joint
+      - left_arm_4_joint
+      - left_arm_5_joint
+      - left_arm_6_joint
+      - right_arm_0_joint
+      - right_arm_1_joint
+      - right_arm_2_joint
+      - right_arm_3_joint
+      - right_arm_4_joint
+      - right_arm_5_joint
+      - right_arm_6_joint
