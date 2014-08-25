@@ -3,8 +3,8 @@
   <xacro:include filename="$(find agni_description)/urdf/util.urdf.xacro"/>
 
   <!-- head -->
-  <property name="flobi_elem_neck_beam_length" value="0.130"/>
-	<property name="flobi_elem_neck_tilt_length" value="0.005"/>
+  <property name="flobi_elem_neck_beam_length" value="0.1297"/>
+	<property name="flobi_elem_neck_tilt_length" value="0.0053"/>
 	<property name="flobi_elem_neck_hub_length" value="0.028"/>
 	<property name="flobi_elem_neck_mass" value="0.3"/>
 	<property name="flobi_elem_head_mass" value="2.0"/>
