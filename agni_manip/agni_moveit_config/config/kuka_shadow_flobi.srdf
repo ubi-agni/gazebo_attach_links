@@ -539,7 +539,6 @@
     <end_effector name="right_hand_ring_finger" parent_link="r_rftip" group="right_ring_finger" parent_group="right_hand" />
     <end_effector name="right_hand_little_finger" parent_link="r_lftip" group="right_little_finger" parent_group="right_hand" />
     <end_effector name="right_hand_thumb" parent_link="r_thtip" group="right_thumb" parent_group="right_hand" />
-    <end_effector name="flobi_gaze" parent_link="flobi_head_link" group="flobi_eyes" parent_group="flobi" />
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <virtual_joint name="bimanual_frame" type="fixed" parent_frame="world" child_link="kuka_frame" />
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
