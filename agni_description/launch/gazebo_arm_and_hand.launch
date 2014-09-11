@@ -5,6 +5,7 @@
   <include file="$(find sr_hand)/launch/gazebo/loaders/empty_world.launch"/>
   
   <!-- load frame description -->
+  <arg name="ARM" default="kuka"/>
   <param name="frame" command="$(find xacro)/xacro.py '$(find agni_description)/robots/frame.urdf.xacro'" />
   
   
@@ -20,25 +21,28 @@
   <arg name="L" default="0"/>
   <arg name="USE_PREFIX" default="1"/>
   <group if="$(arg R)">
-		<group if="$(arg L)">
-			<!-- BOTH arms & hands -->
-			<include file="$(find agni_description)/launch/both_arm_and_hand_gazebo.launch">
-				<arg name="use_prefix" value="$(arg USE_PREFIX)"/>
-			</include>
-		</group>	
-		<group unless="$(arg L)">
-			<!-- RIGHT arm & hand only -->
-			<include file="$(find agni_description)/launch/right_arm_and_hand_gazebo.launch">
-				<arg name="use_prefix" value="$(arg USE_PREFIX)"/>
-			</include>
-		</group>	
-	</group>	
-	<group unless="$(arg R)">
-		<!-- LEFT arm & hand only -->
-		<include file="$(find agni_description)/launch/left_arm_and_hand_gazebo.launch">
-			<arg name="use_prefix" value="$(arg USE_PREFIX)"/>
-		</include>
-	</group>		
+    <group if="$(arg L)">
+      <!-- BOTH arms & hands -->
+      <include file="$(find agni_description)/launch/both_arm_and_hand_gazebo.launch">
+        <arg name="use_prefix" value="$(arg USE_PREFIX)"/>
+        <arg name="arm_type" value="$(arg ARM)"/>
+      </include>
+    </group>  
+    <group unless="$(arg L)">
+      <!-- RIGHT arm & hand only -->
+      <include file="$(find agni_description)/launch/right_arm_and_hand_gazebo.launch">
+        <arg name="use_prefix" value="$(arg USE_PREFIX)"/>
+        <arg name="arm_type" value="$(arg ARM)"/>
+      </include>
+    </group>  
+  </group>  
+  <group unless="$(arg R)">
+    <!-- LEFT arm & hand only -->
+    <include file="$(find agni_description)/launch/left_arm_and_hand_gazebo.launch">
+      <arg name="use_prefix" value="$(arg USE_PREFIX)"/>
+      <arg name="arm_type" value="$(arg ARM)"/>
+    </include>
+  </group>    
   
  
 </launch>

@@ -1,53 +1,55 @@
 <launch>
-	<arg name="use_prefix" default="0"/>
-	<!-- upload parameters on the correct namespaces 
-	must be done before gazebo spawner to have the plugin controller manager
-	load on the sub namespaces -->
-	<group ns="rk">
-		<include file="$(find agni_description)/launch/kuka_upload.launch" >
+  <arg name="use_prefix" default="0"/>
+  <arg name="arm_type" default="kuka"/>
+  <!-- upload parameters on the correct namespaces 
+  must be done before gazebo spawner to have the plugin controller manager
+  load on the sub namespaces -->
+  <group ns="rk">
+    <include file="$(find agni_description)/launch/$(arg arm_type)_upload.launch" >
       <arg name="namespace" value="rk"/>
     </include>  
-	</group> 
-	
-	<group ns="rh">
-		<include file="$(find agni_description)/launch/sr_upload.launch" >
+  </group> 
+  
+  <group ns="rh">
+    <include file="$(find agni_description)/launch/sr_upload.launch" >
       <arg name="namespace" value="rh"/>
       <arg name="use_prefix" value="$(arg use_prefix)"/>
     </include>  
-	</group>
-	
+  </group>
+  
   <!-- Load the general right robot_description, spawn it, merge joint_states -->
   <group ns="right">
     <include file="$(find agni_description)/launch/single_arm_and_hand_gazebo_no_controllers.launch" >
      <!-- <arg name="init_pose" value="-x -0.5 -y 0 -z 0.05" />-->
       <arg name="namespace" value="right"/>
       <arg name="use_prefix" value="$(arg use_prefix)"/>
+      <arg name="arm_type" value="$(arg arm_type)"/>
     </include>
     
     <node pkg="topic_tools" type="relay"
-        name="kuka_joint_state_merger"
+        name="$(arg arm_type)_joint_state_merger"
         args="/rk/joint_states /right/joint_states" >
-		</node>
-	  <node pkg="topic_tools" type="relay"
+    </node>
+    <node pkg="topic_tools" type="relay"
         name="shadow_joint_state_merger"
         args="/rh/joint_states /right/joint_states" >
-		</node>
+    </node>
   
-	</group>
-	
-	<!-- Controllers for the arm -->
-	<group ns="rk">
-	  <include file="$(find agni_description)/launch/kuka_gazebo_bringup.launch" >
+  </group>
+  
+  <!-- Controllers for the arm -->
+  <group ns="rk">
+    <include file="$(find agni_description)/launch/$(arg arm_type)_gazebo_bringup.launch" >
       <arg name="namespace" value="rk"/>
     </include>  
   </group> 
    
   <!-- Controllers for the hand -->
   <group ns="rh"> 
-		<include file="$(find agni_description)/launch/hand_controllers.launch">
-			<arg name="namespace" value="rh" />
-			<arg name="use_prefix" value="$(arg use_prefix)"/>
-		</include>
+    <include file="$(find agni_description)/launch/hand_controllers.launch">
+      <arg name="namespace" value="rh" />
+      <arg name="use_prefix" value="$(arg use_prefix)"/>
+    </include>
   </group> 
   
 </launch>
