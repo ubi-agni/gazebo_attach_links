@@ -1,5 +1,5 @@
 <launch>
-  <arg name="namespace" default="rk"/>
+  <arg name="namespace" default="ra"/>
 	<arg name="init_pose" default="-x 0 -y 0 -z 0.1"/>
 	
   <!-- load robot_description -->

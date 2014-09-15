@@ -2,8 +2,20 @@
 <!-- arguments R and L to select left or right or both arm and hand -->
 
   <!-- start gazebo with an empty plane -->
-  <include file="$(find sr_hand)/launch/gazebo/loaders/empty_world.launch"/>
+  <!-- Gazebo world file to load. -->
+  <arg name="world_name" default="$(find sr_description)/other/worlds/shadowhand.world" />
+  <arg name="gui" default="true"/>
   
+  <!-- We want gazebo to stay in the root namespace but the nodes below to be
+  relative. Can then launch this inside a namespace to namespace the hand. -->
+  <group ns="/">
+      <!-- We reuse the logic in empty_world.launch, changing only the name of the world to be launched -->
+      <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(arg world_name)"/>
+        <arg name="gui" value="$(arg gui)"/>
+      </include>
+  </group>
+
   <!-- load frame description -->
   <arg name="ARM" default="kuka"/>
   <param name="frame" command="$(find xacro)/xacro.py '$(find agni_description)/robots/frame.urdf.xacro'" />
@@ -14,7 +26,7 @@
 
 
   <!-- spawn the support model -->
-  <node name="spawn_support" pkg="gazebo" type="spawn_model" args="-urdf -param frame -model support_model" respawn="false" output="screen" />
+  <node name="spawn_support" pkg="gazebo_ros" type="spawn_model" args="-urdf -param frame -model support_model" respawn="false" output="screen" />
   
   <!-- include our robots -->
   <arg name="R" default="1"/>

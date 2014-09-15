@@ -1,0 +1,8 @@
+<launch>
+	<!-- load description of pa10+shadow hand into robot_description -->
+	<arg name="namespace" default="right"/>
+	<arg name="use_prefix" default="0"/>
+  <!-- load robot_description -->
+  <param if="$(arg use_prefix)" name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/$(arg namespace)_pa10_shadow_prefix_gazebo.urdf.xacro'" />
+  <param unless="$(arg use_prefix)" name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/$(arg namespace)_pa10_shadow_gazebo.urdf.xacro'" />
+</launch>

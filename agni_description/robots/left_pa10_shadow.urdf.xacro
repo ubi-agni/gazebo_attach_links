@@ -1,20 +1,19 @@
 <?xml version="1.0"?>
-<robot name="left_kuka_shadow"
+<robot name="left_pa10_shadow"
      xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:include filename="$(find agni_description)/kuka/lwr.urdf.xacro"/> 
-  <xacro:include filename="$(find agni_description)/kuka/lwr_controllers.gazebo.xacro"/> 
+  <xacro:include filename="$(find agni_description)/pa10/pa10-a.urdf.xacro"/> 
+  <!-- <xacro:include filename="$(find agni_description)/pa10/lwr_controllers.gazebo.xacro"/> -->
   <xacro:include filename="$(find agni_description)/urdf/sr_gazebo.urdf.xacro" /> 
   <xacro:include filename="$(find sr_description)/hand/xacro/full_hand.urdf.xacro" />
-  <xacro:include filename="$(find agni_description)/calibration/default_cal.xml"/>
+  <xacro:include filename="$(find agni_description)/calibration/pa10_cal.xml"/>
   
   <!-- prefix can be true or false to prefix joint names or not -->
   <!-- controller can be true or false to use gazebo controllers or not -->
   <!-- parent is the frame the robot is fixed to -->
   <!-- origin is the position of the robot in this frame -->
-  <xacro:macro name="leftkukashadow" params="parent *origin prefix controller">
-    
+  <xacro:macro name="leftpa10shadow" params="parent *origin prefix controller">
     <!-- KUKA arm -->
-    <xacro:kuka_lwr_arm name="left_" reflect="-1" tool_name=""/>
+    <xacro:pa10_arm name="left_"/>
     <joint name="left_frame_placement" type="fixed">
        <insert_block name="origin" />
       <parent link="${parent}"/>
@@ -23,13 +22,14 @@
     
     <xacro:if value="${controller}">  
     <!-- add controllers -->
-    <xacro:left_lwr_arm_gazebo_controller namespace="la" port="49940"/>
+       <!-- pa10 controllers HERE -->
       <xacro:shadow_gazebo_controller_manager namespace="lh" />
     </xacro:if>  
 
+    
     <xacro:if value="${prefix}">
       <!-- Shadow Hands --> 
-      <xacro:shadowhand muscletrans="false" muscle="false" bio="false" ubi="true" eli="false" reflect="-1.0" prefix="l_"  />
+      <xacro:shadowhand muscletrans="false" muscle="false" bio="false" ubi="true" eli="false" reflect="1.0" prefix="l_"  />
       
       <!-- Link arm and hand -->  
       <joint name="left_arm_hand_mount" type="fixed">
@@ -39,7 +39,7 @@
       </joint>
     </xacro:if>  
     <xacro:unless value="${prefix}">
-      <xacro:shadowhand muscletrans="false" muscle="false" bio="false" ubi="true" eli="false" reflect="-1.0" prefix=""  />
+      <xacro:shadowhand muscletrans="false" muscle="false" bio="false" ubi="true" eli="false" reflect="1.0" prefix=""  />
       <!-- Shadow Hands --> 
       <!-- Link arm and hand -->  
       <joint name="left_arm_hand_mount" type="fixed">

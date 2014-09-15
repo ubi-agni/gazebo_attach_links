@@ -1,11 +1,11 @@
 <launch>
+<!-- arguments RK and LK to select left or right or both arm -->
 
   <!-- start gazebo with an empty plane -->
   <!-- Gazebo world file to load. -->
   <arg name="world_name" default="$(find sr_description)/other/worlds/shadowhand.world" />
   <arg name="gui" default="true"/>
 
-  <!-- Gazebo world file to load. -->
   <!-- We want gazebo to stay in the root namespace but the nodes below to be
   relative. Can then launch this inside a namespace to namespace the hand. -->
   <group ns="/">
@@ -23,19 +23,19 @@
   <node name="spawn_support" pkg="gazebo_ros" type="spawn_model" args="-urdf -param frame -model support_model" respawn="false" output="screen" />
   
   <!-- include our robots -->
-  <arg name="RK" default="1"/>
-  <arg name="LK" default="0"/>
-  <group if="$(arg RK)">
-		<group if="$(arg LK)">
+  <arg name="RA" default="1"/>
+  <arg name="LA" default="0"/>
+  <group if="$(arg RA)">
+		<group if="$(arg LA)">
 			  <!-- BOTH hands -->
 			   <include file="$(find agni_description)/launch/both_arm_gazebo.launch"/>
 		</group>	
-		<group unless="$(arg LK)">
+		<group unless="$(arg LA)">
 				<!-- RIGHT hand only -->
 				 <include file="$(find agni_description)/launch/right_arm_gazebo.launch"/>
 		</group>	
 	</group>	
-	<group unless="$(arg RK)">
+	<group unless="$(arg RA)">
 			<!-- LEFT hand only -->
 			   <include file="$(find agni_description)/launch/left_arm_gazebo.launch"/>
 	</group>		

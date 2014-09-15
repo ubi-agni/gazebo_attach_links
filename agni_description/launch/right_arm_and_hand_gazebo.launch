@@ -4,9 +4,9 @@
   <!-- upload parameters on the correct namespaces 
   must be done before gazebo spawner to have the plugin controller manager
   load on the sub namespaces -->
-  <group ns="rk">
+  <group ns="ra">
     <include file="$(find agni_description)/launch/$(arg arm_type)_upload.launch" >
-      <arg name="namespace" value="rk"/>
+      <arg name="namespace" value="ra"/>
     </include>  
   </group> 
   
@@ -28,7 +28,7 @@
     
     <node pkg="topic_tools" type="relay"
         name="$(arg arm_type)_joint_state_merger"
-        args="/rk/joint_states /right/joint_states" >
+        args="/ra/joint_states /right/joint_states" >
     </node>
     <node pkg="topic_tools" type="relay"
         name="shadow_joint_state_merger"
@@ -38,9 +38,9 @@
   </group>
   
   <!-- Controllers for the arm -->
-  <group ns="rk">
+  <group ns="ra">
     <include file="$(find agni_description)/launch/$(arg arm_type)_gazebo_bringup.launch" >
-      <arg name="namespace" value="rk"/>
+      <arg name="namespace" value="ra"/>
     </include>  
   </group> 
    

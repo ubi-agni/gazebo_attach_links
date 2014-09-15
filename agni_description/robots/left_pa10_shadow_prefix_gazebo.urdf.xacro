@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<robot name="left_pa10_shadow"
+     xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find agni_description)/robots/left_pa10_shadow.urdf.xacro" />
+  <xacro:include filename="$(find agni_description)/calibration/pa10_cal.xml"/>
+  
+  <link name="world" />
+  <!-- PA10 Shadow arm and hand  -->
+  <xacro:leftpa10shadow parent="world" prefix="true" controller="true">
+    <origin xyz="${cal_left_arm_x} ${cal_left_arm_y} ${cal_left_arm_z}"
+        rpy="${cal_left_arm_roll} ${cal_left_arm_pitch} ${cal_left_arm_yaw}"/>
+  </xacro:leftpa10shadow>
+</robot>

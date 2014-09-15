@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="lk_kuka"
+<robot name="la_kuka"
 		 xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:include filename="$(find agni_description)/kuka/lwr.urdf.xacro"/>  
   <xacro:include filename="$(find agni_description)/kuka/lwr_controllers.gazebo.xacro"/>  
@@ -7,6 +7,6 @@
   <!-- KUKA arm -->
   <xacro:kuka_lwr_arm name="left_" reflect="-1" tool_name=""/>
     
-  <xacro:left_lwr_arm_gazebo_controller namespace="lk" port="49938"/>
+  <xacro:left_lwr_arm_gazebo_controller namespace="la" port="49938"/>
 
 </robot>

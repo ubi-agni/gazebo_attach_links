@@ -1,0 +1,11 @@
+<launch>
+	<arg name="namespace" default="ra"/>
+	 
+	<!-- Controllers for the pa10 -->
+  <!-- controller parameter for pa10-->
+  <rosparam command="load" file="$(find agni_description)/pa10/$(arg namespace)_controllers.yaml" />
+ 
+  <!-- load controllers for pa10-->
+  <!-- load controllers -->
+    
+</launch>

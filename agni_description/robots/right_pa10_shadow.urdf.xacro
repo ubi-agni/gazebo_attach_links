@@ -1,20 +1,19 @@
 <?xml version="1.0"?>
-<robot name="right_kuka_shadow"
+<robot name="right_pa10_shadow"
      xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:include filename="$(find agni_description)/kuka/lwr.urdf.xacro"/> 
-  <xacro:include filename="$(find agni_description)/kuka/lwr_controllers.gazebo.xacro"/> 
+  <xacro:include filename="$(find agni_description)/pa10/pa10-a.urdf.xacro"/> 
+  <!-- <xacro:include filename="$(find agni_description)/pa10/lwr_controllers.gazebo.xacro"/> -->
   <xacro:include filename="$(find agni_description)/urdf/sr_gazebo.urdf.xacro" /> 
   <xacro:include filename="$(find sr_description)/hand/xacro/full_hand.urdf.xacro" />
-  <xacro:include filename="$(find agni_description)/calibration/default_cal.xml"/>
+  <xacro:include filename="$(find agni_description)/calibration/pa10_cal.xml"/>
   
   <!-- prefix can be true or false to prefix joint names or not -->
   <!-- controller can be true or false to use gazebo controllers or not -->
   <!-- parent is the frame the robot is fixed to -->
   <!-- origin is the position of the robot in this frame -->
-  <xacro:macro name="rightkukashadow" params="parent *origin prefix controller">
-    
+  <xacro:macro name="rightpa10shadow" params="parent *origin prefix controller">
     <!-- KUKA arm -->
-    <xacro:kuka_lwr_arm name="right_" reflect="1" tool_name=""/>
+    <xacro:pa10_arm name="right_"/>
     <joint name="right_frame_placement" type="fixed">
        <insert_block name="origin" />
       <parent link="${parent}"/>
@@ -23,7 +22,7 @@
     
     <xacro:if value="${controller}">  
     <!-- add controllers -->
-    <xacro:right_lwr_arm_gazebo_controller namespace="ra" port="49940"/>
+       <!-- pa10 controllers HERE -->
       <xacro:shadow_gazebo_controller_manager namespace="rh" />
     </xacro:if>  
 

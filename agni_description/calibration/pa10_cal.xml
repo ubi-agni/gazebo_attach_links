@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<root xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find agni_description)/urdf/util.urdf.xacro"/>
+
+  <!-- left arm base -->
+  <property name="cal_right_arm_x"     value="-0.168" />
+  <property name="cal_right_arm_y"     value="0.855" />
+  <property name="cal_right_arm_z"     value="2.193" />
+  <property name="cal_right_arm_roll"  value="${3.141592-0.261799}" /> <!---" />   -->   
+  <property name="cal_right_arm_pitch" value="0" />
+  <property name="cal_right_arm_yaw"   value="-1.57079" />  <!---  -->
+  <!-- right arm base -->
+  <property name="cal_left_arm_x"     value="${-cal_right_arm_x}" />
+  <property name="cal_left_arm_y"     value="${cal_right_arm_y}" />
+  <property name="cal_left_arm_z"     value="${cal_right_arm_z}" />
+  <property name="cal_left_arm_roll"  value="${cal_right_arm_roll}" />
+  <property name="cal_left_arm_pitch" value="${cal_right_arm_pitch}" />
+  <property name="cal_left_arm_yaw"   value="${-cal_right_arm_yaw}" />
+
+
+</root>

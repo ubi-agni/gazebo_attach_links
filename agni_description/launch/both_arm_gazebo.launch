@@ -1,4 +1,9 @@
 <launch>
-  <include file="$(find agni_description)/launch/right_arm_gazebo.launch" />
+  <arg name="arm_type" default="kuka"/>
+  <include file="$(find agni_description)/launch/right_arm_gazebo.launch">
+    <arg name="arm_type" value="$(arg arm_type)"/>
+  </include>  
   <include file="$(find agni_description)/launch/left_arm_gazebo.launch" />
+    <arg name="arm_type" value="$(arg arm_type)"/>
+  </include> 
 </launch>

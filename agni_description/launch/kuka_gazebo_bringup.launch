@@ -1,5 +1,5 @@
 <launch>
-	<arg name="namespace" default="rk"/>
+	<arg name="namespace" default="ra"/>
 	 
 	<!-- Controllers for the kuka -->
   <!-- controller parameter for Kuka-->
