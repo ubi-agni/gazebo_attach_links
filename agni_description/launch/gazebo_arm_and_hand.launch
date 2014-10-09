@@ -22,7 +22,7 @@
   
   
   <!-- set robot description for combined table + 2 robot arm and hand -->
-  <param name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/both_kuka_shadow.urdf.xacro'" />
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/both_$(arg ARM)_shadow.urdf.xacro'" />
 
 
   <!-- spawn the support model -->

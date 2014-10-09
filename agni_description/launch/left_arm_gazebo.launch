@@ -1,8 +1,10 @@
 <launch>
+  <arg name="arm_type" default="kuka"/>
   <group ns="la">
-        <include file="$(find agni_description)/launch/single_kuka_gazebo.launch" >
+    <include file="$(find agni_description)/launch/single_arm_gazebo.launch" >
       <arg name="init_pose" value="-x -0.5 -y 0 -z 0.05" />
       <arg name="namespace" value="la"/>
+      <arg name="arm_type" value="$(arg arm_type)"/>
     </include>
   </group>
 </launch>

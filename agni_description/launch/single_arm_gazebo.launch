@@ -1,21 +1,23 @@
 <launch>
   <arg name="namespace" default="ra"/>
+  <arg name="arm_type" default="kuka"/>
 	<arg name="init_pose" default="-x 0 -y 0 -z 0.1"/>
 	
   <!-- load robot_description -->
-  <include file="$(find agni_description)/launch/kuka_upload.launch" >
+  <include file="$(find agni_description)/launch/arm_upload.launch" >
      <arg name="namespace" value="$(arg namespace)"/>
+     <arg name="arm_type" value="$(arg arm_type)"/>
   </include>
   
   <param name="tf_prefix" value="$(arg namespace)"/>
   <include file="$(find agni_description)/launch/gazebo_robot_spawner.launch" >
 		<arg name="init_pose" value="$(arg init_pose)" />
-		<arg name="robot_name" value="$(arg namespace)_kuka" />
+		<arg name="robot_name" value="$(arg namespace)_$(arg arm_type)" />
 	</include>
   
   
-  <!-- Controllers for the kuka -->
-	<include file="$(find agni_description)/launch/kuka_gazebo_bringup.launch" >
+  <!-- Controllers for the arm -->
+	<include file="$(find agni_description)/launch/$(arg arm_type)_gazebo_bringup.launch" >
 		<arg name="namespace" value="$(arg namespace)" />
 	</include>	
 

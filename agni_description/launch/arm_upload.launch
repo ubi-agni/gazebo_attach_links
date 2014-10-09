@@ -1,0 +1,8 @@
+<launch>
+	<!-- load description of the arm into robot_description -->
+	<arg name="namespace" default="ra"/>
+  <arg name="arm_type" default="kuka"/>
+	
+  <!-- load robot_description -->
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find agni_description)/robots/$(arg namespace)_$(arg arm_type)_gazebo.urdf.xacro'" />
+</launch>

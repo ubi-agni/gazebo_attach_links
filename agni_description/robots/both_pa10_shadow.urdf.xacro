@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<robot name="pa10_shadow"
+     xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find agni_description)/robots/right_pa10_shadow.urdf.xacro" />
+  <xacro:include filename="$(find agni_description)/robots/left_pa10_shadow.urdf.xacro" />
+  <xacro:include filename="$(find agni_description)/calibration/pa10_cal.xml"/>
+  <xacro:include filename="$(find agni_description)/urdf/frame-half.urdf.xacro"/>
+
+  <xacro:frame-half prefix="pa10" thickness="0.09" width="1.92" depth="1.82"
+              height="1.26" tableHeight="1.00"/>
+
+  <!-- KUKA Shadow arm and hand  -->
+  <xacro:rightpa10shadow parent="pa10_frame" prefix="true" controller="false">
+    <origin xyz="${cal_right_arm_x} ${cal_right_arm_y} ${cal_right_arm_z}"
+        rpy="${cal_right_arm_roll} ${cal_right_arm_pitch} ${cal_right_arm_yaw}"/>
+  </xacro:rightpa10shadow>
+    
+  <xacro:leftpa10shadow parent="pa10_frame" prefix="true" controller="false">
+    <origin xyz="${cal_left_arm_x} ${cal_left_arm_y} ${cal_left_arm_z}"
+        rpy="${cal_left_arm_roll} ${cal_left_arm_pitch} ${cal_left_arm_yaw}"/>
+  </xacro:leftpa10shadow>   
+</robot>

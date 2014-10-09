@@ -6,8 +6,9 @@
   load on the sub namespaces -->
   
   <group ns="la">
-    <include file="$(find agni_description)/launch/$(arg arm_type)_upload.launch" >
+    <include file="$(find agni_description)/launch/arm_upload.launch" >
       <arg name="namespace" value="la"/>
+      <arg name="arm_type" value="$(arg arm_type)"/>
     </include>  
   </group> 
     

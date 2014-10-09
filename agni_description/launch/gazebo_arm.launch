@@ -17,6 +17,7 @@
   </group>
   
   <!-- load frame description -->
+  <arg name="ARM" default="kuka"/>
   <param name="frame" command="$(find xacro)/xacro.py '$(find agni_description)/robots/frame.urdf.xacro'" />
 
   <!-- spawn the support model -->
@@ -28,16 +29,22 @@
   <group if="$(arg RA)">
 		<group if="$(arg LA)">
 			  <!-- BOTH hands -->
-			   <include file="$(find agni_description)/launch/both_arm_gazebo.launch"/>
+			  <include file="$(find agni_description)/launch/both_arm_gazebo.launch">
+            <arg name="arm_type" value="$(arg ARM)"/>
+        </include>
 		</group>	
 		<group unless="$(arg LA)">
 				<!-- RIGHT hand only -->
-				 <include file="$(find agni_description)/launch/right_arm_gazebo.launch"/>
+        <include file="$(find agni_description)/launch/right_arm_gazebo.launch">
+            <arg name="arm_type" value="$(arg ARM)"/>
+        </include>
 		</group>	
 	</group>	
 	<group unless="$(arg RA)">
 			<!-- LEFT hand only -->
-			   <include file="$(find agni_description)/launch/left_arm_gazebo.launch"/>
+        <include file="$(find agni_description)/launch/left_arm_gazebo.launch">
+            <arg name="arm_type" value="$(arg ARM)"/>
+        </include>
 	</group>		
   
  

@@ -4,9 +4,11 @@
   <!-- upload parameters on the correct namespaces 
   must be done before gazebo spawner to have the plugin controller manager
   load on the sub namespaces -->
+  
   <group ns="ra">
-    <include file="$(find agni_description)/launch/$(arg arm_type)_upload.launch" >
+    <include file="$(find agni_description)/launch/arm_upload.launch" >
       <arg name="namespace" value="ra"/>
+      <arg name="arm_type" value="$(arg arm_type)"/>
     </include>  
   </group> 
   
@@ -20,7 +22,7 @@
   <!-- Load the general right robot_description, spawn it, merge joint_states -->
   <group ns="right">
     <include file="$(find agni_description)/launch/single_arm_and_hand_gazebo_no_controllers.launch" >
-     <!-- <arg name="init_pose" value="-x -0.5 -y 0 -z 0.05" />-->
+      <!-- <arg name="init_pose" value="-x -0.5 -y 0 -z 0.05" />-->
       <arg name="namespace" value="right"/>
       <arg name="use_prefix" value="$(arg use_prefix)"/>
       <arg name="arm_type" value="$(arg arm_type)"/>
@@ -34,7 +36,6 @@
         name="shadow_joint_state_merger"
         args="/rh/joint_states /right/joint_states" >
     </node>
-  
   </group>
   
   <!-- Controllers for the arm -->
