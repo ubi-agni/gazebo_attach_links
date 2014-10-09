@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot name="ra_pa10"
 		 xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:include filename="$(find agni_description)/pa10/pa10-a.urdf.xacro"/> 
+  <xacro:include filename="$(find agni_description)/pa10/pa10-c.urdf.xacro"/> 
   <!-- <xacro:include filename="$(find agni_description)/pa10/lwr_controllers.gazebo.xacro"/> -->
   
   <!-- PA10 arm -->

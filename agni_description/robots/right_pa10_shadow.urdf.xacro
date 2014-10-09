@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot name="right_pa10_shadow"
      xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:include filename="$(find agni_description)/pa10/pa10-a.urdf.xacro"/> 
+  <xacro:include filename="$(find agni_description)/pa10/pa10-c.urdf.xacro"/> 
   <!-- <xacro:include filename="$(find agni_description)/pa10/lwr_controllers.gazebo.xacro"/> -->
   <xacro:include filename="$(find agni_description)/urdf/sr_gazebo.urdf.xacro" /> 
   <xacro:include filename="$(find sr_description)/hand/xacro/full_hand.urdf.xacro" />
@@ -13,7 +13,7 @@
   <!-- origin is the position of the robot in this frame -->
   <xacro:macro name="rightpa10shadow" params="parent *origin prefix controller">
     <!-- KUKA arm -->
-    <xacro:pa10_arm name="right_"/>
+    <xacro:pa10c_arm name="right_"/>
     <joint name="right_frame_placement" type="fixed">
        <insert_block name="origin" />
       <parent link="${parent}"/>

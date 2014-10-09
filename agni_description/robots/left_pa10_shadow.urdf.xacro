@@ -13,7 +13,7 @@
   <!-- origin is the position of the robot in this frame -->
   <xacro:macro name="leftpa10shadow" params="parent *origin prefix controller">
     <!-- KUKA arm -->
-    <xacro:pa10_arm name="left_"/>
+    <xacro:pa10a_arm name="left_"/>
     <joint name="left_frame_placement" type="fixed">
        <insert_block name="origin" />
       <parent link="${parent}"/>
