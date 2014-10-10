@@ -23,167 +23,7 @@
               <color sid="ambient">0 0 0 1</color>
             </ambient>
             <diffuse>
-              <color sid="diffuse">0.4 0.4 0.4 1</color>
-            </diffuse>
-            <specular>
-              <color sid="specular">0 0 0 1</color>
-            </specular>
-            <shininess>
-              <float sid="shininess">256</float>
-            </shininess>
-            <index_of_refraction>
-              <float sid="index_of_refraction">1</float>
-            </index_of_refraction>
-          </phong>
-        </technique>
-        <extra>
-          <technique profile="GOOGLEEARTH">
-            <double_sided>1</double_sided>
-          </technique>
-        </extra>
-      </profile_COMMON>
-      <extra><technique profile="MAX3D"><double_sided>1</double_sided></technique></extra>
-    </effect>
-    <effect id="XXX_026-effect">
-      <profile_COMMON>
-        <technique sid="common">
-          <phong>
-            <emission>
-              <color sid="emission">0 0 0 1</color>
-            </emission>
-            <ambient>
-              <color sid="ambient">0 0 0 1</color>
-            </ambient>
-            <diffuse>
-              <color sid="diffuse">0.4 0.4 0.4 1</color>
-            </diffuse>
-            <specular>
-              <color sid="specular">0 0 0 1</color>
-            </specular>
-            <shininess>
-              <float sid="shininess">256</float>
-            </shininess>
-            <index_of_refraction>
-              <float sid="index_of_refraction">1</float>
-            </index_of_refraction>
-          </phong>
-        </technique>
-        <extra>
-          <technique profile="GOOGLEEARTH">
-            <double_sided>1</double_sided>
-          </technique>
-        </extra>
-      </profile_COMMON>
-      <extra><technique profile="MAX3D"><double_sided>1</double_sided></technique></extra>
-    </effect>
-    <effect id="XXX_025-effect">
-      <profile_COMMON>
-        <technique sid="common">
-          <phong>
-            <emission>
-              <color sid="emission">0 0 0 1</color>
-            </emission>
-            <ambient>
-              <color sid="ambient">0 0 0 1</color>
-            </ambient>
-            <diffuse>
-              <color sid="diffuse">0.4 0.4 0.4 1</color>
-            </diffuse>
-            <specular>
-              <color sid="specular">0 0 0 1</color>
-            </specular>
-            <shininess>
-              <float sid="shininess">256</float>
-            </shininess>
-            <index_of_refraction>
-              <float sid="index_of_refraction">1</float>
-            </index_of_refraction>
-          </phong>
-        </technique>
-        <extra>
-          <technique profile="GOOGLEEARTH">
-            <double_sided>1</double_sided>
-          </technique>
-        </extra>
-      </profile_COMMON>
-      <extra><technique profile="MAX3D"><double_sided>1</double_sided></technique></extra>
-    </effect>
-    <effect id="XXX_024-effect">
-      <profile_COMMON>
-        <technique sid="common">
-          <phong>
-            <emission>
-              <color sid="emission">0 0 0 1</color>
-            </emission>
-            <ambient>
-              <color sid="ambient">0 0 0 1</color>
-            </ambient>
-            <diffuse>
-              <color sid="diffuse">0.4 0.4 0.4 1</color>
-            </diffuse>
-            <specular>
-              <color sid="specular">0 0 0 1</color>
-            </specular>
-            <shininess>
-              <float sid="shininess">256</float>
-            </shininess>
-            <index_of_refraction>
-              <float sid="index_of_refraction">1</float>
-            </index_of_refraction>
-          </phong>
-        </technique>
-        <extra>
-          <technique profile="GOOGLEEARTH">
-            <double_sided>1</double_sided>
-          </technique>
-        </extra>
-      </profile_COMMON>
-      <extra><technique profile="MAX3D"><double_sided>1</double_sided></technique></extra>
-    </effect>
-    <effect id="XXX_028-effect">
-      <profile_COMMON>
-        <technique sid="common">
-          <phong>
-            <emission>
-              <color sid="emission">0 0 0 1</color>
-            </emission>
-            <ambient>
-              <color sid="ambient">0 0 0 1</color>
-            </ambient>
-            <diffuse>
-              <color sid="diffuse">0.4 0.4 0.4 1</color>
-            </diffuse>
-            <specular>
-              <color sid="specular">0 0 0 1</color>
-            </specular>
-            <shininess>
-              <float sid="shininess">256</float>
-            </shininess>
-            <index_of_refraction>
-              <float sid="index_of_refraction">1</float>
-            </index_of_refraction>
-          </phong>
-        </technique>
-        <extra>
-          <technique profile="GOOGLEEARTH">
-            <double_sided>1</double_sided>
-          </technique>
-        </extra>
-      </profile_COMMON>
-      <extra><technique profile="MAX3D"><double_sided>1</double_sided></technique></extra>
-    </effect>
-    <effect id="XXX_023-effect">
-      <profile_COMMON>
-        <technique sid="common">
-          <phong>
-            <emission>
-              <color sid="emission">0 0 0 1</color>
-            </emission>
-            <ambient>
-              <color sid="ambient">0 0 0 1</color>
-            </ambient>
-            <diffuse>
-              <color sid="diffuse">0.4 0.4 0.4 1</color>
+               <color sid="diffuse">0.391552 0.5697281 0.614912 1</color>
             </diffuse>
             <specular>
               <color sid="specular">0 0 0 1</color>
@@ -208,21 +48,6 @@
   <library_materials>
     <material id="XXX_027-material" name="XXX_027">
       <instance_effect url="#XXX_027-effect"/>
-    </material>
-    <material id="XXX_026-material" name="XXX_026">
-      <instance_effect url="#XXX_026-effect"/>
-    </material>
-    <material id="XXX_025-material" name="XXX_025">
-      <instance_effect url="#XXX_025-effect"/>
-    </material>
-    <material id="XXX_024-material" name="XXX_024">
-      <instance_effect url="#XXX_024-effect"/>
-    </material>
-    <material id="XXX_028-material" name="XXX_028">
-      <instance_effect url="#XXX_028-effect"/>
-    </material>
-    <material id="XXX_023-material" name="XXX_023">
-      <instance_effect url="#XXX_023-effect"/>
     </material>
   </library_materials>
   <library_geometries>
@@ -269,11 +94,6 @@
           <bind_material>
             <technique_common>
               <instance_material symbol="XXX_027-material" target="#XXX_027-material"/>
-              <instance_material symbol="XXX_026-material" target="#XXX_026-material"/>
-              <instance_material symbol="XXX_025-material" target="#XXX_025-material"/>
-              <instance_material symbol="XXX_024-material" target="#XXX_024-material"/>
-              <instance_material symbol="XXX_028-material" target="#XXX_028-material"/>
-              <instance_material symbol="XXX_023-material" target="#XXX_023-material"/>
             </technique_common>
           </bind_material>
         </instance_geometry>
