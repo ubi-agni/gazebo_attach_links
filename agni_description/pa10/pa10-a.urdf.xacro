@@ -16,15 +16,21 @@
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0 0.115" rpy="0 0 0"/>
+      <origin xyz="0 0 0.100" rpy="0 0 0"/>
       <geometry>
-		  <cylinder length="0.23" radius="0.112"/>
+		  <cylinder length="0.20" radius="0.115"/>
+      </geometry>
+    </collision>
+    <collision>
+       <origin xyz="0 0.120 0.060" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.130 0.060 0.060" />
       </geometry>
     </collision>
     <inertial>
-      <mass value="1" />
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+      <mass value="3.04" />
+      <origin xyz="0 0 0.075" rpy="0 0 0"/>
+      <inertia ixx="0.0193" ixy="0" ixz="0" iyy="0.0193" iyz="0" izz="0.0184"/>
     </inertial>
   </link>
   <link name="${name}arm_1_link">
@@ -35,15 +41,27 @@
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0.210" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://agni_description/pa10/meshes/pa-7a/link1_mesh.dae" scale="1 1 1" />
+        <cylinder length="0.020" radius="0.110"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0.0 0.104 0.298" rpy="0 0 0"/>
+      <geometry>
+		  <box size="0.140 0.05 0.180" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0.0 -0.104 0.298" rpy="0 0 0"/>
+      <geometry>
+		  <box size="0.140 0.05 0.180" />
       </geometry>
     </collision>
     <inertial>
-      <mass value="1" />
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+      <mass value="9.78" />
+      <origin xyz="0 0 0.148" rpy="0 0 0"/>
+      <inertia ixx="0.145" ixy="0" ixz="0" iyy="0.145" iyz="0" izz="0.049"/>
     </inertial>
   </link>
   <link name="${name}arm_2_link">
@@ -54,15 +72,21 @@
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0 -0.315" rpy="0 0 0"/>
+      <origin xyz="0 0 0.181" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://agni_description/pa10/meshes/pa-7a/link2_mesh.dae" scale="1 1 1" />
+        <cylinder length="0.266" radius="0.07"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0 0 0.0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder length="0.160" radius="0.075"/>
       </geometry>
     </collision>
     <inertial>
-      <mass value="1" />
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+      <mass value="8.41" />
+      <origin xyz="0 0 0.06325" rpy="0 0 0"/>
+      <inertia ixx="0.1316" ixy="0" ixz="0" iyy="0.1316" iyz="0" izz="0.0206"/>
     </inertial>
   </link>
   <link name="${name}arm_3_link">
@@ -73,15 +97,27 @@
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0 -0.315" rpy="0 0 0"/>
+      <origin xyz="0 0 0.336" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://agni_description/pa10/meshes/pa-7a/link3_mesh.dae" scale="1 1 1" />
+         <box size="0.120 0.116 0.044" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0.0 0.083 0.411" rpy="0 0 0"/>
+      <geometry>
+		  <box size="0.120 0.05 0.20" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0.0 -0.083 0.411" rpy="0 0 0"/>
+      <geometry>
+		  <box size="0.120 0.05 0.20" />
       </geometry>
     </collision>
     <inertial>
-      <mass value="1" />
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+      <mass value="3.51" />
+      <origin xyz="0 0 0.3605" rpy="0 0 0"/>
+      <inertia ixx="0.0298" ixy="0" ixz="0" iyy="0.0298" iyz="0" izz="0.009"/>
     </inertial>
   </link>
   <link name="${name}arm_4_link">
@@ -92,15 +128,21 @@
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0 -0.765" rpy="0 0 0"/>
+      <origin xyz="0 0 0.150" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://agni_description/pa10/meshes/pa-7a/link4_mesh.dae" scale="1 1 1" />
+        <cylinder length="0.248" radius="0.055"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0 0 0.0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder length="0.116" radius="0.055"/>
       </geometry>
     </collision>
     <inertial>
-      <mass value="1" />
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+      <mass value="4.31" />
+      <origin xyz="0 0 0.04609" rpy="0 0 0"/>
+      <inertia ixx="0.0493" ixy="0" ixz="0" iyy="0.0493" iyz="0" izz="0.0065"/>
     </inertial>
   </link>
   <link name="${name}arm_5_link">
@@ -111,15 +153,27 @@
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0 -0.765" rpy="0 0 0"/>
+      <origin xyz="0 0 0.300" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://agni_description/pa10/meshes/pa-7a/link5_mesh.dae" scale="1 1 1" />
+         <box size="0.09 0.082 0.070" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0.0 0.051 0.401" rpy="0 0 0"/>
+      <geometry>
+		  <box size="0.09 0.03 0.284" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0.0 -0.051 0.401" rpy="0 0 0"/>
+      <geometry>
+		  <box size="0.09 0.03 0.284" />
       </geometry>
     </collision>
     <inertial>
-      <mass value="1" />
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+      <mass value="3.45" />
+      <origin xyz="0 0 0.335" rpy="0 0 0"/>
+      <inertia ixx="0.0486" ixy="0" ixz="0" iyy="0.0486" iyz="0" izz="0.0052"/>
     </inertial>
   </link>
   <link name="${name}arm_6_link">
@@ -130,15 +184,15 @@
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0 -1.265" rpy="0 0 0"/>
+      <origin xyz="0 0 -0.045" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://agni_description/pa10/meshes/pa-7a/link6_mesh.dae" scale="1 1 1" />
+        <cylinder length="0.228" radius="0.045"/>
       </geometry>
     </collision>
     <inertial>
-      <mass value="1" />
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+      <mass value="1.46" />
+      <origin xyz="0 0 -0.03" rpy="0 0 0"/>
+      <inertia ixx="0.0071" ixy="0" ixz="0" iyy="0.0071" iyz="0" izz="0.0015"/>
     </inertial>
   </link>
   <link name="${name}arm_7_link">
@@ -149,15 +203,15 @@
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0 1.345" rpy="0 0 0"/>
+      <origin xyz="0 0 -0.01" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://agni_description/pa10/meshes/pa-7a/link7_mesh.dae" scale="1 1 1" />
+        <cylinder length="0.02" radius="0.04"/>   
       </geometry>
     </collision>
     <inertial>
-      <mass value="1" />
-      <origin xyz="0 0 2.22045e-16" rpy="0 0 0"/>
-      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+      <mass value="0.24" />
+      <origin xyz="0 0 -0.029" rpy="0 0 0"/>
+      <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0002"/>
     </inertial>
   </link>
 
