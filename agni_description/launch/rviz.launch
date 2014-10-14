@@ -5,7 +5,7 @@
 -->
 
   <!-- set various robot descriptions -->
-  <param name="frame" command="$(find xacro)/xacro.py '$(find agni_description)/robots/frame.urdf.xacro'" />
+  <param name="frame" command="$(find xacro)/xacro.py '$(find agni_description)/robots/kuka_frame.urdf.xacro'" />
 
   <group ns="right">
 	 <!-- load robot_description -->

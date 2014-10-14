@@ -5,7 +5,7 @@
   <!-- left arm base -->
   <property name="cal_right_arm_x"     value="-0.168" />
   <property name="cal_right_arm_y"     value="0.855" />
-  <property name="cal_right_arm_z"     value="2.193" />
+  <property name="cal_right_arm_z"     value="1.193" />
   <property name="cal_right_arm_roll"  value="${3.141592-0.261799}" /> <!---" />   -->   
   <property name="cal_right_arm_pitch" value="0" />
   <property name="cal_right_arm_yaw"   value="-1.57079" />  <!---  -->

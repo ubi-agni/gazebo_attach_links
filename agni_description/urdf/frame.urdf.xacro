@@ -4,15 +4,27 @@
 <xacro:include filename="$(find agni_description)/urdf/util.urdf.xacro"/>
 <xacro:include filename="$(find agni_description)/urdf/materials.urdf.xacro"/>
 
-<xacro:macro name="bar" params="thickness len *origin">
-	 <visual>
-		<xacro:insert_block name="origin"/>
-		<geometry><box size="${thickness} ${thickness} ${len}"/></geometry>
-		<material name="Silver"/>
-	 </visual>  
+<xacro:macro name="barcollision" params="thickness len *origin">
+   <visual>
+    <xacro:insert_block name="origin"/>
+    <geometry><box size="${thickness} ${thickness} ${len}"/></geometry>
+    <material name="Silver"/>
+   </visual>  
+   <collision>
+    <xacro:insert_block name="origin"/>
+    <geometry><box size="${thickness} ${thickness} ${len}"/></geometry>
+   </collision>
 </xacro:macro>
 
-<xacro:macro name="frame" params="prefix thickness width depth height tableHeight">
+<xacro:macro name="bar" params="thickness len *origin">
+   <visual>
+    <xacro:insert_block name="origin"/>
+    <geometry><box size="${thickness} ${thickness} ${len}"/></geometry>
+    <material name="Silver"/>
+   </visual>  
+</xacro:macro>
+
+<xacro:macro name="frame" params="prefix thickness width depth height tableHeight mountingYpos mountingspacing">
   <link name="${prefix}_frame">
 	 <!-- horizontal front bar-->
 	 <xacro:bar thickness="${thickness}" len="${width}">
@@ -22,14 +34,23 @@
 	 <xacro:bar thickness="${thickness}" len="${width}">
 		<origin xyz="0 ${depth+thickness/2} ${-thickness/2}" rpy="0 ${-M_PI/2} 0"/>
 	 </xacro:bar>
+    
+    <!-- robot mounting bars -->
 	 <!-- horizontal front bar top -->
 	 <xacro:bar thickness="${thickness}" len="${width}">
-		<origin xyz="0 ${-thickness/2} ${height+thickness/2}" rpy="0 ${-M_PI/2} 0"/>
+		<origin xyz="0 ${mountingYpos-mountingspacing/2 + thickness/2} ${height+thickness/2}" rpy="0 ${-M_PI/2} 0"/>
 	 </xacro:bar>
 	 <!-- horizontal rear bar top -->
 	 <xacro:bar thickness="${thickness}" len="${width}">
-		<origin xyz="0 ${depth+thickness/2} ${height+thickness/2}" rpy="0 ${-M_PI/2} 0"/>
+		<origin xyz="0 ${mountingYpos+mountingspacing/2 - thickness/2} ${height+thickness/2}" rpy="0 ${-M_PI/2} 0"/>
 	 </xacro:bar>
+    <!-- additional collision box inbetzeen the mounting bars at the top -->
+     <collision>
+      <origin xyz="0 ${mountingYpos} ${height+thickness/2}" 
+          rpy="0 0 0"/>
+      <geometry><box size="${width} ${mountingspacing-thickness} ${thickness}"/></geometry>
+    </collision>
+    
 
 	 <!-- left front pole -->
 	 <xacro:bar thickness="${thickness}" len="${height+2*thickness+tableHeight}">
@@ -69,6 +90,68 @@
 		<origin xyz="${+(width+thickness)/2} ${depth/2} ${height+thickness/2}" 
 				  rpy="${-M_PI/2} 0 0"/>
 	 </xacro:bar>
+
+   <!-- table plane -->
+   <visual>
+    <origin xyz="0 ${depth/2} -0.01" 
+          rpy="0 0 0"/>
+    <geometry><box size="${width} ${depth} ${0.02}"/></geometry>
+    <material name="Silver"/>
+   </visual>  
+   <collision>
+      <origin xyz="0 ${depth/2} -0.01" 
+          rpy="0 0 0"/>
+      <geometry><box size="${width} ${depth} ${0.02}"/></geometry>
+    </collision>
+    
+    
+   <!-- virtual fence -->
+   <!-- left pane -->
+   <collision>
+      <origin xyz="${-(width+thickness)/2} ${depth/2} ${height/2}" 
+          rpy="0 0 0"/>
+      <geometry><box size="${thickness} ${depth} ${height}"/></geometry>
+   </collision>
+   <!-- right pane -->
+   <collision>
+      <origin xyz="${+(width+thickness)/2} ${depth/2} ${height/2}" 
+          rpy="0 0 0"/>
+      <geometry><box size="${thickness} ${depth} ${height}"/></geometry>
+   </collision>
+   <!-- front pane -->
+   <collision>
+      <origin xyz="0 ${-thickness/2} ${height/2}" 
+          rpy="0 0 0"/>
+      <geometry><box size="${width} ${thickness} ${height}"/></geometry>
+   </collision>
+   <!-- back pane -->
+   <collision>
+      <origin xyz="0 ${depth + thickness/2} ${height/2}" 
+          rpy="0 0 0"/>
+      <geometry><box size="${width} ${thickness} ${height}"/></geometry>
+   </collision>
+   
+  <!-- virtual protection box for the screens -->
+    <!-- right screen -->
+   <visual>
+    <origin xyz="${+0.575/2} ${mountingYpos-mountingspacing/2 -thickness} ${height+thickness/2}" 
+          rpy="0.32 0 0"/>
+    <geometry><box size="${0.550} ${0.07} ${0.35}"/></geometry>
+    <material name="Silver"/>
+   </visual> 
+    <!-- left screen -->
+   <visual> 
+    <origin xyz="${-0.575/2} ${mountingYpos-mountingspacing/2 -thickness} ${height+thickness/2}" 
+          rpy="0.32 0 0"/>
+    <geometry><box size="${0.550} ${0.07} ${0.35}"/></geometry>
+    <material name="Silver"/>
+   </visual>  
+   
+   <collision>
+      <origin xyz="0 ${mountingYpos-mountingspacing/2 -thickness} ${height+thickness/2}" 
+          rpy="0 0 0"/>
+      <geometry><box size="${0.575*2} ${0.250} ${0.350}"/></geometry>
+    </collision>
 
   </link>
 </xacro:macro>

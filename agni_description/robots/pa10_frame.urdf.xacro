@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<robot name="frame"
+		 xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find agni_description)/urdf/frame.urdf.xacro"/>
+  <xacro:include filename="$(find agni_description)/calibration/pa10_cal.xml"/>
+
+  <xacro:frame prefix="pa10" thickness="0.09" width="1.920" depth="1.420"
+						  height="1.060" tableHeight="1.00" mountingYpos="${cal_right_arm_y}" mountingspacing="0.513"/>
+
+</robot>  

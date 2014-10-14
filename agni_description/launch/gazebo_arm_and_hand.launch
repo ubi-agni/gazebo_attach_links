@@ -18,7 +18,7 @@
 
   <!-- load frame description -->
   <arg name="ARM" default="kuka"/>
-  <param name="frame" command="$(find xacro)/xacro.py '$(find agni_description)/robots/frame.urdf.xacro'" />
+  <param name="frame" command="$(find xacro)/xacro.py '$(find agni_description)/robots/$(arg ARM)_frame.urdf.xacro'" />
   
   
   <!-- set robot description for combined table + 2 robot arm and hand -->
@@ -26,7 +26,7 @@
 
 
   <!-- spawn the support model -->
-  <node name="spawn_support" pkg="gazebo_ros" type="spawn_model" args="-urdf -param frame -model support_model" respawn="false" output="screen" />
+  <node name="spawn_support" pkg="gazebo_ros" type="spawn_model" args="-urdf -param frame -model frame" respawn="false" output="screen" />
   
   <!-- include our robots -->
   <arg name="R" default="1"/>

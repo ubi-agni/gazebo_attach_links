@@ -6,8 +6,8 @@
   
   <link name="world" />
   <!-- PA10 Shadow arm and hand  -->
-  <xacro:rightpa10shadow parent="world" prefix="false" controller="true">
+  <xacro:leftpa10shadow parent="world" prefix="false" controller="true">
     <origin xyz="${cal_left_arm_x} ${cal_left_arm_y} ${cal_left_arm_z}"
         rpy="${cal_left_arm_roll} ${cal_left_arm_pitch} ${cal_left_arm_yaw}"/>
-  </xacro:rightpa10shadow>
+  </xacro:leftpa10shadow>
 </robot>

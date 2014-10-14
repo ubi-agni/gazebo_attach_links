@@ -15,10 +15,7 @@
         <arg name="gui" value="$(arg gui)"/>
       </include>
   </group>
-   
-  <!-- load frame description -->
-  <param name="frame" command="$(find xacro)/xacro.py '$(find agni_description)/robots/frame.urdf.xacro'" />
-  
+     
   <!-- include our robots -->
   <arg name="RH" default="1"/>
   <arg name="LH" default="0"/>

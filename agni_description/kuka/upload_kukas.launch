@@ -1,6 +1,6 @@
 <launch>
   <!-- load frame description -->
-  <param name="frame" command="$(find xacro)/xacro.py '$(find agni_description)/robots/frame.urdf.xacro'" />
+  <param name="frame" command="$(find xacro)/xacro.py '$(find agni_description)/robots/kuka_frame.urdf.xacro'" />
     <!-- spawn the support model -->
   <node name="spawn_support" pkg="gazebo" type="spawn_model" args="-urdf -param frame -model support_model" respawn="false" output="screen" />
 

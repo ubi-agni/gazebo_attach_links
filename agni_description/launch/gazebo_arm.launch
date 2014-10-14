@@ -18,10 +18,10 @@
   
   <!-- load frame description -->
   <arg name="ARM" default="kuka"/>
-  <param name="frame" command="$(find xacro)/xacro.py '$(find agni_description)/robots/frame.urdf.xacro'" />
+  <param name="frame" command="$(find xacro)/xacro.py '$(find agni_description)/robots/$(arg ARM)_frame.urdf.xacro'" />
 
   <!-- spawn the support model -->
-  <node name="spawn_support" pkg="gazebo_ros" type="spawn_model" args="-urdf -param frame -model support_model" respawn="false" output="screen" />
+  <node name="spawn_support" pkg="gazebo_ros" type="spawn_model" args="-urdf -param frame -model frame" respawn="false" output="screen" />
   
   <!-- include our robots -->
   <arg name="RA" default="1"/>
