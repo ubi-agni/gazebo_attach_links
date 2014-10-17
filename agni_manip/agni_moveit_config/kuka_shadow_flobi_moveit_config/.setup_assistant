@@ -5,4 +5,4 @@ moveit_setup_assistant_config:
   SRDF:
     relative_path: config/kuka_shadow_flobi.srdf
   CONFIG:
-    generated_timestamp: 1409686047
+    generated_timestamp: 1413454781

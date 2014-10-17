@@ -1,0 +1,8 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: agni_description
+    relative_path: robots/both_pa10_shadow.urdf.xacro
+  SRDF:
+    relative_path: config/pa10_shadow.srdf
+  CONFIG:
+    generated_timestamp: 1413454517

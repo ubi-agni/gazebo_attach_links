@@ -1,0 +1,311 @@
+joint_limits:
+  left_S1:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_S2:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_S3:
+    has_velocity_limits: true
+    max_velocity: 2
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_E1:
+    has_velocity_limits: true
+    max_velocity: 2
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_E2:
+    has_velocity_limits: true
+    max_velocity: 6.28
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_W1:
+    has_velocity_limits: true
+    max_velocity: 6.28
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_W2:
+    has_velocity_limits: true
+    max_velocity: 6.28
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_WRJ2:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_WRJ1:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_FFJ4:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_FFJ3:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_FFJ2:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_FFJ1:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_LFJ5:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_LFJ4:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_LFJ3:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_LFJ2:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_LFJ1:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_MFJ4:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_MFJ3:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_MFJ2:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_MFJ1:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_THJ3:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_THJ2:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_LFJ5:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_LFJ4:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_LFJ3:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_LFJ2:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_RFJ4:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_RFJ3:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_RFJ2:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_RFJ1:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_THJ2:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_THJ1:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_THJ5:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_THJ4:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  l_THJ3:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_MFJ4:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_MFJ2:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_LFJ1:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_MFJ3:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_RFJ3:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_RFJ2:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_RFJ1:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_THJ5:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_THJ4:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_THJ1:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_MFJ1:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_RFJ4:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_WRJ1:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_FFJ4:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_FFJ3:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_FFJ2:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_FFJ1:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_E1:
+    has_velocity_limits: true
+    max_velocity: 2
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_E2:
+    has_velocity_limits: true
+    max_velocity: 6.28
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_W1:
+    has_velocity_limits: true
+    max_velocity: 6.28
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_S2:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_S3:
+    has_velocity_limits: true
+    max_velocity: 2
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_W2:
+    has_velocity_limits: true
+    max_velocity: 6.28
+    has_acceleration_limits: false
+    max_acceleration: 0
+  r_WRJ2:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_S1:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0

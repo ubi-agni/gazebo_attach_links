@@ -1,9 +1,9 @@
 <package>
 
-  <name>agni_moveit_config</name>
+  <name>pa10_shadow_moveit_config</name>
   <version>0.2.0</version>
   <description>
-     An automatically generated package with all the configuration and launch files for using the kuka_shadow_flobi with the MoveIt Motion Planning Framework
+     An automatically generated package with all the configuration and launch files for using the pa10_shadow with the MoveIt Motion Planning Framework
   </description>
   <author email="assistant@moveit.ros.org">MoveIt Setup Assistant</author>
   <maintainer email="assistant@moveit.ros.org">MoveIt Setup Assistant</maintainer>
@@ -20,9 +20,7 @@
   <run_depend>joint_state_publisher</run_depend>
   <run_depend>robot_state_publisher</run_depend>
   <run_depend>xacro</run_depend>
-  <run_depend>hand_kinematics</run_depend>
   <build_depend>agni_description</build_depend>
-  <build_depend>hand_kinematics</build_depend>
   <run_depend>agni_description</run_depend>
 
 

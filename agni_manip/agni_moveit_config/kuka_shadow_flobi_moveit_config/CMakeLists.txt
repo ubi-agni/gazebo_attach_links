@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(agni_moveit_config)
+project(kuka_shadow_flobi_moveit_config)
 
 find_package(catkin REQUIRED)
 
