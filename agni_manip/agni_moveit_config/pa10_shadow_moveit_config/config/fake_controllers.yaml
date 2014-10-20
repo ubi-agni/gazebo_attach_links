@@ -1,30 +1,4 @@
 controller_list:
-  - name: fake_right_hand_controller
-    joints:
-      - r_WRJ2
-      - r_WRJ1
-      - r_FFJ4
-      - r_FFJ3
-      - r_FFJ2
-      - r_FFJ1
-      - r_LFJ5
-      - r_LFJ4
-      - r_LFJ3
-      - r_LFJ2
-      - r_LFJ1
-      - r_MFJ4
-      - r_MFJ3
-      - r_MFJ2
-      - r_MFJ1
-      - r_RFJ4
-      - r_RFJ3
-      - r_RFJ2
-      - r_RFJ1
-      - r_THJ5
-      - r_THJ4
-      - r_THJ3
-      - r_THJ2
-      - r_THJ1
   - name: fake_right_arm_controller
     joints:
       - right_S1
@@ -43,6 +17,28 @@ controller_list:
       - left_E2
       - left_W1
       - left_W2
+  - name: fake_right_armhand_controller
+    joints:
+      - right_S1
+      - right_S2
+      - right_S3
+      - right_E1
+      - right_E2
+      - right_W1
+      - right_W2
+      - r_WRJ2
+      - r_WRJ1
+  - name: fake_left_armhand_controller
+    joints:
+      - left_S1
+      - left_S2
+      - left_S3
+      - left_E1
+      - left_E2
+      - left_W1
+      - left_W2
+      - l_WRJ2
+      - l_WRJ1
   - name: fake_left_hand_controller
     joints:
       - l_WRJ2
@@ -69,3 +65,291 @@ controller_list:
       - l_THJ3
       - l_THJ2
       - l_THJ1
+  - name: fake_right_hand_controller
+    joints:
+      - r_WRJ2
+      - r_WRJ1
+      - r_FFJ4
+      - r_FFJ3
+      - r_FFJ2
+      - r_FFJ1
+      - r_LFJ5
+      - r_LFJ4
+      - r_LFJ3
+      - r_LFJ2
+      - r_LFJ1
+      - r_MFJ4
+      - r_MFJ3
+      - r_MFJ2
+      - r_MFJ1
+      - r_RFJ4
+      - r_RFJ3
+      - r_RFJ2
+      - r_RFJ1
+      - r_THJ5
+      - r_THJ4
+      - r_THJ3
+      - r_THJ2
+      - r_THJ1
+  - name: fake_left_fingers_controller
+    joints:
+      - l_FFJ4
+      - l_FFJ3
+      - l_FFJ2
+      - l_FFJ1
+      - l_LFJ5
+      - l_LFJ4
+      - l_LFJ3
+      - l_LFJ2
+      - l_LFJ1
+      - l_MFJ4
+      - l_MFJ3
+      - l_MFJ2
+      - l_MFJ1
+      - l_RFJ4
+      - l_RFJ3
+      - l_RFJ2
+      - l_RFJ1
+      - l_THJ5
+      - l_THJ4
+      - l_THJ3
+      - l_THJ2
+      - l_THJ1
+  - name: fake_right_fingers_controller
+    joints:
+      - r_FFJ4
+      - r_FFJ3
+      - r_FFJ2
+      - r_FFJ1
+      - r_LFJ5
+      - r_LFJ4
+      - r_LFJ3
+      - r_LFJ2
+      - r_LFJ1
+      - r_MFJ4
+      - r_MFJ3
+      - r_MFJ2
+      - r_MFJ1
+      - r_RFJ4
+      - r_RFJ3
+      - r_RFJ2
+      - r_RFJ1
+      - r_THJ5
+      - r_THJ4
+      - r_THJ3
+      - r_THJ2
+      - r_THJ1
+  - name: fake_upper_body_controller
+    joints:
+      - left_S1
+      - left_S2
+      - left_S3
+      - left_E1
+      - left_E2
+      - left_W1
+      - left_W2
+      - l_WRJ2
+      - l_WRJ1
+      - l_FFJ4
+      - l_FFJ3
+      - l_FFJ2
+      - l_FFJ1
+      - l_LFJ5
+      - l_LFJ4
+      - l_LFJ3
+      - l_LFJ2
+      - l_LFJ1
+      - l_MFJ4
+      - l_MFJ3
+      - l_MFJ2
+      - l_MFJ1
+      - l_RFJ4
+      - l_RFJ3
+      - l_RFJ2
+      - l_RFJ1
+      - l_THJ5
+      - l_THJ4
+      - l_THJ3
+      - l_THJ2
+      - l_THJ1
+      - right_S1
+      - right_S2
+      - right_S3
+      - right_E1
+      - right_E2
+      - right_W1
+      - right_W2
+      - r_WRJ2
+      - r_WRJ1
+      - r_FFJ4
+      - r_FFJ3
+      - r_FFJ2
+      - r_FFJ1
+      - r_LFJ5
+      - r_LFJ4
+      - r_LFJ3
+      - r_LFJ2
+      - r_LFJ1
+      - r_MFJ4
+      - r_MFJ3
+      - r_MFJ2
+      - r_MFJ1
+      - r_RFJ4
+      - r_RFJ3
+      - r_RFJ2
+      - r_RFJ1
+      - r_THJ5
+      - r_THJ4
+      - r_THJ3
+      - r_THJ2
+      - r_THJ1
+  - name: fake_right_first_finger_controller
+    joints:
+      - r_FFJ4
+      - r_FFJ3
+      - r_FFJ2
+      - r_FFJ1
+  - name: fake_right_middle_finger_controller
+    joints:
+      - r_MFJ4
+      - r_MFJ3
+      - r_MFJ2
+      - r_MFJ1
+  - name: fake_right_ring_finger_controller
+    joints:
+      - r_RFJ4
+      - r_RFJ3
+      - r_RFJ2
+      - r_RFJ1
+  - name: fake_right_little_finger_controller
+    joints:
+      - r_LFJ5
+      - r_LFJ4
+      - r_LFJ3
+      - r_LFJ2
+      - r_LFJ1
+  - name: fake_right_thumb_controller
+    joints:
+      - r_THJ5
+      - r_THJ4
+      - r_THJ3
+      - r_THJ2
+      - r_THJ1
+  - name: fake_left_first_finger_controller
+    joints:
+      - l_FFJ4
+      - l_FFJ3
+      - l_FFJ2
+      - l_FFJ1
+  - name: fake_left_middle_finger_controller
+    joints:
+      - l_MFJ4
+      - l_MFJ3
+      - l_MFJ2
+      - l_MFJ1
+  - name: fake_left_ring_finger_controller
+    joints:
+      - l_RFJ4
+      - l_RFJ3
+      - l_RFJ2
+      - l_RFJ1
+  - name: fake_left_little_finger_controller
+    joints:
+      - l_LFJ5
+      - l_LFJ4
+      - l_LFJ3
+      - l_LFJ2
+      - l_LFJ1
+  - name: fake_left_thumb_controller
+    joints:
+      - l_THJ5
+      - l_THJ4
+      - l_THJ3
+      - l_THJ2
+      - l_THJ1
+  - name: fake_both_hands_controller
+    joints:
+      - l_WRJ2
+      - l_WRJ1
+      - l_FFJ4
+      - l_FFJ3
+      - l_FFJ2
+      - l_FFJ1
+      - l_LFJ5
+      - l_LFJ4
+      - l_LFJ3
+      - l_LFJ2
+      - l_LFJ1
+      - l_MFJ4
+      - l_MFJ3
+      - l_MFJ2
+      - l_MFJ1
+      - l_RFJ4
+      - l_RFJ3
+      - l_RFJ2
+      - l_RFJ1
+      - l_THJ5
+      - l_THJ4
+      - l_THJ3
+      - l_THJ2
+      - l_THJ1
+      - r_WRJ2
+      - r_WRJ1
+      - r_FFJ4
+      - r_FFJ3
+      - r_FFJ2
+      - r_FFJ1
+      - r_LFJ5
+      - r_LFJ4
+      - r_LFJ3
+      - r_LFJ2
+      - r_LFJ1
+      - r_MFJ4
+      - r_MFJ3
+      - r_MFJ2
+      - r_MFJ1
+      - r_RFJ4
+      - r_RFJ3
+      - r_RFJ2
+      - r_RFJ1
+      - r_THJ5
+      - r_THJ4
+      - r_THJ3
+      - r_THJ2
+      - r_THJ1
+  - name: fake_both_armhand_controller
+    joints:
+      - left_S1
+      - left_S2
+      - left_S3
+      - left_E1
+      - left_E2
+      - left_W1
+      - left_W2
+      - l_WRJ2
+      - l_WRJ1
+      - right_S1
+      - right_S2
+      - right_S3
+      - right_E1
+      - right_E2
+      - right_W1
+      - right_W2
+      - r_WRJ2
+      - r_WRJ1
+  - name: fake_both_arms_controller
+    joints:
+      - left_S1
+      - left_S2
+      - left_S3
+      - left_E1
+      - left_E2
+      - left_W1
+      - left_W2
+      - right_S1
+      - right_S2
+      - right_S3
+      - right_E1
+      - right_E2
+      - right_W1
+      - right_W2

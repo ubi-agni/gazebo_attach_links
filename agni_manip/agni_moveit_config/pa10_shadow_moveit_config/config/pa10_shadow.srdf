@@ -8,63 +8,7 @@
     <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
     <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
     <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
-    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
-    <group name="right_hand">
-        <joint name="r_WRJ2" />
-        <joint name="r_WRJ1" />
-        <joint name="r_FFJ4" />
-        <joint name="r_FFJ3" />
-        <joint name="r_FFJ2" />
-        <joint name="r_FFJ1" />
-        <joint name="r_FFtip" />
-        <joint name="r_LFJ5" />
-        <joint name="r_LFJ4" />
-        <joint name="r_LFJ3" />
-        <joint name="r_LFJ2" />
-        <joint name="r_LFJ1" />
-        <joint name="r_LFtip" />
-        <joint name="r_MFJ4" />
-        <joint name="r_MFJ3" />
-        <joint name="r_MFJ2" />
-        <joint name="r_MFJ1" />
-        <joint name="r_MFtip" />
-        <joint name="r_RFJ4" />
-        <joint name="r_RFJ3" />
-        <joint name="r_RFJ2" />
-        <joint name="r_RFJ1" />
-        <joint name="r_RFtip" />
-        <joint name="r_THJ5" />
-        <joint name="r_THJ4" />
-        <joint name="r_THJ3" />
-        <joint name="r_THJ2" />
-        <joint name="r_THJ1" />
-        <joint name="r_thtip" />
-        <joint name="right_arm_hand_mount" />
-    </group>
-    <group name="right_arm">
-        <joint name="right_frame_placement" />
-        <joint name="right_S1" />
-        <joint name="right_S2" />
-        <joint name="right_S3" />
-        <joint name="right_E1" />
-        <joint name="right_E2" />
-        <joint name="right_W1" />
-        <joint name="right_W2" />
-        <joint name="right_arm_hand_fixed_joint" />
-        <chain base_link="right_arm_base_link" tip_link="right_arm_hand_mount" />
-    </group>
-    <group name="left_arm">
-        <joint name="left_frame_placement" />
-        <joint name="left_S1" />
-        <joint name="left_S2" />
-        <joint name="left_S3" />
-        <joint name="left_E1" />
-        <joint name="left_E2" />
-        <joint name="left_W1" />
-        <joint name="left_W2" />
-        <joint name="left_arm_hand_fixed_joint" />
-        <chain base_link="left_arm_base_link" tip_link="left_arm_hand_mount" />
-    </group>
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names--> 
     <group name="left_hand">
         <joint name="left_arm_hand_mount" />
         <joint name="l_WRJ2" />
@@ -96,9 +40,260 @@
         <joint name="l_THJ2" />
         <joint name="l_THJ1" />
         <joint name="l_thtip" />
+        <group name="left_fingers" />
     </group>
+    <group name="right_hand">
+        <joint name="right_arm_hand_mount" />
+        <joint name="r_WRJ2" />
+        <joint name="r_WRJ1" />
+        <joint name="r_FFJ4" />
+        <joint name="r_FFJ3" />
+        <joint name="r_FFJ2" />
+        <joint name="r_FFJ1" />
+        <joint name="r_FFtip" />
+        <joint name="r_LFJ5" />
+        <joint name="r_LFJ4" />
+        <joint name="r_LFJ3" />
+        <joint name="r_LFJ2" />
+        <joint name="r_LFJ1" />
+        <joint name="r_LFtip" />
+        <joint name="r_MFJ4" />
+        <joint name="r_MFJ3" />
+        <joint name="r_MFJ2" />
+        <joint name="r_MFJ1" />
+        <joint name="r_MFtip" />
+        <joint name="r_RFJ4" />
+        <joint name="r_RFJ3" />
+        <joint name="r_RFJ2" />
+        <joint name="r_RFJ1" />
+        <joint name="r_RFtip" />
+        <joint name="r_THJ5" />
+        <joint name="r_THJ4" />
+        <joint name="r_THJ3" />
+        <joint name="r_THJ2" />
+        <joint name="r_THJ1" />
+        <joint name="r_thtip" />
+        <group name="right_fingers" />
+    </group>
+    <group name="left_fingers">
+        <joint name="l_FFJ4" />
+        <joint name="l_FFJ3" />
+        <joint name="l_FFJ2" />
+        <joint name="l_FFJ1" />
+        <joint name="l_FFtip" />
+        <joint name="l_LFJ5" />
+        <joint name="l_LFJ4" />
+        <joint name="l_LFJ3" />
+        <joint name="l_LFJ2" />
+        <joint name="l_LFJ1" />
+        <joint name="l_LFtip" />
+        <joint name="l_MFJ4" />
+        <joint name="l_MFJ3" />
+        <joint name="l_MFJ2" />
+        <joint name="l_MFJ1" />
+        <joint name="l_MFtip" />
+        <joint name="l_RFJ4" />
+        <joint name="l_RFJ3" />
+        <joint name="l_RFJ2" />
+        <joint name="l_RFJ1" />
+        <joint name="l_RFtip" />
+        <joint name="l_THJ5" />
+        <joint name="l_THJ4" />
+        <joint name="l_THJ3" />
+        <joint name="l_THJ2" />
+        <joint name="l_THJ1" />
+        <joint name="l_thtip" />
+        <group name="left_first_finger" />
+        <group name="left_middle_finger" />
+        <group name="left_ring_finger" />
+        <group name="left_little_finger" />
+        <group name="left_thumb" />
+    </group>
+    <group name="right_fingers">
+        <joint name="r_FFJ4" />
+        <joint name="r_FFJ3" />
+        <joint name="r_FFJ2" />
+        <joint name="r_FFJ1" />
+        <joint name="r_FFtip" />
+        <joint name="r_LFJ5" />
+        <joint name="r_LFJ4" />
+        <joint name="r_LFJ3" />
+        <joint name="r_LFJ2" />
+        <joint name="r_LFJ1" />
+        <joint name="r_LFtip" />
+        <joint name="r_MFJ4" />
+        <joint name="r_MFJ3" />
+        <joint name="r_MFJ2" />
+        <joint name="r_MFJ1" />
+        <joint name="r_MFtip" />
+        <joint name="r_RFJ4" />
+        <joint name="r_RFJ3" />
+        <joint name="r_RFJ2" />
+        <joint name="r_RFJ1" />
+        <joint name="r_RFtip" />
+        <joint name="r_THJ5" />
+        <joint name="r_THJ4" />
+        <joint name="r_THJ3" />
+        <joint name="r_THJ2" />
+        <joint name="r_THJ1" />
+        <joint name="r_thtip" />
+        <group name="right_first_finger" />
+        <group name="right_middle_finger" />
+        <group name="right_ring_finger" />
+        <group name="right_little_finger" />
+        <group name="right_thumb" />
+    </group>
+    <group name="upper_body">
+        <group name="left_arm" />
+        <group name="left_armhand" />
+        <group name="left_hand" />
+        <group name="right_arm" />
+        <group name="right_armhand" />
+        <group name="right_hand" />
+    </group>
+    <group name="right_first_finger">
+        <joint name="r_FFJ4" />
+        <joint name="r_FFJ3" />
+        <joint name="r_FFJ2" />
+        <joint name="r_FFJ1" />
+        <joint name="r_FFtip" />
+        <chain base_link="r_palm" tip_link="r_fftip" />
+    </group>
+    <group name="right_middle_finger">
+        <joint name="r_MFJ4" />
+        <joint name="r_MFJ3" />
+        <joint name="r_MFJ2" />
+        <joint name="r_MFJ1" />
+        <joint name="r_MFtip" />
+        <chain base_link="r_palm" tip_link="r_mftip" />
+    </group>
+    <group name="right_ring_finger">
+        <joint name="r_RFJ4" />
+        <joint name="r_RFJ3" />
+        <joint name="r_RFJ2" />
+        <joint name="r_RFJ1" />
+        <joint name="r_RFtip" />
+        <chain base_link="r_palm" tip_link="r_rftip" />
+    </group>
+    <group name="right_little_finger">
+        <chain base_link="r_palm" tip_link="r_lftip" />
+    </group>
+    <group name="right_thumb">
+        <chain base_link="r_palm" tip_link="r_thtip" />
+    </group>
+    <group name="left_first_finger">
+        <joint name="l_FFJ4" />
+        <joint name="l_FFJ3" />
+        <joint name="l_FFJ2" />
+        <joint name="l_FFJ1" />
+        <joint name="l_FFtip" />
+        <chain base_link="l_palm" tip_link="l_fftip" />
+    </group>
+    <group name="left_middle_finger">
+        <joint name="l_MFJ4" />
+        <joint name="l_MFJ3" />
+        <joint name="l_MFJ2" />
+        <joint name="l_MFJ1" />
+        <joint name="l_MFtip" />
+        <chain base_link="l_palm" tip_link="l_mftip" />
+    </group>
+    <group name="left_ring_finger">
+        <joint name="l_RFJ4" />
+        <joint name="l_RFJ3" />
+        <joint name="l_RFJ2" />
+        <joint name="l_RFJ1" />
+        <joint name="l_RFtip" />
+        <chain base_link="l_palm" tip_link="l_rftip" />
+    </group>
+    <group name="left_little_finger">
+        <joint name="l_LFJ5" />
+        <joint name="l_LFJ4" />
+        <joint name="l_LFJ3" />
+        <joint name="l_LFJ2" />
+        <joint name="l_LFJ1" />
+        <joint name="l_LFtip" />
+        <chain base_link="l_palm" tip_link="l_lftip" />
+    </group>
+    <group name="left_thumb">
+        <joint name="l_THJ5" />
+        <joint name="l_THJ4" />
+        <joint name="l_THJ3" />
+        <joint name="l_THJ2" />
+        <joint name="l_THJ1" />
+        <joint name="l_thtip" />
+        <chain base_link="l_palm" tip_link="l_thtip" />
+    </group>
+    
+    <group name="right_arm">
+        <joint name="right_frame_placement" />
+        <joint name="right_S1" />
+        <joint name="right_S2" />
+        <joint name="right_S3" />
+        <joint name="right_E1" />
+        <joint name="right_E2" />
+        <joint name="right_W1" />
+        <joint name="right_W2" />
+        <joint name="right_arm_hand_fixed_joint" />
+        <chain base_link="right_arm_base_link" tip_link="right_arm_hand_mount" />
+    </group>
+    <group name="left_arm">
+        <joint name="left_frame_placement" />
+        <joint name="left_S1" />
+        <joint name="left_S2" />
+        <joint name="left_S3" />
+        <joint name="left_E1" />
+        <joint name="left_E2" />
+        <joint name="left_W1" />
+        <joint name="left_W2" />
+        <joint name="left_arm_hand_fixed_joint" />
+        <chain base_link="left_arm_base_link" tip_link="left_arm_hand_mount" />
+    </group>
+        <group name="right_armhand">
+        <joint name="right_frame_placement" />
+        <joint name="right_S1" />
+        <joint name="right_S2" />
+        <joint name="right_S3" />
+        <joint name="right_E1" />
+        <joint name="right_E2" />
+        <joint name="right_W1" />
+        <joint name="right_W2" />
+        <joint name="right_arm_hand_fixed_joint" />
+        <joint name="r_WRJ2" />
+        <joint name="r_WRJ1" />
+        <chain base_link="right_arm_base_link" tip_link="r_palm" />
+    </group>
+    <group name="left_armhand">
+        <joint name="left_frame_placement" />
+        <joint name="left_S1" />
+        <joint name="left_S2" />
+        <joint name="left_S3" />
+        <joint name="left_E1" />
+        <joint name="left_E2" />
+        <joint name="left_W1" />
+        <joint name="left_W2" />
+        <joint name="left_arm_hand_fixed_joint" />
+        <joint name="l_WRJ2" />
+        <joint name="l_WRJ1" />
+        <chain base_link="left_arm_base_link" tip_link="l_palm" />
+    </group>
+    
+    <group name="both_hands">
+        <group name="left_hand" />
+        <group name="right_hand" />
+    </group>
+    <group name="both_armhand">
+        <group name="left_armhand" />
+        <group name="right_armhand" />
+    </group>
+    <group name="both_arms">
+        <group name="left_arm" />
+        <group name="right_arm" />
+    </group>
+    
     <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
-    <group_state name="right_home" group="right_arm">
+    <group_state name="right_home" group="right_armhand">
+        <joint name="r_WRJ1" value="0" />
+        <joint name="r_WRJ2" value="0" />
         <joint name="right_E1" value="-1.4486" />
         <joint name="right_E2" value="1.3963" />
         <joint name="right_S1" value="1.57" />
@@ -107,7 +302,9 @@
         <joint name="right_W1" value="-1.4835" />
         <joint name="right_W2" value="0" />
     </group_state>
-    <group_state name="left_home" group="left_arm">
+    <group_state name="left_home" group="left_armhand">
+        <joint name="l_WRJ1" value="0" />
+        <joint name="l_WRJ2" value="0" />
         <joint name="left_E1" value="-1.3963" />
         <joint name="left_E2" value="-1.3963" />
         <joint name="left_S1" value="1.57" />
@@ -116,9 +313,72 @@
         <joint name="left_W1" value="-1.4835" />
         <joint name="left_W2" value="0" />
     </group_state>
+ <group_state name="left_hand_home" group="left_hand">
+        <joint name="l_FFJ1" value="0" />
+        <joint name="l_FFJ2" value="0" />
+        <joint name="l_FFJ3" value="0" />
+        <joint name="l_FFJ4" value="0" />
+        <joint name="l_LFJ1" value="0" />
+        <joint name="l_LFJ2" value="0" />
+        <joint name="l_LFJ3" value="0" />
+        <joint name="l_LFJ4" value="0" />
+        <joint name="l_LFJ5" value="0" />
+        <joint name="l_MFJ1" value="0" />
+        <joint name="l_MFJ2" value="0" />
+        <joint name="l_MFJ3" value="0" />
+        <joint name="l_MFJ4" value="0" />
+        <joint name="l_RFJ1" value="0" />
+        <joint name="l_RFJ2" value="0" />
+        <joint name="l_RFJ3" value="0" />
+        <joint name="l_RFJ4" value="0" />
+        <joint name="l_THJ1" value="0" />
+        <joint name="l_THJ2" value="0" />
+        <joint name="l_THJ3" value="0" />
+        <joint name="l_THJ4" value="0" />
+        <joint name="l_THJ5" value="0" />
+        <joint name="l_WRJ1" value="0" />
+        <joint name="l_WRJ2" value="0" />
+    </group_state>
+    <group_state name="right_hand_home" group="right_hand">
+        <joint name="r_FFJ1" value="0" />
+        <joint name="r_FFJ2" value="0" />
+        <joint name="r_FFJ3" value="0" />
+        <joint name="r_FFJ4" value="0" />
+        <joint name="r_LFJ1" value="0" />
+        <joint name="r_LFJ2" value="0" />
+        <joint name="r_LFJ3" value="0" />
+        <joint name="r_LFJ4" value="0" />
+        <joint name="r_LFJ5" value="0" />
+        <joint name="r_MFJ1" value="0" />
+        <joint name="r_MFJ2" value="0" />
+        <joint name="r_MFJ3" value="0" />
+        <joint name="r_MFJ4" value="0" />
+        <joint name="r_RFJ1" value="0" />
+        <joint name="r_RFJ2" value="0" />
+        <joint name="r_RFJ3" value="0" />
+        <joint name="r_RFJ4" value="0" />
+        <joint name="r_THJ1" value="0" />
+        <joint name="r_THJ2" value="0" />
+        <joint name="r_THJ3" value="0" />
+        <joint name="r_THJ4" value="0" />
+        <joint name="r_THJ5" value="0" />
+        <joint name="r_WRJ1" value="0" />
+        <joint name="r_WRJ2" value="0" />
+    </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="right_hand" parent_link="right_arm_hand_mount" group="right_hand" />
     <end_effector name="left_hand" parent_link="left_arm_hand_mount" group="left_hand" />
+    <end_effector name="left_hand_first_finger" parent_link="l_fftip" group="left_first_finger" parent_group="left_hand" />
+    <end_effector name="right_hand_first_finger" parent_link="r_fftip" group="right_first_finger" parent_group="right_hand" />
+    <end_effector name="left_hand_middle_finger" parent_link="l_mftip" group="left_middle_finger" parent_group="left_hand" />
+    <end_effector name="left_hand_ring_finger" parent_link="l_rftip" group="left_ring_finger" parent_group="left_hand" />
+    <end_effector name="left_hand_little_finger" parent_link="l_lftip" group="left_little_finger" parent_group="left_hand" />
+    <end_effector name="left_hand_thumb" parent_link="l_thtip" group="left_thumb" parent_group="left_hand" />
+    <end_effector name="right_hand_middle_finger" parent_link="r_mftip" group="right_middle_finger" parent_group="right_hand" />
+    <end_effector name="right_hand_ring_finger" parent_link="r_rftip" group="right_ring_finger" parent_group="right_hand" />
+    <end_effector name="right_hand_little_finger" parent_link="r_lftip" group="right_little_finger" parent_group="right_hand" />
+    <end_effector name="right_hand_thumb" parent_link="r_thtip" group="right_thumb" parent_group="right_hand" />
+
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <virtual_joint name="bimanual_frame" type="fixed" parent_frame="world" child_link="pa10_frame" />
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
