@@ -280,6 +280,30 @@
         <group name="right_hand" />
     </group>
     <group name="both_armhand">
+        <joint name="left_frame_placement" />
+        <joint name="left_S1" />
+        <joint name="left_S2" />
+        <joint name="left_S3" />
+        <joint name="left_E1" />
+        <joint name="left_E2" />
+        <joint name="left_W1" />
+        <joint name="left_W2" />
+        <joint name="left_arm_hand_fixed_joint" />
+        <joint name="left_arm_hand_mount" />
+        <joint name="l_WRJ2" />
+        <joint name="l_WRJ1" />
+        <joint name="right_frame_placement" />
+        <joint name="right_S1" />
+        <joint name="right_S2" />
+        <joint name="right_S3" />
+        <joint name="right_E1" />
+        <joint name="right_E2" />
+        <joint name="right_W1" />
+        <joint name="right_W2" />
+        <joint name="right_arm_hand_fixed_joint" />
+        <joint name="right_arm_hand_mount" />
+        <joint name="r_WRJ2" />
+        <joint name="r_WRJ1" />
         <group name="left_armhand" />
         <group name="right_armhand" />
     </group>
@@ -363,8 +387,8 @@
         <joint name="r_WRJ2" value="0" />
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
-    <end_effector name="right_hand" parent_link="right_arm_hand_mount" group="right_hand" />
-    <end_effector name="left_hand" parent_link="left_arm_hand_mount" group="left_hand" />
+    <end_effector name="right_hand" parent_link="right_arm_hand_mount" group="right_hand" parent_group="right_arm" />
+    <end_effector name="left_hand" parent_link="left_arm_hand_mount" group="left_hand" parent_group="left_arm" />
     <end_effector name="left_hand_first_finger" parent_link="l_fftip" group="left_first_finger" parent_group="left_hand" />
     <end_effector name="right_hand_first_finger" parent_link="r_fftip" group="right_first_finger" parent_group="right_hand" />
     <end_effector name="left_hand_middle_finger" parent_link="l_mftip" group="left_middle_finger" parent_group="left_hand" />
@@ -375,6 +399,8 @@
     <end_effector name="right_hand_ring_finger" parent_link="r_rftip" group="right_ring_finger" parent_group="right_hand" />
     <end_effector name="right_hand_little_finger" parent_link="r_lftip" group="right_little_finger" parent_group="right_hand" />
     <end_effector name="right_hand_thumb" parent_link="r_thtip" group="right_thumb" parent_group="right_hand" />
+    <end_effector name="left_palm" parent_link="l_palm" group="left_hand" parent_group="left_armhand" />
+    <end_effector name="right_palm" parent_link="r_palm" group="right_hand" parent_group="right_armhand" />
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <virtual_joint name="bimanual_frame" type="fixed" parent_frame="world" child_link="pa10_frame" />
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
