@@ -78,7 +78,7 @@ public:
       return;
     }
 
-    ROS_INFO("Hello World!");
+    ROS_INFO("Started attach links plugin !");
     rosnode_ = new ros::NodeHandle();
     
     pub = rosnode_->advertise<std_msgs::Bool>("gazebo_attached", 10);
@@ -103,6 +103,9 @@ public:
 	  {
       math::Pose pose = relative_pose + ref_link->GetWorldPose();
 	    tgt_link->SetWorldPose(pose);
+      math::Vector3 linvel;
+      math::Vector3 angvel;
+      tgt_link->SetWorldTwist(linvel,angvel);
     }    
   }
 
