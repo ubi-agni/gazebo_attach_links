@@ -30,9 +30,8 @@ add_dependencies(${PROJECT_NAME} ${PROJECT_NAME}_generate_messages_cpp)
 target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
 
 catkin_package(
+  CATKIN_DEPENDS roscpp gazebo_ros message_runtime std_msgs
   DEPENDS 
-    roscpp 
-    gazebo_ros 
 )
 
 
