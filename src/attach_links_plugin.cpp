@@ -9,12 +9,12 @@
 
 #include <ros/ros.h>
 #include <std_msgs/Bool.h>
-#include <agni_gazebo_attach/AttachLinks.h>
+#include <gazebo_attach_links/AttachLinks.h>
 
 namespace gazebo
 
 {
-class AgniGazeboAttach : public WorldPlugin
+class GazeboAttachLinks : public WorldPlugin
 {
 public:
 
@@ -36,17 +36,17 @@ private:
   math::Pose relative_pose;
   
 public:
-  AgniGazeboAttach() : WorldPlugin(),  rosnode_(NULL), attached(false), count(0)
+  GazeboAttachLinks() : WorldPlugin(),  rosnode_(NULL), attached(false), count(0)
   {
     
   }
   
-  ~AgniGazeboAttach()
+  ~GazeboAttachLinks()
   {
     delete rosnode_;
   }
   
-  void AttachCB(const agni_gazebo_attach::AttachLinksConstPtr& msg)
+  void AttachCB(const gazebo_attach_links::AttachLinksConstPtr& msg)
   {
     if(!attached)
     {
@@ -82,9 +82,9 @@ public:
     rosnode_ = new ros::NodeHandle();
     
     pub = rosnode_->advertise<std_msgs::Bool>("gazebo_attached", 10);
-    sub = rosnode_->subscribe("gazebo_attach", 10, &AgniGazeboAttach::AttachCB, this);
+    sub = rosnode_->subscribe("gazebo_attach", 10, &GazeboAttachLinks::AttachCB, this);
     this->updateConnection = event::Events::ConnectWorldUpdateBegin(
-          boost::bind(&AgniGazeboAttach::OnUpdate, this, _1));
+          boost::bind(&GazeboAttachLinks::OnUpdate, this, _1));
     
   }
   
@@ -155,5 +155,5 @@ public:
 
 
 
-GZ_REGISTER_WORLD_PLUGIN(AgniGazeboAttach)
+GZ_REGISTER_WORLD_PLUGIN(GazeboAttachLinks)
 }

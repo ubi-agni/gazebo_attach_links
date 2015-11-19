@@ -9,7 +9,6 @@
       <uri>model://sun</uri>
     </include>
 
-    <!-- reference to your plugin -->
-    <plugin name="agni_gazebo_attach" filename="libagni_gazebo_attach.so"/>
+    <plugin name="gazebo_attach_links" filename="libgazebo_attach_links.so"/>
   </world>
 </sdf>

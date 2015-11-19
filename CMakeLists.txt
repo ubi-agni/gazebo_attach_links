@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(agni_gazebo_attach)
+project(gazebo_attach_links)
 
 # Load catkin and all dependencies required for this package
 find_package(catkin REQUIRED COMPONENTS 

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>agni_gazebo_attach</name>
+  <name>gazebo_attach_links</name>
   <version>0.1.0</version>
   <description>world plugin to permit links to be attached together (similar to the grasp hack in pr2)</description>
 
