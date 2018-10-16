@@ -6,6 +6,14 @@
 #include <gazebo/physics/Model.hh>
 #include <gazebo/physics/PhysicsEngine.hh>
 #include <gazebo/physics/World.hh>
+#include <gazebo/gazebo_config.h>
+#if GAZEBO_MAJOR_VERSION >= 7
+#include <ignition/math/Pose3.hh>
+#include <ignition/math/Vector3.hh>
+#else
+#include <gazebo/math/Pose.hh>
+#include <gazebo/math/Vector3.hh>
+#endif
 
 #include <gazebo_attach_links/AttachLinks.h>
 #include <ros/ros.h>
@@ -30,7 +38,11 @@ private:
 
   physics::ModelPtr ref_model, tgt_model;
   physics::LinkPtr ref_link, tgt_link;
+#if GAZEBO_MAJOR_VERSION >= 7
+  ignition::math::Pose3d relative_pose;
+#else
   math::Pose relative_pose;
+#endif
 
 public:
   GazeboAttachLinks() : WorldPlugin(), rosnode_(NULL), attached(false), count(0)
@@ -98,11 +110,26 @@ public:
     if (attached)
     {
       // compute and apply new target link pose
-      math::Pose pose = relative_pose + ref_link->GetWorldPose();
+#if GAZEBO_MAJOR_VERSION >= 7
+      ignition::math::Pose3d pose;
+  #if GAZEBO_MAJOR_VERSION >= 8
+      pose = relative_pose + ref_link->WorldPose();
+  #else
+      pose = relative_pose + ref_link->GetWorldPose().Ign();
+  #endif
+#else
+      math::Pose pose;
+      pose = relative_pose + ref_link->GetWorldPose();
+#endif
       tgt_link->SetWorldPose(pose);
       // force velocity to zero, otherwise object drifts
+#if GAZEBO_MAJOR_VERSION >= 7
+      ignition::math::Vector3d linvel;
+      ignition::math::Vector3d angvel;
+#else
       math::Vector3 linvel;
       math::Vector3 angvel;
+#endif
       tgt_link->SetWorldTwist(linvel, angvel);
     }
   }
@@ -111,14 +138,21 @@ public:
               const std::string tgt_link_name)
   {
     // get the models
+#if GAZEBO_MAJOR_VERSION >= 8
+    ref_model = world->ModelByName(ref_name);
+#else
     ref_model = world->GetModel(ref_name);
+#endif
     if (!ref_model)
     {
       ROS_FATAL_STREAM("Cannot find model " << ref_name);
       return false;
     }
-
+#if GAZEBO_MAJOR_VERSION >= 8
+    tgt_model = world->ModelByName(tgt_name);
+#else
     tgt_model = world->GetModel(tgt_name);
+#endif
     if (!tgt_model)
     {
       ROS_FATAL_STREAM("Cannot find model " << tgt_name);
@@ -141,7 +175,15 @@ public:
     }
 
     // compute the relative pose
+#if GAZEBO_MAJOR_VERSION >= 7
+  #if GAZEBO_MAJOR_VERSION >= 8
+    relative_pose = tgt_link->WorldPose() - ref_link->WorldPose();
+  #else
+    relative_pose = tgt_link->GetWorldPose().Ign() - ref_link->GetWorldPose().Ign();
+  #endif
+#else
     relative_pose = tgt_link->GetWorldPose() - ref_link->GetWorldPose();
+#endif
     return true;
   }
 };
